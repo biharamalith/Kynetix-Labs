@@ -44,9 +44,12 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* CTA Button - secondary style to not compete with Hero */}
           <div className="hidden md:block">
-            <Link to="/contact" className="btn-primary text-sm">
+            <Link 
+              to="/contact" 
+              className="inline-flex items-center justify-center px-4 py-2 text-xs font-medium text-muted-foreground border border-border rounded-md transition-all duration-300 hover:text-foreground hover:border-foreground/50"
+            >
               Get in Touch
             </Link>
           </div>
