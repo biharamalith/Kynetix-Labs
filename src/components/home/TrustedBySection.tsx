@@ -14,7 +14,7 @@ export const TrustedBySection = () => {
     <section className="py-16 bg-card border-y border-border overflow-hidden">
       <div className="container-main mb-8">
         <p className="text-center text-muted-foreground text-sm tracking-wider uppercase">
-          Trusted by Industry Leaders
+          Trusted by Our Customers
         </p>
       </div>
 

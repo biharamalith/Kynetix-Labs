@@ -3,81 +3,91 @@ import { ArrowRight } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[80vh] flex items-center overflow-hidden border-b border-border">
+    <section className="relative min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
       {/* Background with subtle radial glow */}
       <div className="absolute inset-0 bg-background" />
+      
+      {/* Subtle grid pattern for professional texture */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.02]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px'
+        }}
+      />
+      
+      {/* Large centered radial glow for visual depth */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 50% at 30% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 70%)'
+          background: 'radial-gradient(circle at center, rgba(0, 229, 255, 0.15) 0%, transparent 70%)'
         }}
       />
 
-      <div className="container-main relative z-10 py-16 lg:py-20">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left content - strict left alignment */}
-          <div className="lg:col-span-7">
-            {/* Eyebrow - bolder and white */}
-            <p className="text-xs uppercase tracking-[0.25em] text-foreground font-medium mb-4">
-              Technology Lab & Engineering Partner
-            </p>
+      {/* Centered content container */}
+      <div className="w-full max-w-[800px] mx-auto px-4 sm:px-6 relative z-10 text-center">
+        {/* Eyebrow */}
+        <p className="text-xs uppercase tracking-[0.3em] text-foreground font-medium mb-6">
+          Technology Lab & Engineering Partner
+        </p>
 
-            {/* Main heading */}
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-5">
-              <span className="text-foreground">Accelerating</span>
-              <br />
-              <span className="text-primary">Intelligence.</span>
-            </h1>
+        {/* Main heading */}
+        <h1 className="font-display text-5xl md:text-6xl lg:text-[5rem] font-extrabold leading-[1.05] tracking-tight mb-6">
+          <span className="text-foreground">Accelerating</span>
+          <br />
+          <span className="text-primary">Intelligence.</span>
+        </h1>
 
-            {/* Description - shortened, with 24px (mb-6) spacing to CTAs */}
-            <p className="text-base md:text-lg text-muted-foreground max-w-lg mb-6 leading-relaxed">
-              Building market-ready platforms for visionary founders through expert product innovation and engineering.
-            </p>
+        {/* Description */}
+        <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed max-w-[650px] mx-auto">
+          Building market-ready platforms for visionary founders through expert product innovation and engineering.
+        </p>
 
-            {/* CTAs - primary solid + ghost */}
-            <div className="flex flex-col sm:flex-row items-start gap-3">
-              <Link to="/contact" className="btn-primary group">
-                Start a Project
-                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link 
-                to="/services" 
-                className="inline-flex items-center justify-center px-6 py-3 border border-foreground/30 text-foreground font-medium rounded-lg transition-all duration-300 hover:border-foreground hover:bg-foreground/5"
-              >
-                Explore Services
-              </Link>
+        {/* CTAs - centered */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+          <Link to="/contact" className="btn-primary group">
+            Start a Project
+            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+          <Link 
+            to="/services" 
+            className="inline-flex items-center justify-center px-6 py-3 border border-foreground/30 text-foreground font-medium rounded-lg transition-all duration-300 hover:border-foreground hover:bg-foreground/5"
+          >
+            Explore Services
+          </Link>
+        </div>
+
+        {/* Stats - horizontal pills below CTAs */}
+        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-8 bg-primary rounded-full" />
+            <div className="text-left">
+              <div className="font-display text-2xl md:text-3xl font-bold text-foreground">50+</div>
+              <div className="text-xs text-muted-foreground/70">Projects</div>
             </div>
           </div>
-
-          {/* Right side - Subtle stats block (reduced scale) */}
-          <div className="lg:col-span-5 flex justify-end">
-            <div className="border border-border/60 bg-secondary/30 p-5 lg:p-6 w-full max-w-[280px]">
-              {/* Stats - reduced scale */}
-              <div className="space-y-4">
-                <div className="border-l-2 border-primary pl-4">
-                  <div className="font-display text-2xl md:text-3xl font-bold text-foreground">50+</div>
-                  <div className="text-[10px] text-muted-foreground mt-0.5">Projects Delivered</div>
-                </div>
-                <div className="border-l-2 border-border/60 pl-4 hover:border-primary transition-colors">
-                  <div className="font-display text-2xl md:text-3xl font-bold text-foreground">15+</div>
-                  <div className="text-[10px] text-muted-foreground mt-0.5">Enterprise Clients</div>
-                </div>
-                <div className="border-l-2 border-border/60 pl-4 hover:border-primary transition-colors">
-                  <div className="font-display text-2xl md:text-3xl font-bold text-foreground">99%</div>
-                  <div className="text-[10px] text-muted-foreground mt-0.5">Client Retention</div>
-                </div>
-              </div>
-
-              {/* Tagline */}
-              <div className="mt-4 pt-4 border-t border-border/40">
-                <p className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-                  Hybrid Technology Lab
-                </p>
-              </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-8 bg-primary/60 rounded-full" />
+            <div className="text-left">
+              <div className="font-display text-2xl md:text-3xl font-bold text-foreground">15+</div>
+              <div className="text-xs text-muted-foreground/70">Clients</div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-1 h-8 bg-primary/60 rounded-full" />
+            <div className="text-left">
+              <div className="font-display text-2xl md:text-3xl font-bold text-foreground">99%</div>
+              <div className="text-xs text-muted-foreground/70">Retention</div>
             </div>
           </div>
         </div>
       </div>
+      
+      {/* Horizontal separator line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-foreground/10" />
     </section>
   );
 };
