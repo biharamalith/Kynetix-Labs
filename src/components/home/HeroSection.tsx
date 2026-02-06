@@ -3,69 +3,71 @@ import { ArrowRight } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card" />
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+      {/* Minimal background */}
+      <div className="absolute inset-0 bg-background" />
       
-      {/* Subtle grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--primary)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }}
-      />
+      {/* Subtle accent line */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      {/* Glow effect */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
+      <div className="container-main relative z-10 py-20 lg:py-32">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Left content */}
+          <div className="lg:col-span-7">
+            {/* Eyebrow */}
+            <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6">
+              Technology Lab & Engineering Partner
+            </p>
 
-      <div className="container-main relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Tagline badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card/50 backdrop-blur-sm mb-8 animate-fade-in-up">
-            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">Accelerating Intelligence</span>
+            {/* Main heading - editorial style */}
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-8">
+              <span className="text-foreground">Accelerating</span>
+              <br />
+              <span className="text-primary">Intelligence.</span>
+            </h1>
+
+            {/* Description */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed">
+              We operate at the intersection of product innovation and engineering services—building market-ready platforms while helping visionary founders engineer their digital future.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-start gap-4">
+              <Link to="/contact" className="btn-primary group">
+                Start a Project
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link to="/services" className="btn-outline">
+                Explore Services
+              </Link>
+            </div>
           </div>
 
-          {/* Main heading */}
-          <h1 className="heading-display mb-6 animate-fade-in-up animation-delay-100">
-            Engineering the{" "}
-            <span className="gradient-text">Digital Reality</span>
-            {" "}of Tomorrow
-          </h1>
+          {/* Right side - Clean stats block */}
+          <div className="lg:col-span-5">
+            <div className="border border-border bg-card/30 p-8 lg:p-10">
+              {/* Stats */}
+              <div className="space-y-8">
+                <div className="border-l-2 border-primary pl-6">
+                  <div className="font-display text-4xl md:text-5xl font-bold text-foreground">50+</div>
+                  <div className="text-sm text-muted-foreground mt-1">Projects Delivered</div>
+                </div>
+                <div className="border-l-2 border-border pl-6 hover:border-primary transition-colors">
+                  <div className="font-display text-4xl md:text-5xl font-bold text-foreground">15+</div>
+                  <div className="text-sm text-muted-foreground mt-1">Enterprise Clients</div>
+                </div>
+                <div className="border-l-2 border-border pl-6 hover:border-primary transition-colors">
+                  <div className="font-display text-4xl md:text-5xl font-bold text-foreground">99%</div>
+                  <div className="text-sm text-muted-foreground mt-1">Client Retention</div>
+                </div>
+              </div>
 
-          {/* Subheading */}
-          <p className="body-large max-w-2xl mx-auto mb-10 animate-fade-in-up animation-delay-200">
-            We operate at the intersection of product innovation and engineering services. 
-            A hybrid technology lab building market-ready platforms while helping visionary 
-            founders engineer their digital future.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up animation-delay-300">
-            <Link to="/contact" className="btn-primary group">
-              Start a Project
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link to="/services" className="btn-outline">
-              Explore Services
-            </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-20 grid grid-cols-3 gap-8 max-w-xl mx-auto animate-fade-in-up animation-delay-400">
-            <div className="text-center">
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1">50+</div>
-              <div className="text-sm text-muted-foreground">Projects Delivered</div>
-            </div>
-            <div className="text-center">
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1">15+</div>
-              <div className="text-sm text-muted-foreground">Enterprise Clients</div>
-            </div>
-            <div className="text-center">
-              <div className="font-display text-3xl md:text-4xl font-bold text-foreground mb-1">99%</div>
-              <div className="text-sm text-muted-foreground">Client Retention</div>
+              {/* Tagline */}
+              <div className="mt-10 pt-8 border-t border-border">
+                <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                  Hybrid Technology Lab
+                </p>
+              </div>
             </div>
           </div>
         </div>
