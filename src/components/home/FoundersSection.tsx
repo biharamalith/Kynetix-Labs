@@ -1,6 +1,6 @@
-import founderBihara from "@/assets/founder-bihara.jpg";
-import founderPasindu from "@/assets/founder-pasindu.jpg";
-import founderKushad from "@/assets/founder-kushad.jpg";
+import founderBihara from "@/assets/bihara.png";
+import founderPasindu from "@/assets/pasindu.png";
+import founderKushad from "@/assets/kushad.jpg";
 
 const founders = [
   {
