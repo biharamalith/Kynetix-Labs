@@ -51,22 +51,28 @@ const Contact = () => {
     }
 
     try {
-      // Submit to Netlify Forms
-      const formDataToSend = new FormData();
-      formDataToSend.append('form-name', 'contact');
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('company', formData.company || '');
-      formDataToSend.append('message', formData.message);
+      // Submit to Netlify Forms - encode data properly
+      const encode = (data: Record<string, string>) => {
+        return Object.keys(data)
+          .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+          .join("&");
+      };
 
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formDataToSend as any).toString(),
+        body: encode({
+          'form-name': 'contact',
+          'name': formData.name,
+          'email': formData.email,
+          'company': formData.company || '',
+          'message': formData.message
+        })
       });
 
       if (response.ok) {
         setIsSubmitted(true);
+        setFormData({ name: '', email: '', company: '', message: '' });
       } else {
         throw new Error('Form submission failed');
       }
