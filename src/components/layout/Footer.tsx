@@ -28,10 +28,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand Column */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-lg">K</span>
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              <img 
+                src="/logo.png" 
+                alt="Kynetix Labs Logo" 
+                className="h-10 w-10 object-contain"
+              />
               <span className="font-display font-semibold text-lg tracking-tight">Kynetix Labs</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6">

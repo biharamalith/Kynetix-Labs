@@ -17,6 +17,11 @@ const services = [
     description: "Connected device ecosystems with real-time data processing, sensor integration, and cloud connectivity for smart operations.",
   },
   {
+    icon: ShoppingCart,
+    title: "Smart POS Solutions",
+    description: "Our AI-powered Point-of-Sale platform designed to optimize retail operations and unlock sales intelligence.",
+  },
+  {
     icon: Code2,
     title: "Custom Software Solutions",
     description: "Tailor-made software engineering services to solve specific operational challenges with precision.",
@@ -25,12 +30,6 @@ const services = [
     icon: Brain,
     title: "AI / ML Integrated Systems",
     description: "Advanced integration of artificial intelligence and machine learning into real business workflows.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "Smart POS Solutions",
-    description: "Our AI-powered Point-of-Sale platform designed to optimize retail operations and unlock sales intelligence.",
-    featured: true,
   },
 ];
 
@@ -53,16 +52,10 @@ export const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`card-elevated group ${
-                service.featured ? "lg:col-span-2 border-primary/30" : ""
-              }`}
+              className="card-elevated group"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors ${
-                service.featured 
-                  ? "bg-primary text-primary-foreground" 
-                  : "bg-secondary group-hover:bg-primary group-hover:text-primary-foreground"
-              }`}>
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-secondary group-hover:bg-primary group-hover:text-primary-foreground">
                 <service.icon className="w-6 h-6" />
               </div>
               
@@ -73,13 +66,6 @@ export const ServicesSection = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {service.description}
               </p>
-
-              {service.featured && (
-                <div className="mt-6 inline-flex items-center text-primary text-sm font-medium">
-                  Flagship Product
-                  <span className="ml-2 w-2 h-2 rounded-full bg-primary animate-pulse" />
-                </div>
-              )}
             </div>
           ))}
         </div>

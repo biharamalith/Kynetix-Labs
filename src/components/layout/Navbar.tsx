@@ -20,10 +20,12 @@ export const Navbar = () => {
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14 md:h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">K</span>
-            </div>
+          <Link to="/" className="flex items-center gap-3">
+            <img 
+              src="/logo.png" 
+              alt="Kynetix Labs Logo" 
+              className="h-10 w-10 object-contain"
+            />
             <span className="font-display font-semibold text-lg tracking-tight">Kynetix Labs</span>
           </Link>
 

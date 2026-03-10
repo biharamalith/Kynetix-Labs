@@ -50,10 +50,32 @@ const Contact = () => {
       return;
     }
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitted(true);
-    setIsSubmitting(false);
+    try {
+      // Submit to Netlify Forms
+      const formDataToSend = new FormData();
+      formDataToSend.append('form-name', 'contact');
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('company', formData.company || '');
+      formDataToSend.append('message', formData.message);
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formDataToSend as any).toString(),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Failed to send message. Please try emailing us directly at biharaanjana2019@gmail.com');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const structuredData = {
@@ -62,7 +84,7 @@ const Contact = () => {
     "mainEntity": {
       "@type": "Organization",
       "name": "Kynetix Labs",
-      "email": "hello@kynetixlabs.com",
+      "email": "biharaanjana2019@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Colombo",
@@ -101,7 +123,9 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
-                    <p className="text-muted-foreground">hello@kynetixlabs.com</p>
+                    <a href="mailto:biharaanjana2019@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      biharaanjana2019@gmail.com
+                    </a>
                   </div>
                 </div>
 
@@ -140,7 +164,17 @@ const Contact = () => {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form 
+                  onSubmit={handleSubmit} 
+                  className="space-y-6"
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
+                >
+                  {/* Hidden input for Netlify Forms */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium mb-2">
                       Name <span className="text-primary">*</span>
