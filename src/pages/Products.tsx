@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { ShoppingCart, BarChart3, Brain, Shield, Zap, Globe, Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -47,8 +48,40 @@ const capabilities = [
 ];
 
 const Products = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Smart POS Platform",
+    "applicationCategory": "BusinessApplication",
+    "description": "AI-powered Point-of-Sale platform designed to optimize retail operations with real-time analytics, inventory management, and predictive insights",
+    "operatingSystem": "iOS, Android, Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "AI-Powered Sales Analytics",
+      "Real-Time Inventory Management",
+      "Multi-Location Support",
+      "Customer Relationship Management",
+      "Employee Performance Tracking",
+      "PCI-DSS Compliant Security"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "Kynetix Labs"
+    }
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Smart POS System - AI-Powered Point of Sale Platform | Kynetix Labs"
+        description="AI-powered POS system with real-time analytics, inventory management, and predictive insights. Transform your retail operations with intelligent point of sale software."
+        keywords="smart POS system, AI powered point of sale, retail POS software, intelligent POS platform, cloud POS system, retail management software, inventory management POS, AI retail analytics, point of sale system, modern POS solution"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="container-main">

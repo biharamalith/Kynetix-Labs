@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { Clock, ArrowRight } from "lucide-react";
 
@@ -60,8 +61,26 @@ const articles = [
 ];
 
 const Blog = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Kynetix Labs Engineering Blog",
+    "description": "Engineering insights on AI/ML, mobile development, cloud architecture, and modern software engineering practices",
+    "url": "https://kynetixlabs.com/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Kynetix Labs"
+    }
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Tech Blog - Engineering Insights on AI, Flutter & Cloud | Kynetix Labs"
+        description="Engineering blog featuring insights on AI/ML integration, Flutter mobile development, cloud architecture, React development, and modern software engineering practices."
+        keywords="software engineering blog, AI ML tutorials, flutter development guide, cloud architecture patterns, React best practices, tech insights, software development articles, programming tutorials, engineering practices"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="container-main">

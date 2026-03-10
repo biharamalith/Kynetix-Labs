@@ -1,5 +1,6 @@
 import { Layout } from "@/components/layout/Layout";
-import { Smartphone, Globe, Code2, Brain, ShoppingCart, Check, ArrowRight } from "lucide-react";
+import { SEO } from "@/components/SEO";
+import { Smartphone, Globe, Code2, Brain, ShoppingCart, Cpu, Check, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const services = [
@@ -28,6 +29,30 @@ const services = [
     id: "web",
   },
   {
+    icon: Cpu,
+    title: "IoT Solutions",
+    description: "Connected device ecosystems with real-time data processing, sensor integration, and cloud connectivity.",
+    features: [
+      "IoT device integration & management",
+      "Real-time sensor data processing",
+      "Edge computing solutions",
+      "MQTT, CoAP protocols",
+    ],
+    id: "iot",
+  },
+  {
+    icon: ShoppingCart,
+    title: "Smart POS Solutions",
+    description: "AI-powered Point-of-Sale platforms designed to optimize retail operations and unlock actionable sales intelligence.",
+    features: [
+      "Cloud-based POS systems",
+      "Inventory management integration",
+      "Real-time analytics & reporting",
+      "Payment gateway integration",
+    ],
+    id: "pos",
+  },
+  {
     icon: Code2,
     title: "Custom Software Solutions",
     description: "Tailor-made software engineering services to solve specific operational challenges with precision.",
@@ -54,8 +79,81 @@ const services = [
 ];
 
 const Services = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "name": "Flutter Mobile App Development",
+        "url": "https://kynetixlabs.com/services#mobile",
+        "description": "Cross-platform Flutter development, native iOS & Android applications, performance optimization, and App Store deployment",
+        "provider": {
+          "@type": "Organization",
+          "name": "Kynetix Labs"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Web & Cloud Architecture",
+        "url": "https://kynetixlabs.com/services#web",
+        "description": "React/Next.js applications, serverless computing, cloud infrastructure on AWS/GCP, and database optimization",
+        "provider": {
+          "@type": "Organization",
+          "name": "Kynetix Labs"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "IoT Solutions",
+        "url": "https://kynetixlabs.com/services#iot",
+        "description": "Connected device ecosystems with real-time data processing, sensor integration, and cloud connectivity",
+        "provider": {
+          "@type": "Organization",
+          "name": "Kynetix Labs"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Smart POS Solutions",
+        "url": "https://kynetixlabs.com/services#pos",
+        "description": "AI-powered Point-of-Sale platforms for retail optimization and sales intelligence",
+        "provider": {
+          "@type": "Organization",
+          "name": "Kynetix Labs"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "Custom Software Development",
+        "url": "https://kynetixlabs.com/services#custom",
+        "description": "Enterprise software development, API integration, legacy system modernization, and DevOps solutions",
+        "provider": {
+          "@type": "Organization",
+          "name": "Kynetix Labs"
+        }
+      },
+      {
+        "@type": "Service",
+        "name": "AI & Machine Learning Integration",
+        "url": "https://kynetixlabs.com/services#ai",
+        "description": "ML model development, natural language processing, computer vision, and AI-powered automation",
+        "provider": {
+          "@type": "Organization",
+          "name": "Kynetix Labs"
+        }
+      }
+    ]
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Software Development Services - Mobile, Web, IoT, POS, AI/ML | Kynetix Labs"
+        description="Professional mobile app development, web platforms, IoT solutions, smart POS systems, custom software, and AI/ML integration services for businesses of all sizes."
+        keywords="mobile app development, flutter development, web development, IoT solutions, POS system development, custom software development, AI ML integration, iOS Android development, cloud architecture, react nextjs development, smart point of sale, IoT software, machine learning services"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="container-main">
@@ -65,8 +163,8 @@ const Services = () => {
               Services & <span className="gradient-text">Solutions</span>
             </h1>
             <p className="body-large max-w-2xl">
-              From mobile applications to complex AI integrations, we deliver 
-              high-performance results for visionary founders and enterprises.
+              Comprehensive mobile, web, IoT, POS, custom software, and AI/ML solutions 
+              for businesses of all sizes. Professional engineering services you can trust.
             </p>
           </div>
         </div>

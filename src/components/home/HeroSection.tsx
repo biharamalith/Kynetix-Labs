@@ -43,7 +43,7 @@ export const HeroSection = () => {
 
         {/* Description */}
         <p className="text-base md:text-lg text-muted-foreground mb-8 leading-relaxed max-w-[650px] mx-auto">
-          Building market-ready platforms for visionary founders through expert product innovation and engineering.
+          Expert mobile, web, IoT, POS, and AI/ML solutions for businesses of all sizes. From startups to enterprises.
         </p>
 
         {/* CTAs - centered */}

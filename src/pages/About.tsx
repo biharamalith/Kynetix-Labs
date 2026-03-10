@@ -1,11 +1,30 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { FoundersSection } from "@/components/home/FoundersSection";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const About = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Kynetix Labs",
+      "description": "Premier technology partner and innovation engine dedicated to accelerating intelligence through expert product innovation and engineering services",
+      "foundingDate": "2025",
+      "slogan": "Accelerating Intelligence"
+    }
+  };
+
   return (
     <Layout>
+      <SEO
+        title="About Kynetix Labs - Technology Innovation & Engineering Partner"
+        description="Kynetix Labs provides expert mobile app development, web solutions, IoT systems, POS platforms, custom software, and AI/ML integration services for businesses of all sizes."
+        keywords="about kynetix labs, mobile app development, web development, IoT solutions, POS system development, custom software, AI ML integration, flutter development, technology innovation company, software engineering partner"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="container-main">
@@ -15,9 +34,9 @@ const About = () => {
               We Build What <span className="gradient-text">Matters</span>
             </h1>
             <p className="body-large max-w-2xl">
-              Kynetix Labs is a premier technology partner and innovation engine 
-              dedicated to accelerating intelligence. We operate at the intersection 
-              of product innovation and engineering services.
+              Kynetix Labs delivers expert mobile, web, IoT, POS, custom software, 
+              and AI/ML solutions. We build market-ready platforms and provide 
+              comprehensive engineering services for businesses of all sizes.
             </p>
           </div>
         </div>
@@ -30,8 +49,9 @@ const About = () => {
             <div>
               <h2 className="heading-section mb-6">Our Mission</h2>
               <p className="body-regular mb-4">
-                As a hybrid technology lab, we build our own market-ready platforms 
-                while helping visionary founders and enterprises engineer their digital reality.
+                As a hybrid technology lab, we specialize in mobile app development (Flutter, iOS, Android), 
+                web platforms, IoT systems, smart POS solutions, custom software, and AI/ML integration. 
+                We serve startups, SMEs, and enterprises across all industries.
               </p>
               <p className="body-regular">
                 We believe in technology that solves real problems. No hype. No buzzwords. 

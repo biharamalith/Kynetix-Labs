@@ -1,4 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
+import { SEO } from "@/components/SEO";
 import { Mail, MapPin, Clock, Send } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
@@ -55,8 +56,29 @@ const Contact = () => {
     setIsSubmitting(false);
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Kynetix Labs",
+      "email": "hello@kynetixlabs.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Colombo",
+        "addressCountry": "LK"
+      }
+    }
+  };
+
   return (
     <Layout>
+      <SEO
+        title="Contact Kynetix Labs - Mobile, Web, IoT, POS & AI/ML Development"
+        description="Contact Kynetix Labs for expert mobile app development, web platforms, IoT solutions, smart POS systems, custom software, and AI/ML integration services."
+        keywords="contact kynetix labs, mobile app development inquiry, web development contact, IoT solutions contact, POS system inquiry, AI ML consulting, custom software quote, flutter developers, technology partner inquiry"
+        structuredData={structuredData}
+      />
       {/* Hero */}
       <section className="section-padding">
         <div className="container-main">

@@ -1,4 +1,4 @@
-import { Smartphone, Globe, Code2, Brain, ShoppingCart } from "lucide-react";
+import { Smartphone, Globe, Code2, Brain, ShoppingCart, Cpu } from "lucide-react";
 
 const services = [
   {
@@ -10,6 +10,11 @@ const services = [
     icon: Globe,
     title: "Web & Cloud Architectures",
     description: "Designing and developing scalable web platforms capable of handling complex business logic and high traffic.",
+  },
+  {
+    icon: Cpu,
+    title: "IoT Solutions",
+    description: "Connected device ecosystems with real-time data processing, sensor integration, and cloud connectivity for smart operations.",
   },
   {
     icon: Code2,
@@ -38,8 +43,8 @@ export const ServicesSection = () => {
           <div className="accent-line mb-6" />
           <h2 className="heading-section mb-4">Services & Solutions</h2>
           <p className="body-large">
-            From mobile applications to complex AI integrations, we deliver 
-            high-performance results for visionary founders and enterprises.
+            Mobile, web, IoT, POS, custom software, and AI/ML solutions for businesses 
+            of all sizes. Professional engineering services delivered with excellence.
           </p>
         </div>
 
