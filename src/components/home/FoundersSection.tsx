@@ -1,5 +1,4 @@
 import founderBihara from "@/assets/bihara.png";
-import founderPasindu from "@/assets/pasindu.png";
 import founderKushad from "@/assets/kushad.jpg";
 
 const founders = [
@@ -7,11 +6,6 @@ const founders = [
     name: "Bihara Malith",
     role: "Co-Founder",
     image: founderBihara,
-  },
-  {
-    name: "Pasindu Pabasara",
-    role: "Co-Founder",
-    image: founderPasindu,
   },
   {
     name: "Kushad Disanayake",
@@ -34,7 +28,7 @@ export const FoundersSection = () => {
         </div>
 
         {/* Founders Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-3xl mx-auto">
           {founders.map((founder, index) => (
             <div
               key={founder.name}
