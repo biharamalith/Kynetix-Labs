@@ -1,120 +1,78 @@
 import { Link } from "react-router-dom";
-
-const footerLinks = {
-  company: [
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Products", path: "/products" },
-    { name: "Insights", path: "/blog" },
-  ],
-  services: [
-    { name: "Mobile Development", path: "/services#mobile" },
-    { name: "Web & Cloud", path: "/services#web" },
-    { name: "AI Integration", path: "/services#ai" },
-    { name: "Smart POS", path: "/products" },
-  ],
-  connect: [
-    { name: "Contact", path: "/contact" },
-    { name: "LinkedIn", path: "#" },
-    { name: "GitHub", path: "#" },
-    { name: "Twitter", path: "#" },
-  ],
-};
+import { Mail, MapPin, Radar } from "lucide-react";
+import { company, footerLinks } from "@/lib/siteContent";
 
 export const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
-      <div className="container-main section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Brand Column */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-3 mb-4">
-              <img 
-                src="/logo.png" 
-                alt="Kynetix Labs Logo" 
-                className="h-10 w-10 object-contain"
-              />
-              <span className="font-display font-semibold text-lg tracking-tight">Kynetix Labs</span>
+    <footer className="relative z-10 overflow-hidden border-t border-white/10 bg-[#030507]">
+      <div className="footer-glow" aria-hidden="true" />
+      <div className="container-main relative z-10 py-14 md:py-20">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr]">
+          <div>
+            <Link to="/" className="mb-5 flex items-center gap-3" aria-label={`${company.name} home`}>
+              <span className="brand-mark">
+                <img src={company.logoPath} alt="" className="h-10 w-10 object-contain" />
+              </span>
+              <span>
+                <span className="block font-display text-xl font-semibold text-white">{company.name}</span>
+                <span className="block text-xs uppercase tracking-[0.25em] text-cyan-200/50">{company.footerTagline}</span>
+              </span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-              A premier technology partner and innovation engine dedicated to accelerating intelligence.
+            <p className="max-w-sm text-sm leading-7 text-white/60">
+              Mobile, web, cloud, IoT, POS, and business automation software for companies that need reliable digital systems with strong user experience.
             </p>
-            <div className="accent-line" />
+            <div className="mt-7 grid gap-3 text-sm text-white/60">
+              <a href={`mailto:${company.email}`} className="footer-contact-link">
+                <Mail className="h-4 w-4" />
+                {company.email}
+              </a>
+              <span className="footer-contact-link">
+                <MapPin className="h-4 w-4" />
+                {company.location}
+              </span>
+            </div>
           </div>
 
-          {/* Company Links */}
-          <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-foreground">
-              Company
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services Links */}
-          <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-foreground">
-              Services
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Connect Links */}
-          <div>
-            <h4 className="font-display font-semibold text-sm uppercase tracking-wider mb-4 text-foreground">
-              Connect
-            </h4>
-            <ul className="space-y-3">
-              {footerLinks.connect.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    to={link.path}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <FooterColumn title="Company" links={footerLinks.company} />
+          <FooterColumn title="Capabilities" links={footerLinks.services} />
+          <FooterColumn title="Build" links={footerLinks.build} />
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Kynetix Labs. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <Link to="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-              Privacy Policy
-            </Link>
-            <Link to="#" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-              Terms of Service
+        <div className="mt-14 flex flex-col gap-5 border-t border-white/10 pt-6 text-sm text-white/40 md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+          <div className="flex flex-wrap gap-5">
+            <span className="inline-flex items-center gap-2">
+              <Radar className="h-4 w-4 text-cyan-200/60" />
+              Built for scalable digital projects
+            </span>
+            <Link to="/contact" className="hover:text-cyan-200">
+              Request project discussion
             </Link>
           </div>
         </div>
       </div>
     </footer>
+  );
+};
+
+interface FooterColumnProps {
+  title: string;
+  links: Array<{ name: string; path: string }>;
+}
+
+const FooterColumn = ({ title, links }: FooterColumnProps) => {
+  return (
+    <div>
+      <h3 className="mb-5 text-xs font-semibold uppercase tracking-[0.28em] text-white/70">{title}</h3>
+      <ul className="space-y-3">
+        {links.map((link) => (
+          <li key={link.name}>
+            <Link to={link.path} className="text-sm text-white/50 transition-colors duration-300 hover:text-cyan-200">
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };

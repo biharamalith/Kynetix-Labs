@@ -1,33 +1,36 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { homeCopy } from "@/lib/siteContent";
+import { SiteButton } from "@/components/site/SiteButton";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
+
+const copy = homeCopy.cta;
 
 export const CTASection = () => {
   return (
-    <section className="section-padding">
+    <section className="page-section pb-24">
       <div className="container-main">
-        <div className="relative rounded-2xl border border-border bg-card overflow-hidden">
-          {/* Background elements */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
-
-          <div className="relative p-12 md:p-16 lg:p-20 text-center">
-            <h2 className="heading-section mb-4">Ready to Build Something Great?</h2>
-            <p className="body-large max-w-2xl mx-auto mb-8">
-              Whether you need a full-scale mobile application, a complex AI integration, 
-              or a dedicated development team, we're here to help.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact" className="btn-primary group">
-                Start a Conversation
-                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link to="/services" className="btn-outline">
-                View Our Services
-              </Link>
+        <RevealOnScroll>
+          <div className="final-cta">
+            <div className="cta-grid-lines" aria-hidden="true" />
+            <div className="relative z-10 mx-auto max-w-3xl text-center">
+              <div className="section-eyebrow justify-center">
+                <span className="section-eyebrow-dot" />
+                {copy.eyebrow}
+              </div>
+              <h2 className="mt-6 font-display text-4xl font-semibold tracking-tight text-white md:text-6xl">
+                {copy.title}
+              </h2>
+              <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/60 md:text-lg">
+                {copy.description}
+              </p>
+              <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+                <SiteButton to={copy.primaryAction.path}>{copy.primaryAction.label}</SiteButton>
+                <SiteButton to={copy.secondaryAction.path} variant={copy.secondaryAction.variant}>
+                  {copy.secondaryAction.label}
+                </SiteButton>
+              </div>
             </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </div>
     </section>
   );

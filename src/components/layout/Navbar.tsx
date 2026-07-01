@@ -1,100 +1,97 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
 import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Services", path: "/services" },
-  { name: "Products", path: "/products" },
-  { name: "Insights", path: "/blog" },
-  { name: "Contact", path: "/contact" },
-];
+import { company, navLinks } from "@/lib/siteContent";
+import { SiteButton } from "@/components/site/SiteButton";
+import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 border-b border-border" style={{ backdropFilter: 'blur(10px)' }}>
-      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14 md:h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <img 
-              src="/logo.png" 
-              alt="Kynetix Labs Logo" 
-              className="h-10 w-10 object-contain"
-            />
-            <span className="font-display font-semibold text-lg tracking-tight">Kynetix Labs</span>
-          </Link>
+    <header
+      className={cn(
+        "fixed left-0 right-0 top-0 z-50 border-b transition-all duration-500",
+        isScrolled
+          ? "border-white/10 bg-black/70 shadow-[0_18px_70px_rgba(0,0,0,0.42)] backdrop-blur-2xl"
+          : "border-transparent bg-black/20 backdrop-blur-md",
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-[1500px] items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="group flex items-center gap-3" aria-label={`${company.name} home`}>
+          <span className="brand-mark">
+            <img src={company.logoPath} alt="" className="h-9 w-9 object-contain" />
+          </span>
+          <span className="leading-none">
+            <span className="block font-display text-base font-semibold tracking-tight text-white">{company.name}</span>
+            <span className="hidden text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-cyan-200/50 sm:block">
+              {company.tagline}
+            </span>
+          </span>
+        </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.035] p-1 md:flex" aria-label="Primary navigation">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+            return (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors link-hover ${
-                  location.pathname === link.path
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={cn("nav-pill", isActive && "nav-pill-active")}
+                aria-current={isActive ? "page" : undefined}
               >
                 {link.name}
               </Link>
-            ))}
-          </div>
+            );
+          })}
+        </nav>
 
-          {/* CTA Button - secondary style to not compete with Hero */}
-          <div className="hidden md:block">
-            <Link 
-              to="/contact" 
-              className="inline-flex items-center justify-center px-4 py-2 text-xs font-medium text-muted-foreground border border-border rounded-md transition-all duration-300 hover:text-foreground hover:border-foreground/50"
-            >
-              Get in Touch
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-foreground"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+        <div className="hidden md:block">
+          <SiteButton to="/contact" className="px-4 py-2 text-[0.7rem]" showArrow={false}>
+            Start a project
+          </SiteButton>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4 border-t border-border animate-fade-in">
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-base font-medium transition-colors ${
-                    location.pathname === link.path
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <Link
-                to="/contact"
-                onClick={() => setIsOpen(false)}
-                className="btn-primary text-sm w-fit mt-2"
-              >
-                Get in Touch
-              </Link>
-            </div>
-          </div>
-        )}
+        <button
+          type="button"
+          className="mobile-menu-button md:hidden"
+          onClick={() => setIsOpen((value) => !value)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
+        >
+          {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
-    </nav>
+
+      <div id="mobile-navigation" className={cn("mobile-nav-panel md:hidden", isOpen && "mobile-nav-panel-open")}>
+        <nav className="space-y-2 px-4 pb-5 pt-2 sm:px-6" aria-label="Mobile navigation">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+            return (
+              <Link key={link.path} to={link.path} className={cn("mobile-nav-link", isActive && "mobile-nav-link-active")}>
+                {link.name}
+              </Link>
+            );
+          })}
+          <SiteButton to="/contact" className="mt-4 w-full" showArrow={false}>
+            Start a project
+          </SiteButton>
+        </nav>
+      </div>
+    </header>
   );
 };
