@@ -1,42 +1,67 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Activity } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-black">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-black animate-gradient" />
+    <section className="relative min-h-[calc(100vh-3.5rem)] md:min-h-[calc(100vh-4rem)] flex items-center overflow-hidden bg-[#030712]">
+      
+      {/* Kinetic Energy Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        
+        {/* Core ambient glows */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3"></div>
+
+        {/* 3D Kinetic Data Streams (Floor) */}
+        <div 
+          className="absolute bottom-0 left-[-50%] w-[200%] h-[100vh]" 
+          style={{ perspective: '800px' }}
+        >
+          {/* The Data Stream Plane */}
+          <div 
+            className="absolute inset-0 kinetic-streams"
+            style={{
+              transform: 'rotateX(75deg)',
+              transformOrigin: 'bottom center',
+            }}
+          ></div>
+        </div>
+        
+        {/* Top mask to blend the streams seamlessly into the dark background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030712] via-[#030712]/80 to-transparent"></div>
+        
+        {/* Vertical floating energy lines (Kinetic Packets) */}
+        <div className="absolute inset-0">
+            <div className="kinetic-particle p1"></div>
+            <div className="kinetic-particle p2"></div>
+            <div className="kinetic-particle p3"></div>
+            <div className="kinetic-particle p4"></div>
+            <div className="kinetic-particle p5"></div>
+            <div className="kinetic-particle p6"></div>
+        </div>
       </div>
 
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px'
-        }}
-      />
-
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-8rem)]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-8rem)] py-12">
           
           {/* Left: Content */}
-          <div className="space-y-8 text-white lg:pr-8">
+          <div className="space-y-8 text-white lg:pr-8 relative z-20">
+            
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-2 backdrop-blur-sm">
+              <Activity className="w-4 h-4 animate-pulse" />
+              Kinetic Innovation
+            </div>
+
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
-                Transform Your Vision Into
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-                  Breakthrough Solutions
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
+                Engineering <br className="hidden md:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">
+                  Digital Motion
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl">
-                Kynetix Labs delivers proven mobile, web, IoT, POS, and AI/ML solutions to businesses of all sizes.
+              <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-xl">
+                Kynetix Labs accelerates your business with high-velocity mobile, web, and AI/ML solutions built for scale and impact.
               </p>
             </div>
 
@@ -44,155 +69,92 @@ export const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 group"
+                className="inline-flex items-center justify-center px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 group"
               >
-                Start a Project
+                Ignite Your Project
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link 
                 to="/services" 
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/20 text-white font-semibold rounded-lg hover:border-white/40 hover:bg-white/5 transition-all duration-300"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/10 text-white font-semibold rounded-lg hover:border-white/30 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
               >
-                Explore Services
+                Our Capabilities
               </Link>
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-8 pt-4">
+            <div className="flex flex-wrap gap-8 pt-8 border-t border-white/10">
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white">50+</div>
-                <div className="text-sm text-gray-400">Projects Delivered</div>
+                <div className="text-3xl md:text-4xl font-black text-white">50<span className="text-cyan-500">+</span></div>
+                <div className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">Projects Launched</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white">15+</div>
-                <div className="text-sm text-gray-400">Happy Clients</div>
+                <div className="text-3xl md:text-4xl font-black text-white">15<span className="text-cyan-500">+</span></div>
+                <div className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">Industry Partners</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white">99%</div>
-                <div className="text-sm text-gray-400">Retention Rate</div>
+                <div className="text-3xl md:text-4xl font-black text-white">99<span className="text-cyan-500">%</span></div>
+                <div className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">Client Retention</div>
               </div>
             </div>
           </div>
 
-          {/* Right: Animated 3D Shape */}
-          <div className="relative h-[500px] lg:h-[600px] flex items-center justify-center">
-            {/* Animated morphing blob */}
-            <div className="relative w-full h-full flex items-center justify-center">
-              {/* Main animated blob */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div 
-                  className="w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] rounded-[40%] animate-morph"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(59, 130, 246, 0.4) 50%, rgba(34, 211, 238, 0.6) 100%)',
-                    filter: 'blur(40px)',
-                  }}
-                />
-              </div>
-
-              {/* Secondary blob for depth */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div 
-                  className="w-[350px] h-[350px] lg:w-[450px] lg:h-[450px] rounded-[45%] animate-morph-reverse"
-                  style={{
-                    background: 'linear-gradient(225deg, rgba(34, 211, 238, 0.5) 0%, rgba(168, 85, 247, 0.3) 100%)',
-                    filter: 'blur(30px)',
-                    animationDelay: '1s',
-                  }}
-                />
-              </div>
-
-              {/* Glow effect */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div 
-                  className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] rounded-full animate-pulse-slow"
-                  style={{
-                    background: 'radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, transparent 70%)',
-                  }}
-                />
-              </div>
-            </div>
-          </div>
+          {/* Right: Empty space to let kinetic background shine through */}
+          <div className="hidden lg:block"></div>
 
         </div>
       </div>
       
-      {/* Bottom separator */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10" />
-
+      {/* CSS Animations */}
       <style>{`
-        @keyframes morph {
-          0%, 100% {
-            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-            transform: rotate(0deg) scale(1);
-          }
-          25% {
-            border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
-            transform: rotate(90deg) scale(1.05);
-          }
-          50% {
-            border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
-            transform: rotate(180deg) scale(0.95);
-          }
-          75% {
-            border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
-            transform: rotate(270deg) scale(1.02);
-          }
+        /* The kinetic stream floor */
+        .kinetic-streams {
+          background-image: linear-gradient(90deg, rgba(34, 211, 238, 0.15) 1px, transparent 1px);
+          background-size: 50px 100%;
+          position: relative;
+        }
+        
+        /* The moving light pulses on the floor */
+        .kinetic-streams::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background-image: linear-gradient(180deg, transparent 40%, rgba(34, 211, 238, 0.5) 50%, transparent 60%);
+          background-size: 100% 150px;
+          animation: stream-flow 1.5s linear infinite;
         }
 
-        @keyframes morphReverse {
-          0%, 100% {
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            transform: rotate(360deg) scale(1);
-          }
-          25% {
-            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-            transform: rotate(270deg) scale(1.05);
-          }
-          50% {
-            border-radius: 55% 45% 45% 55% / 55% 55% 45% 45%;
-            transform: rotate(180deg) scale(0.95);
-          }
-          75% {
-            border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-            transform: rotate(90deg) scale(1.02);
-          }
+        @keyframes stream-flow {
+          0% { background-position: 0 -150px; }
+          100% { background-position: 0 100vh; }
         }
 
-        @keyframes gradient {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
+        /* Kinetic particles (glowing data packets shooting up) */
+        .kinetic-particle {
+          position: absolute;
+          bottom: -150px;
+          width: 2px;
+          height: 120px;
+          background: linear-gradient(to top, transparent, rgba(34, 211, 238, 0.8), #fff);
+          border-radius: 2px;
+          filter: blur(1px);
+          animation: shoot-up linear infinite;
+          opacity: 0;
         }
 
-        @keyframes pulse-slow {
-          0%, 100% {
-            opacity: 0.5;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.8;
-            transform: scale(1.1);
-          }
-        }
+        /* Randomize positions and speeds */
+        .p1 { left: 15%; animation-duration: 2.5s; animation-delay: 0s; }
+        .p2 { left: 35%; animation-duration: 3.2s; animation-delay: 1.2s; }
+        .p3 { left: 60%; animation-duration: 2.8s; animation-delay: 0.5s; }
+        .p4 { left: 75%; animation-duration: 3.5s; animation-delay: 2.1s; }
+        .p5 { left: 85%; animation-duration: 2.2s; animation-delay: 0.8s; }
+        .p6 { left: 95%; animation-duration: 2.9s; animation-delay: 1.7s; }
 
-        .animate-morph {
-          animation: morph 20s ease-in-out infinite;
-        }
-
-        .animate-morph-reverse {
-          animation: morphReverse 15s ease-in-out infinite;
-        }
-
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 15s ease infinite;
-        }
-
-        .animate-pulse-slow {
-          animation: pulse-slow 8s ease-in-out infinite;
+        @keyframes shoot-up {
+          0% { transform: translateY(0); opacity: 0; }
+          10% { opacity: 1; }
+          80% { opacity: 1; }
+          100% { transform: translateY(-120vh); opacity: 0; }
         }
       `}</style>
     </section>
