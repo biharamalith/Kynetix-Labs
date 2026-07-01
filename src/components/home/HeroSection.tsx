@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Activity } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const HeroSection = () => {
   return (
@@ -45,57 +45,37 @@ export const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-8rem)] py-12">
           
           {/* Left: Content */}
-          <div className="space-y-8 text-white lg:pr-8 relative z-20">
+          <div className="space-y-10 text-white lg:pr-8 relative z-20">
             
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-medium mb-2 backdrop-blur-sm">
-              <Activity className="w-4 h-4 animate-pulse" />
-              Kinetic Innovation
-            </div>
-
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight">
-                Engineering <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500">
-                  Digital Motion
+            <div className="relative pl-6 sm:pl-8 border-l-[3px] border-cyan-500">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.15] tracking-tight text-white">
+                Transform Your Vision Into
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 font-bold">
+                  Breakthrough Solutions.
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-xl">
+              <p className="mt-8 text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl font-light">
                 Kynetix Labs accelerates your business with high-velocity mobile, web, and AI/ML solutions built for scale and impact.
               </p>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-5 pl-6 sm:pl-8">
               <Link 
                 to="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-lg shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300 group"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-cyan-500 text-black font-semibold text-sm uppercase tracking-widest hover:bg-cyan-400 transition-colors group"
               >
-                Ignite Your Project
-                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+                Start a Project
+                <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
               <Link 
                 to="/services" 
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/10 text-white font-semibold rounded-lg hover:border-white/30 hover:bg-white/5 transition-all duration-300 backdrop-blur-sm"
+                className="inline-flex items-center justify-center px-8 py-3.5 border border-white/20 text-white font-semibold text-sm uppercase tracking-widest hover:border-white/50 hover:bg-white/5 transition-colors"
               >
-                Our Capabilities
+                Explore Services
               </Link>
-            </div>
-
-            {/* Stats */}
-            <div className="flex flex-wrap gap-8 pt-8 border-t border-white/10">
-              <div>
-                <div className="text-3xl md:text-4xl font-black text-white">50<span className="text-cyan-500">+</span></div>
-                <div className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">Projects Launched</div>
-              </div>
-              <div>
-                <div className="text-3xl md:text-4xl font-black text-white">15<span className="text-cyan-500">+</span></div>
-                <div className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">Industry Partners</div>
-              </div>
-              <div>
-                <div className="text-3xl md:text-4xl font-black text-white">99<span className="text-cyan-500">%</span></div>
-                <div className="text-sm text-gray-400 font-medium uppercase tracking-wider mt-1">Client Retention</div>
-              </div>
             </div>
           </div>
 
