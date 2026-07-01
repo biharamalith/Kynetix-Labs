@@ -91,7 +91,7 @@ const Products = () => {
                 <ShoppingCart className="w-4 h-4 text-primary" />
                 <span className="text-sm text-primary font-medium">Flagship Product</span>
               </div>
-              <h1 className="heading-display mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-6 uppercase text-white">
                 Smart POS <span className="gradient-text">Platform</span>
               </h1>
               <p className="body-large mb-8">

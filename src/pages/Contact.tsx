@@ -78,7 +78,7 @@ const Contact = () => {
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      alert('Failed to send message. Please try emailing us directly at biharaanjana2019@gmail.com');
+      alert('Failed to send message. Please try emailing us directly at kynetixlabs@gmail.com');
     } finally {
       setIsSubmitting(false);
     }
@@ -90,7 +90,7 @@ const Contact = () => {
     "mainEntity": {
       "@type": "Organization",
       "name": "Kynetix Labs",
-      "email": "biharaanjana2019@gmail.com",
+      "email": "kynetixlabs@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Colombo",
@@ -114,7 +114,7 @@ const Contact = () => {
             {/* Left Column - Info */}
             <div>
               <div className="accent-line mb-6" />
-              <h1 className="heading-display mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-6 uppercase text-white">
                 Get in <span className="gradient-text">Touch</span>
               </h1>
               <p className="body-large mb-12">
@@ -129,8 +129,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-semibold mb-1">Email</h4>
-                    <a href="mailto:biharaanjana2019@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      biharaanjana2019@gmail.com
+                    <a href="mailto:kynetixlabs@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      kynetixlabs@gmail.com
                     </a>
                   </div>
                 </div>

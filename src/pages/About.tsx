@@ -1,6 +1,5 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import { FoundersSection } from "@/components/home/FoundersSection";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -26,17 +25,18 @@ const About = () => {
         structuredData={structuredData}
       />
       {/* Hero */}
-      <section className="section-padding">
-        <div className="container-main">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#030712] text-white">
+        {/* Ambient background glow */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
+        <div className="container-main relative z-10">
           <div className="max-w-4xl">
-            <div className="accent-line mb-6" />
-            <h1 className="heading-display mb-6">
-              We Build What <span className="gradient-text">Matters</span>
+            <div className="w-12 h-1 bg-primary mb-8" />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-6 uppercase">
+              Engineering The Next Generation Of <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-500">Digital Intelligence.</span>
             </h1>
-            <p className="body-large max-w-2xl">
-              Kynetix Labs delivers expert mobile, web, IoT, POS, custom software, 
-              and AI/ML solutions. We build market-ready platforms and provide 
-              comprehensive engineering services for businesses of all sizes.
+            <p className="text-lg md:text-xl text-gray-400 leading-relaxed max-w-2xl font-light">
+              Kynetix Labs is a specialized technology partner delivering high-velocity mobile, web, IoT, and AI/ML solutions. We build market-ready platforms for businesses that demand engineering excellence and scale.
             </p>
           </div>
         </div>
@@ -94,8 +94,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Founders */}
-      <FoundersSection />
+
 
       {/* Values */}
       <section className="section-padding bg-card">

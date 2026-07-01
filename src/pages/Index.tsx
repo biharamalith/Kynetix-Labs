@@ -2,9 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
-import { FoundersSection } from "@/components/home/FoundersSection";
-import { TrustedBySection } from "@/components/home/TrustedBySection";
-import { InsightsSection } from "@/components/home/InsightsSection";
+
+
 import { CTASection } from "@/components/home/CTASection";
 
 const Index = () => {
@@ -16,10 +15,9 @@ const Index = () => {
         keywords="mobile app development, flutter development, web development, IoT solutions, POS system development, custom software development, AI ML integration, iOS Android development, cloud architecture AWS GCP, react next.js development, smart point of sale, IoT software, machine learning services"
       />
       <HeroSection />
-      <TrustedBySection />
+
       <ServicesSection />
-      <FoundersSection />
-      <InsightsSection />
+
       <CTASection />
     </Layout>
   );
