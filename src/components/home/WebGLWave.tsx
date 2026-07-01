@@ -1,208 +1,167 @@
 import React, { useEffect, useRef } from 'react';
-
-const vertexShaderSource = `
-  attribute vec2 a_position;
-  varying vec2 v_uv;
-  void main() {
-    v_uv = a_position * 0.5 + 0.5;
-    gl_Position = vec4(a_position, 0.0, 1.0);
-  }
-`;
-
-const fragmentShaderSource = `
-  precision mediump float;
-  varying vec2 v_uv;
-  uniform float u_time;
-  uniform vec2 u_resolution;
-
-  vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-  vec2 mod289(vec2 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
-  vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
-
-  float snoise(vec2 v) {
-    const vec4 C = vec4(0.211324865405187,  // (3.0-sqrt(3.0))/6.0
-                        0.366025403784439,  // 0.5*(sqrt(3.0)-1.0)
-                       -0.577350269189626,  // -1.0 + 2.0 * C.x
-                        0.024390243902439); // 1.0 / 41.0
-    vec2 i  = floor(v + dot(v, C.yy) );
-    vec2 x0 = v -   i + dot(i, C.xx);
-
-    vec2 i1;
-    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-    vec4 x12 = x0.xyxy + C.xxzz;
-    x12.xy -= i1;
-
-    i = mod289(i);
-    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
-      + i.x + vec3(0.0, i1.x, 1.0 ));
-
-    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-    m = m*m ;
-    m = m*m ;
-
-    vec3 x = 2.0 * fract(p * C.www) - 1.0;
-    vec3 h = abs(x) - 0.5;
-    vec3 ox = floor(x + 0.5);
-    vec3 a0 = x - ox;
-    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
-    vec3 g;
-    g.x  = a0.x  * x0.x  + h.x  * x0.y;
-    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-    return 130.0 * dot(m, g);
-  }
-
-  void main() {
-    vec2 p = v_uv;
-    
-    float time = u_time * 0.15;
-    
-    // 1. Large smooth warping of coordinates to create silky folds
-    float warpX = snoise(vec2(p.y * 1.2, time * 0.4)) * 0.4;
-    float warpY = snoise(vec2(p.x * 1.2, time * 0.4 + 100.0)) * 0.4;
-    
-    vec2 warped = p + vec2(warpX, warpY);
-    
-    // 2. Define the major sweeping bands (curves)
-    // A large sweeping curve on the left side
-    float band1 = smoothstep(0.5, 0.0, abs(warped.x - 0.2 + warped.y * 0.2));
-    // Fill in the left edge completely
-    band1 += smoothstep(0.3, 0.0, warped.x - 0.1 + warped.y * 0.1);
-    
-    // A second curve sweeping across the bottom right
-    float band2 = smoothstep(0.6, 0.0, abs(warped.x + warped.y * 0.5 - 1.2));
-    
-    // 3. Combine them with some subtle high-frequency noise for texture
-    float n = snoise(warped * 2.5 - time * 1.5);
-    
-    float intensity = max(band1, band2 * 0.9) + (n * 0.05);
-    
-    // 4. Color grading (matching the ethereal deep blue/purple/cyan aesthetic)
-    vec3 bgBlue = vec3(0.012, 0.015, 0.04); // Deepest dark space background
-    vec3 deepBlue = vec3(0.02, 0.08, 0.35); // Dark blue fringe
-    vec3 vibrantBlue = vec3(0.1, 0.25, 0.9); // Main glowing blue
-    vec3 softCyan = vec3(0.0, 0.0, 0.0);    // Core highlight turned black as requested
-    
-    vec3 color = bgBlue;
-    color = mix(color, deepBlue, smoothstep(0.05, 0.3, intensity));
-    color = mix(color, vibrantBlue, smoothstep(0.3, 0.65, intensity));
-    color = mix(color, softCyan, smoothstep(0.65, 1.0, intensity));
-    
-    // Darken the center slightly to ensure text legibility
-    float centerMask = smoothstep(0.0, 0.7, length(v_uv - vec2(0.5, 0.4)));
-    color = mix(color, bgBlue, (1.0 - centerMask) * 0.4);
-
-    gl_FragColor = vec4(color, 1.0);
-  }
-`;
+import * as THREE from 'three';
 
 export const WebGLWave: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!mountRef.current) return;
+    
+    // Scene Setup
+    const scene = new THREE.Scene();
+    
+    // Camera Setup
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.z = 120;
+    
+    // Renderer Setup
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    mountRef.current.appendChild(renderer.domElement);
 
-    const gl = (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')) as WebGLRenderingContext;
-    if (!gl) {
-      console.error('WebGL not supported');
-      return;
+    // Particles Data
+    const particleCount = 200;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particleCount * 3);
+    const velocities = [];
+
+    const range = 250;
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * range;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * range;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * range;
+
+      velocities.push({
+        x: (Math.random() - 0.5) * 0.15,
+        y: (Math.random() - 0.5) * 0.15,
+        z: (Math.random() - 0.5) * 0.15,
+      });
     }
 
-    const compileShader = (type: number, source: string) => {
-      const shader = gl.createShader(type);
-      if (!shader) return null;
-      gl.shaderSource(shader, source);
-      gl.compileShader(shader);
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error(gl.getShaderInfoLog(shader));
-        gl.deleteShader(shader);
-        return null;
-      }
-      return shader;
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    // Particle Material
+    const material = new THREE.PointsMaterial({
+      color: 0x3b82f6, // Primary blue
+      size: 1.5,
+      transparent: true,
+      opacity: 0.8,
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    // Lines for the "Network" effect
+    const lineMaterial = new THREE.LineBasicMaterial({
+      color: 0x4f46e5, // Indigo tint
+      transparent: true,
+      opacity: 0.15,
+    });
+    
+    // We'll dynamically generate line geometry in the animation loop
+    const lineGeometry = new THREE.BufferGeometry();
+    const linesMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
+    scene.add(linesMesh);
+
+    // Mouse Interaction
+    let mouseX = 0;
+    let mouseY = 0;
+    const handleMouseMove = (event: MouseEvent) => {
+      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
     };
+    window.addEventListener('mousemove', handleMouseMove);
 
-    const vertexShader = compileShader(gl.VERTEX_SHADER, vertexShaderSource);
-    const fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
+    // Resize Handler
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
 
-    if (!vertexShader || !fragmentShader) return;
-
-    const program = gl.createProgram();
-    if (!program) return;
-
-    gl.attachShader(program, vertexShader);
-    gl.attachShader(program, fragmentShader);
-    gl.linkProgram(program);
-
-    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.error(gl.getProgramInfoLog(program));
-      return;
-    }
-
-    gl.useProgram(program);
-
-    const vertices = new Float32Array([
-      -1, -1,
-      1, -1,
-      -1, 1,
-      -1, 1,
-      1, -1,
-      1, 1,
-    ]);
-
-    const positionBuffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
-
-    const positionLocation = gl.getAttribLocation(program, 'a_position');
-    gl.enableVertexAttribArray(positionLocation);
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
-
-    const timeLocation = gl.getUniformLocation(program, 'u_time');
-    const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
-
+    // Animation Loop
     let animationFrameId: number;
-    const startTime = performance.now();
+    const maxConnectionDistance = 35; // How close particles need to be to connect
 
-    const resizeCanvas = () => {
-      // Use slightly lower resolution for better performance on soft blurry things
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+    const animate = () => {
+      animationFrameId = requestAnimationFrame(animate);
 
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
+      // Rotate whole scene slightly based on mouse
+      scene.rotation.x += (mouseY * 0.05 - scene.rotation.x) * 0.05;
+      scene.rotation.y += (mouseX * 0.05 - scene.rotation.y) * 0.05;
+      
+      // Auto-rotation
+      particles.rotation.y += 0.0005;
+      linesMesh.rotation.y += 0.0005;
+      particles.rotation.x += 0.0002;
+      linesMesh.rotation.x += 0.0002;
 
-      gl.viewport(0, 0, canvas.width, canvas.height);
-      gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+      // Update particle positions
+      const positions = particles.geometry.attributes.position.array as Float32Array;
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3] += velocities[i].x;
+        positions[i * 3 + 1] += velocities[i].y;
+        positions[i * 3 + 2] += velocities[i].z;
+
+        // Bounce off invisible boundary
+        if (Math.abs(positions[i * 3]) > range / 2) velocities[i].x *= -1;
+        if (Math.abs(positions[i * 3 + 1]) > range / 2) velocities[i].y *= -1;
+        if (Math.abs(positions[i * 3 + 2]) > range / 2) velocities[i].z *= -1;
+      }
+      particles.geometry.attributes.position.needsUpdate = true;
+
+      // Update network lines
+      const linePositions = [];
+      for (let i = 0; i < particleCount; i++) {
+        for (let j = i + 1; j < particleCount; j++) {
+          const dx = positions[i * 3] - positions[j * 3];
+          const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+          const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+          const distSq = dx * dx + dy * dy + dz * dz;
+
+          if (distSq < maxConnectionDistance * maxConnectionDistance) {
+            linePositions.push(
+              positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2],
+              positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]
+            );
+          }
+        }
+      }
+      
+      linesMesh.geometry.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+
+      renderer.render(scene, camera);
     };
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+    animate();
 
-    const render = (time: number) => {
-      const uTime = (time - startTime) * 0.001;
-      gl.uniform1f(timeLocation, uTime);
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
-      animationFrameId = requestAnimationFrame(render);
-    };
-
-    animationFrameId = requestAnimationFrame(render);
-
+    // Cleanup
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
-
-      gl.deleteProgram(program);
-      gl.deleteShader(vertexShader);
-      gl.deleteShader(fragmentShader);
-      gl.deleteBuffer(positionBuffer);
+      if (mountRef.current && renderer.domElement) {
+        mountRef.current.removeChild(renderer.domElement);
+      }
+      geometry.dispose();
+      material.dispose();
+      lineGeometry.dispose();
+      lineMaterial.dispose();
+      renderer.dispose();
     };
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full object-cover z-0 pointer-events-none opacity-80"
-    />
+    <div className="absolute inset-0 z-0 bg-[#030712] overflow-hidden">
+      {/* Three.js canvas container */}
+      <div 
+        ref={mountRef} 
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-50"
+      />
+      {/* subtle radial gradient overlay to fade the edges */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_20%,_#030712_100%)] pointer-events-none" />
+    </div>
   );
 };
