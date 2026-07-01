@@ -1,37 +1,42 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Products from "./pages/Products";
-import Blog from "./pages/Blog";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ErrorBoundary } from "@/components/site/ErrorBoundary";
+import { routes } from "@/lib/siteContent";
 
-const queryClient = new QueryClient();
+const Home = lazy(() => import("./pages/Index"));
+const About = lazy(() => import("./pages/About"));
+const Services = lazy(() => import("./pages/Services"));
+const Products = lazy(() => import("./pages/Products"));
+const Blog = lazy(() => import("./pages/Blog"));
+const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+const PageFallback = () => (
+  <div className="grid min-h-screen place-items-center bg-background text-foreground">
+    <div className="text-center">
+      <div className="mx-auto mb-5 h-12 w-12 animate-pulse rounded-2xl border border-cyan-200/30 bg-cyan-200/10" />
+      <p className="text-sm uppercase tracking-[0.24em] text-white/50">Loading Kynetix Labs</p>
+    </div>
+  </div>
+);
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+  <ErrorBoundary>
+    <BrowserRouter>
+      <Suspense fallback={<PageFallback />}>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path={routes.home} element={<Home />} />
+          <Route path={routes.about} element={<About />} />
+          <Route path={routes.services} element={<Services />} />
+          <Route path={routes.products} element={<Products />} />
+          <Route path={routes.blog} element={<Blog />} />
+          <Route path={routes.contact} element={<Contact />} />
+          {/* Add new public routes above the catch-all route so unknown URLs still show NotFound. */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </ErrorBoundary>
 );
 
 export default App;

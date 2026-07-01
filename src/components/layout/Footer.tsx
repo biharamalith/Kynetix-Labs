@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Radar } from "lucide-react";
-import { footerLinks } from "@/lib/premiumContent";
+import { company, footerLinks } from "@/lib/siteContent";
 
 export const Footer = () => {
   return (
@@ -9,27 +9,26 @@ export const Footer = () => {
       <div className="container-main relative z-10 py-14 md:py-20">
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr]">
           <div>
-            <Link to="/" className="mb-5 flex items-center gap-3">
+            <Link to="/" className="mb-5 flex items-center gap-3" aria-label={`${company.name} home`}>
               <span className="brand-mark">
-                <img src="/logo.png" alt="" className="h-10 w-10 object-contain" />
+                <img src={company.logoPath} alt="" className="h-10 w-10 object-contain" />
               </span>
               <span>
-                <span className="block font-display text-xl font-semibold text-white">Kynetix Labs</span>
-                <span className="block text-xs uppercase tracking-[0.25em] text-cyan-200/50">Kinetic digital engineering</span>
+                <span className="block font-display text-xl font-semibold text-white">{company.name}</span>
+                <span className="block text-xs uppercase tracking-[0.25em] text-cyan-200/50">{company.footerTagline}</span>
               </span>
             </Link>
             <p className="max-w-sm text-sm leading-7 text-white/60">
-              Premium mobile, web, cloud, IoT, POS, and AI-enabled software systems for businesses that need
-              industrial-quality digital execution.
+              Mobile, web, cloud, IoT, POS, and business automation software for companies that need reliable digital systems with strong user experience.
             </p>
             <div className="mt-7 grid gap-3 text-sm text-white/60">
-              <a href="mailto:biharaanjana2019@gmail.com" className="footer-contact-link">
+              <a href={`mailto:${company.email}`} className="footer-contact-link">
                 <Mail className="h-4 w-4" />
-                biharaanjana2019@gmail.com
+                {company.email}
               </a>
               <span className="footer-contact-link">
                 <MapPin className="h-4 w-4" />
-                Colombo, Sri Lanka
+                {company.location}
               </span>
             </div>
           </div>
@@ -40,11 +39,11 @@ export const Footer = () => {
         </div>
 
         <div className="mt-14 flex flex-col gap-5 border-t border-white/10 pt-6 text-sm text-white/40 md:flex-row md:items-center md:justify-between">
-          <p>© {new Date().getFullYear()} Kynetix Labs. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
           <div className="flex flex-wrap gap-5">
             <span className="inline-flex items-center gap-2">
               <Radar className="h-4 w-4 text-cyan-200/60" />
-              Premium website branch 1 foundation
+              Built for scalable digital projects
             </span>
             <Link to="/contact" className="hover:text-cyan-200">
               Request project discussion

@@ -1,63 +1,63 @@
 # Kynetix Labs Website
 
-Official website for Kynetix Labs - Building market-ready platforms for visionary founders through expert product innovation and engineering.
+Official React/Vite website for Kynetix Labs.
 
-## Project info
+The codebase is intentionally small, reusable, and content-driven. Public copy, navigation, services, products, contact details, SEO metadata, and route paths are centralized so a developer can update common business information from one place instead of editing many components.
 
-**URL**: https://kynetixlabs.com
+## Tech stack
 
-## Development
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Lucide React icons
+- Zod validation
+- Netlify Forms
 
-**Use your preferred IDE**
+## Local setup
 
-Clone this repo and push changes to deploy automatically via Netlify.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```powershell
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open the URL shown by Vite, usually `http://localhost:8080/`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Quality commands
 
-**Use GitHub Codespaces**
+Run these before committing changes:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```powershell
+npm run build
+npm run lint
+npm run test
+npm run typecheck
+npm audit --audit-level=low
+```
 
-## What technologies are used for this project?
+## Important folders
 
-This project is built with:
+```text
+src/lib/siteContent.ts        Central company data, routes, copy, SEO, services, products, articles, contact details
+src/components/site/          Shared UI and motion helpers used across pages
+src/components/home/          Homepage section composition
+src/components/layout/        Navbar, footer, and global layout shell
+src/components/contact/       Contact form and contact information panel
+src/components/about/         About-page specific sections
+src/pages/                    Route-level page composition
+src/index.css                 Theme tokens, global UI classes, animation styles, reduced-motion rules
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Editing rule
 
-## How is this deployed?
+Before changing public text, URLs, navigation, services, products, footer links, SEO, or contact details, check:
 
-This project is deployed on Netlify with automatic deployments from the main branch.
+```text
+src/lib/siteContent.ts
+```
 
-- **Production URL**: https://kynetixlabs.com
-- **Auto-deploy**: Push to GitHub triggers automatic builds
-- **Custom domain**: Configured via Netlify DNS
+Only edit components when changing layout, rendering behavior, form behavior, or animation structure.
+
+## Deployment notes
+
+The project is ready for Netlify deployment. The contact form uses Netlify Forms and requires form notifications to be configured in the Netlify dashboard after deployment.

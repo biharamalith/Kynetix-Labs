@@ -1,75 +1,43 @@
-import { Smartphone, Globe, Code2, Brain, ShoppingCart, Cpu } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
+import { homeCopy, homeServices } from "@/lib/siteContent";
+import { ContentCard } from "@/components/site/ContentCard";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
+import { PageSection } from "@/components/site/PageSection";
 
-const services = [
-  {
-    icon: Smartphone,
-    title: "Next-Gen Mobile Development",
-    description: "End-to-end engineering of high-speed, intuitive mobile applications using Flutter and native technologies for iOS and Android.",
-  },
-  {
-    icon: Globe,
-    title: "Web & Cloud Architectures",
-    description: "Designing and developing scalable web platforms capable of handling complex business logic and high traffic.",
-  },
-  {
-    icon: Cpu,
-    title: "IoT Solutions",
-    description: "Connected device ecosystems with real-time data processing, sensor integration, and cloud connectivity for smart operations.",
-  },
-  {
-    icon: ShoppingCart,
-    title: "Smart POS Solutions",
-    description: "Our AI-powered Point-of-Sale platform designed to optimize retail operations and unlock sales intelligence.",
-  },
-  {
-    icon: Code2,
-    title: "Custom Software Solutions",
-    description: "Tailor-made software engineering services to solve specific operational challenges with precision.",
-  },
-  {
-    icon: Brain,
-    title: "AI / ML Integrated Systems",
-    description: "Advanced integration of artificial intelligence and machine learning into real business workflows.",
-  },
-];
+const copy = homeCopy.services;
 
 export const ServicesSection = () => {
   return (
-    <section className="section-padding bg-card">
-      <div className="container-main">
-        {/* Section Header */}
-        <div className="max-w-2xl mb-16">
-          <div className="accent-line mb-6" />
-          <h2 className="heading-section mb-4">Services & Solutions</h2>
-          <p className="body-large">
-            Mobile, web, IoT, POS, custom software, and AI/ML solutions for businesses 
-            of all sizes. Professional engineering services delivered with excellence.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="card-elevated group"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-6 transition-colors bg-secondary group-hover:bg-primary group-hover:text-primary-foreground">
-                <service.icon className="w-6 h-6" />
-              </div>
-              
-              <h3 className="heading-subsection mb-3 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              
-              <p className="text-muted-foreground leading-relaxed">
-                {service.description}
-              </p>
-            </div>
-          ))}
-        </div>
+    <PageSection eyebrow={copy.eyebrow} title={copy.title} description={copy.description}>
+      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        {homeServices.map((service, index) => {
+          const Icon = service.icon;
+          return (
+            <RevealOnScroll key={service.title} delay={index * 120}>
+              <ContentCard className="h-full p-7" intensity="strong">
+                <div className="mb-6 flex items-start justify-between gap-4">
+                  <div className="feature-icon-box feature-icon-box-lg">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-cyan-100/55">
+                    {service.eyebrow}
+                  </span>
+                </div>
+                <h3 className="font-display text-2xl font-semibold text-white">{service.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-white/60">{service.description}</p>
+                <ul className="mt-7 space-y-3">
+                  {service.highlights.map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-sm text-white/60">
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-cyan-200" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </ContentCard>
+            </RevealOnScroll>
+          );
+        })}
       </div>
-    </section>
+    </PageSection>
   );
 };

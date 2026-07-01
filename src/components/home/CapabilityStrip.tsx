@@ -1,6 +1,6 @@
-import { capabilityPillars } from "@/lib/premiumContent";
-import { PremiumCard } from "@/components/premium/PremiumCard";
-import { Reveal } from "@/components/premium/Reveal";
+import { capabilityPillars } from "@/lib/siteContent";
+import { ContentCard } from "@/components/site/ContentCard";
+import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 
 export const CapabilityStrip = () => {
   return (
@@ -10,10 +10,10 @@ export const CapabilityStrip = () => {
           {capabilityPillars.map((pillar, index) => {
             const Icon = pillar.icon;
             return (
-              <Reveal key={pillar.label} delay={index * 90}>
-                <PremiumCard className="h-full p-5">
+              <RevealOnScroll key={pillar.label} delay={index * 90}>
+                <ContentCard className="h-full p-5">
                   <div className="mb-5 flex items-center justify-between gap-4">
-                    <div className="premium-icon-box">
+                    <div className="feature-icon-box">
                       <Icon className="h-5 w-5" />
                     </div>
                     <span className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-white/35">
@@ -22,8 +22,8 @@ export const CapabilityStrip = () => {
                   </div>
                   <h3 className="mb-2 font-display text-lg font-semibold text-white">{pillar.label}</h3>
                   <p className="text-sm leading-6 text-white/60">{pillar.description}</p>
-                </PremiumCard>
-              </Reveal>
+                </ContentCard>
+              </RevealOnScroll>
             );
           })}
         </div>

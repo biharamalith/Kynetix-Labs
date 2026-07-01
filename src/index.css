@@ -4,12 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  Kynetix Labs Premium Industrial Design System - Branch 1
-  Goal: reusable, cinematic, enterprise-safe UI foundation without adding new runtime dependencies.
-*/
-
 @layer base {
+  /*
+    Design tokens: update the HSL variables here to change the whole website color system.
+    Components should use these tokens/classes instead of one-off colors where possible.
+  */
   :root {
     --background: 210 43% 3%;
     --foreground: 0 0% 98%;
@@ -51,14 +50,6 @@
     --cursor-x: 50vw;
     --cursor-y: 50vh;
 
-    --sidebar-background: 210 43% 3%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 186 100% 50%;
-    --sidebar-primary-foreground: 210 43% 3%;
-    --sidebar-accent: 215 30% 10%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 215 24% 17%;
-    --sidebar-ring: 186 100% 50%;
   }
 
   .light {
@@ -118,8 +109,17 @@
 }
 
 @layer components {
+  /* Shared layout primitives used across pages. */
   .container-main {
     @apply mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .skip-link {
+    @apply fixed left-4 top-4 z-[90] -translate-y-20 rounded-full bg-cyan-200 px-4 py-2 text-sm font-bold text-black transition-transform duration-300 focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-white;
+  }
+
+  .form-field {
+    @apply w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white outline-none transition-colors duration-300 placeholder:text-white/35 focus:border-cyan-200/45 focus:bg-black/45;
   }
 
   .section-padding {
@@ -187,6 +187,7 @@
     @apply relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full;
   }
 
+  /* Global motion helpers mounted once in Layout.tsx. */
   .scroll-progress {
     @apply fixed left-0 top-0 z-[70] h-[2px] w-full origin-left bg-gradient-to-r from-cyan-300 via-blue-400 to-fuchsia-400;
     box-shadow: 0 0 24px rgba(34, 211, 238, 0.72);
@@ -249,11 +250,11 @@
     @apply border-cyan-200/20 bg-cyan-300/10 text-cyan-100;
   }
 
-  .premium-button {
+  .site-button {
     @apply relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-6 py-3 text-xs font-bold uppercase tracking-[0.22em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black;
   }
 
-  .premium-button::before {
+  .site-button::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -262,28 +263,28 @@
     transition: transform 0.7s ease;
   }
 
-  .premium-button:hover::before {
+  .site-button:hover::before {
     transform: translateX(105%);
   }
 
-  .premium-button-primary {
+  .site-button-primary {
     @apply bg-cyan-300 text-black shadow-[0_0_42px_rgba(34,211,238,0.34)] hover:bg-white;
   }
 
-  .premium-button-outline {
+  .site-button-outline {
     @apply border border-white/20 bg-white/[0.03] text-white hover:border-cyan-200/50 hover:bg-cyan-200/10 hover:text-cyan-100;
   }
 
-  .premium-button-ghost {
+  .site-button-ghost {
     @apply text-white/70 hover:bg-white/[0.05] hover:text-white;
   }
 
-  .premium-card {
+  .content-card {
     @apply relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/[0.035] transition-all duration-500;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 24px 80px rgba(0, 0, 0, 0.22);
   }
 
-  .premium-card::after {
+  .content-card::after {
     content: "";
     position: absolute;
     inset: auto 16% -38% 16%;
@@ -295,22 +296,22 @@
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
-  .premium-card:hover {
+  .content-card:hover {
     @apply border-cyan-200/30 bg-white/[0.055];
     transform: translateY(-4px);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 32px 100px rgba(0, 0, 0, 0.32), 0 0 45px rgba(34, 211, 238, 0.08);
   }
 
-  .premium-card:hover::after {
+  .content-card:hover::after {
     opacity: 1;
     transform: translateY(-10px);
   }
 
-  .premium-card-strong {
+  .content-card-strong {
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
   }
 
-  .premium-card-sheen {
+  .content-card-sheen {
     pointer-events: none;
     position: absolute;
     inset: 0;
@@ -320,53 +321,54 @@
     transition: opacity 0.5s ease, transform 0.7s ease;
   }
 
-  .premium-card:hover .premium-card-sheen {
+  .content-card:hover .content-card-sheen {
     opacity: 1;
     transform: translateX(50%);
   }
 
-  .premium-icon-box {
+  .feature-icon-box {
     @apply inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-200/20 bg-cyan-200/10 text-cyan-100 shadow-[0_0_28px_rgba(34,211,238,0.10)];
   }
 
-  .premium-icon-box-lg {
+  .feature-icon-box-lg {
     @apply h-14 w-14 rounded-3xl;
   }
 
-  .premium-eyebrow {
+  .section-eyebrow {
     @apply inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-cyan-100/70;
   }
 
-  .premium-eyebrow-dot {
+  .section-eyebrow-dot {
     @apply h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.9)];
   }
 
-  .premium-section {
+  .page-section {
     @apply relative overflow-hidden py-20 md:py-24 lg:py-28;
   }
 
-  .premium-section-muted {
+  .page-section-muted {
     background: radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.075), transparent 26%), rgba(255, 255, 255, 0.012);
   }
 
-  .premium-section-header {
+  .page-section-header {
     @apply mx-auto max-w-3xl text-center;
   }
 
-  .premium-section-title {
+  .page-section-title {
     @apply mt-5 font-display text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-white md:text-5xl lg:text-6xl;
   }
 
-  .premium-section-description {
+  .page-section-description {
     @apply mt-6 text-base leading-7 text-white/60 md:text-lg;
   }
 
-  .industrial-backdrop {
+  /* Decorative animated background used by HeroSection. Keep it CSS-only for low runtime cost. */
+  .animated-background {
     @apply pointer-events-none absolute inset-0 overflow-hidden;
     background: radial-gradient(circle at 82% 18%, rgba(34, 211, 238, 0.16), transparent 28%), radial-gradient(circle at 10% 80%, rgba(59, 130, 246, 0.16), transparent 32%), #020609;
   }
 
-  .industrial-grid {
+  .animated-grid {
     position: absolute;
     inset: -18% -8%;
     background-image: linear-gradient(rgba(34, 211, 238, 0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.10) 1px, transparent 1px);
@@ -377,7 +379,7 @@
     animation: grid-drift 14s linear infinite;
   }
 
-  .industrial-scanline {
+  .animated-scanline {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, transparent 0%, rgba(34, 211, 238, 0.14) 48%, transparent 58%);
@@ -386,13 +388,13 @@
     opacity: 0.38;
   }
 
-  .industrial-orb {
+  .animated-orb {
     position: absolute;
     border-radius: 9999px;
     filter: blur(72px);
   }
 
-  .industrial-orb-one {
+  .animated-orb-one {
     right: 4%;
     top: 8%;
     width: 28rem;
@@ -400,7 +402,7 @@
     background: rgba(34, 211, 238, 0.12);
   }
 
-  .industrial-orb-two {
+  .animated-orb-two {
     left: -8%;
     bottom: 6%;
     width: 25rem;
@@ -408,7 +410,7 @@
     background: rgba(59, 130, 246, 0.12);
   }
 
-  .industrial-noise {
+  .animated-noise {
     position: absolute;
     inset: 0;
     opacity: 0.12;
@@ -417,10 +419,11 @@
     mask-image: linear-gradient(to bottom, black, transparent 78%);
   }
 
-  .premium-hero {
+  .home-hero {
     @apply relative -mt-16 min-h-screen overflow-hidden bg-[#020609] pt-16;
   }
 
+  /* First-load hero opener. Update duration together with hero-copy / hero-engine animation delays. */
   .hero-loader {
     pointer-events: none;
     position: fixed;
@@ -523,6 +526,7 @@
     @apply text-cyan-200;
   }
 
+  /* Hero system visual. Text nodes come from homeCopy.hero.nodes; positions are mapped by engine-node-1..6. */
   .digital-engine {
     @apply relative mx-auto mt-8 h-[23rem] w-[23rem];
   }
@@ -642,7 +646,7 @@
     @apply max-w-3xl text-sm leading-7 text-white/60;
   }
 
-  .premium-tech-section {
+  .tech-section {
     @apply relative overflow-hidden border-y border-white/10 bg-white/[0.025] py-16 md:py-20;
   }
 
@@ -660,16 +664,16 @@
     @apply text-cyan-200/100;
   }
 
-  .premium-final-cta {
+  .final-cta {
     @apply relative overflow-hidden rounded-[2rem] border border-cyan-200/20 bg-gradient-to-br from-white/[0.075] to-white/[0.025] px-6 py-16 shadow-[0_40px_120px_rgba(0,0,0,0.35)] md:px-12 md:py-20;
   }
 
-  .premium-final-cta::before {
+  .final-cta::before {
     content: "";
     @apply absolute -right-24 -top-24 h-80 w-80 rounded-full bg-cyan-300/15 blur-[80px];
   }
 
-  .premium-final-cta::after {
+  .final-cta::after {
     content: "";
     @apply absolute -bottom-28 -left-16 h-72 w-72 rounded-full bg-blue-500/15 blur-[80px];
   }
@@ -690,6 +694,7 @@
     @apply inline-flex items-center gap-3 text-sm text-white/60 transition-colors duration-300 hover:text-cyan-100;
   }
 
+  /* RevealOnScroll toggles .is-visible. This centralizes scroll animation timing in one place. */
   .reveal-motion {
     opacity: 0;
     transform: translateY(28px);
@@ -746,6 +751,7 @@
   }
 }
 
+/* Animation keyframes grouped here so motion tuning is easy to find. */
 @keyframes loader-exit {
   0% { opacity: 1; clip-path: inset(0 0 0 0); }
   62% { opacity: 1; clip-path: inset(0 0 0 0); }
@@ -810,11 +816,12 @@
     letter-spacing: -0.045em;
   }
 
-  .premium-section-title {
+  .page-section-title {
     letter-spacing: -0.035em;
   }
 }
 
+/* Accessibility: reduce or disable motion for users who request it at OS/browser level. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
