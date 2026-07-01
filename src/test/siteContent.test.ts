@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { navLinks, products, routes, seo, services } from "@/lib/siteContent";
+import { motionConfig } from "@/lib/motionConfig";
+import { homeCopy, navLinks, products, routes, seo, services } from "@/lib/siteContent";
 
 const hasDuplicates = (values: string[]) => new Set(values).size !== values.length;
 
@@ -25,5 +26,11 @@ describe("site content registry", () => {
       expect(page.description.length).toBeGreaterThan(50);
       expect(page.keywords.length).toBeGreaterThan(20);
     });
+  });
+
+  it("keeps motion settings and loading sequence centralized", () => {
+    expect(motionConfig.loadingScreen.minVisibleMs).toBeGreaterThan(0);
+    expect(motionConfig.hero.wordStepMs).toBeGreaterThan(0);
+    expect(homeCopy.hero.loadingSequence.length).toBeGreaterThanOrEqual(3);
   });
 });

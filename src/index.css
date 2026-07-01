@@ -419,54 +419,118 @@
     mask-image: linear-gradient(to bottom, black, transparent 78%);
   }
 
-  .home-hero {
-    @apply relative -mt-16 min-h-screen overflow-hidden bg-[#020609] pt-16;
-  }
-
-  /* First-load hero opener. Update duration together with hero-copy / hero-engine animation delays. */
-  .hero-loader {
-    pointer-events: none;
+  .loading-screen {
+    pointer-events: auto;
     position: fixed;
     inset: 0;
-    z-index: 80;
+    z-index: 90;
     display: grid;
     place-items: center;
-    gap: 1rem;
-    background: radial-gradient(circle at center, rgba(34, 211, 238, 0.10), transparent 32%), #020609;
-    color: rgba(255, 255, 255, 0.86);
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    animation: loader-exit 2.8s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(34, 211, 238, 0.12), transparent 34%), #020609;
+    color: rgba(255, 255, 255, 0.88);
+    isolation: isolate;
   }
 
-  .hero-loader-mark {
+  .loading-screen-exit {
+    pointer-events: none;
+    animation: loading-screen-exit var(--loading-exit-ms, 650ms) cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  }
+
+  .loading-screen-grid {
+    position: absolute;
+    inset: -16%;
+    background-image: linear-gradient(rgba(103, 232, 249, 0.11) 1px, transparent 1px), linear-gradient(90deg, rgba(103, 232, 249, 0.11) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(circle at center, black, transparent 68%);
+    animation: loading-grid-drift 6s linear infinite;
+  }
+
+  .loading-screen-content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    justify-items: center;
+    gap: 1.4rem;
+  }
+
+  .loading-screen-mark {
     position: relative;
     display: grid;
     place-items: center;
-    width: 7rem;
-    height: 7rem;
+    width: 7.5rem;
+    height: 7.5rem;
     border-radius: 9999px;
-    border: 1px solid rgba(103, 232, 249, 0.2);
-    background: rgba(255, 255, 255, 0.035);
-    box-shadow: 0 0 70px rgba(34, 211, 238, 0.18);
+    border: 1px solid rgba(103, 232, 249, 0.22);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 76px rgba(34, 211, 238, 0.2);
+    animation: loading-mark-pulse 1.6s ease-in-out infinite;
   }
 
-  .hero-loader-ring {
+  .loading-screen-ring {
     position: absolute;
-    inset: -0.55rem;
     border-radius: 9999px;
     border: 1px solid transparent;
-    border-top-color: rgba(103, 232, 249, 0.85);
+  }
+
+  .loading-screen-ring-one {
+    inset: -0.55rem;
+    border-top-color: rgba(103, 232, 249, 0.9);
     border-right-color: rgba(59, 130, 246, 0.45);
     animation: spin-ring 1.25s linear infinite;
   }
 
+  .loading-screen-ring-two {
+    inset: -1.05rem;
+    border-bottom-color: rgba(255, 255, 255, 0.22);
+    border-left-color: rgba(103, 232, 249, 0.32);
+    animation: spin-ring 2.8s linear infinite reverse;
+  }
+
+  .loading-screen-copy {
+    display: grid;
+    justify-items: center;
+    gap: 0.7rem;
+    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    text-transform: uppercase;
+  }
+
+  .loading-screen-copy p {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.34em;
+  }
+
+  .loading-screen-copy ul {
+    position: relative;
+    height: 1rem;
+    min-width: 12rem;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .loading-screen-copy li {
+    position: absolute;
+    inset: 0;
+    color: rgba(165, 243, 252, 0.68);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.28em;
+    opacity: 0;
+    animation: loading-sequence 4.8s ease infinite;
+  }
+
+  .loading-screen-copy li:nth-child(2) { animation-delay: 1.2s; }
+  .loading-screen-copy li:nth-child(3) { animation-delay: 2.4s; }
+  .loading-screen-copy li:nth-child(4) { animation-delay: 3.6s; }
+
+  .home-hero {
+    @apply relative -mt-16 min-h-screen overflow-hidden bg-[#020609] pt-16;
+  }
+
   .hero-copy {
     @apply relative z-20 max-w-4xl;
-    animation: hero-copy-in 1.1s ease 2.25s both;
+    animation: hero-copy-in 1s ease var(--hero-intro-delay-ms, 180ms) both;
   }
 
   .hero-eyebrow {
@@ -477,7 +541,25 @@
     @apply max-w-5xl font-display text-5xl font-semibold leading-[0.94] tracking-[-0.065em] text-white sm:text-6xl md:text-7xl lg:text-[5.8rem];
   }
 
-  .hero-title span {
+  .hero-title .animated-text,
+  .hero-title .animated-text-highlight {
+    display: inline;
+  }
+
+  .hero-title .animated-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(10px);
+    animation: animated-word-in 0.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(var(--word-index) * var(--word-step-ms, 46ms));
+  }
+
+  .hero-title .animated-word::after {
+    content: "\00a0";
+  }
+
+  .hero-title .animated-text-highlight .animated-word {
     @apply bg-gradient-to-r from-white via-cyan-100 to-cyan-300 bg-clip-text text-transparent;
     text-shadow: 0 0 70px rgba(34, 211, 238, 0.1);
   }
@@ -505,12 +587,12 @@
   .hero-capability-grid span {
     @apply rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-[0.7rem] font-bold uppercase tracking-[0.22em] text-white/50;
     animation: chip-rise 0.65s ease both;
-    animation-delay: calc(2.5s + (var(--chip-index) * 80ms));
+    animation-delay: calc(var(--chip-delay-base-ms, 700ms) + (var(--chip-index) * var(--chip-delay-step-ms, 70ms)));
   }
 
   .hero-engine-wrap {
     @apply relative hidden min-h-[36rem] items-center justify-center lg:flex;
-    animation: hero-engine-in 1.2s ease 2.4s both;
+    animation: hero-engine-in 1.08s ease var(--hero-visual-delay-ms, 320ms) both;
   }
 
   .hero-engine-panel {
@@ -752,10 +834,25 @@
 }
 
 /* Animation keyframes grouped here so motion tuning is easy to find. */
-@keyframes loader-exit {
+@keyframes loading-screen-exit {
   0% { opacity: 1; clip-path: inset(0 0 0 0); }
-  62% { opacity: 1; clip-path: inset(0 0 0 0); }
   100% { opacity: 0; clip-path: inset(0 0 100% 0); visibility: hidden; }
+}
+
+@keyframes loading-grid-drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(72px); }
+}
+
+@keyframes loading-mark-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 76px rgba(34, 211, 238, 0.2); }
+  50% { transform: scale(1.035); box-shadow: 0 0 96px rgba(34, 211, 238, 0.28); }
+}
+
+@keyframes loading-sequence {
+  0%, 15% { opacity: 0; transform: translateY(10px); }
+  22%, 42% { opacity: 1; transform: translateY(0); }
+  52%, 100% { opacity: 0; transform: translateY(-10px); }
 }
 
 @keyframes spin-ring {
@@ -775,6 +872,10 @@
 @keyframes scanline {
   from { background-position: 0 -34rem; }
   to { background-position: 0 34rem; }
+}
+
+@keyframes animated-word-in {
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 @keyframes hero-copy-in {
@@ -832,8 +933,14 @@
     transition-duration: 0.01ms !important;
   }
 
-  .hero-loader {
+  .loading-screen {
     display: none;
+  }
+
+  .hero-title .animated-word {
+    opacity: 1;
+    transform: none;
+    filter: none;
   }
 
   .reveal-motion {
