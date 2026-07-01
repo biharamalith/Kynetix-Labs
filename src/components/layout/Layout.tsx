@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import { CursorGlow } from "@/components/premium/CursorGlow";
+import { ScrollProgress } from "@/components/premium/ScrollProgress";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
@@ -8,11 +10,11 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      <CursorGlow />
+      <ScrollProgress />
       <Navbar />
-      <main className="flex-1 pt-14 md:pt-16">
-        {children}
-      </main>
+      <main className="relative z-10 flex-1 pt-16">{children}</main>
       <Footer />
     </div>
   );
