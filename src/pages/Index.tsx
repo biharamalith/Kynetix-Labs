@@ -1,25 +1,24 @@
 import { Layout } from "@/components/layout/Layout";
 import { SEO } from "@/components/SEO";
-import { HeroSection } from "@/components/home/HeroSection";
-import { ServicesSection } from "@/components/home/ServicesSection";
-import { FoundersSection } from "@/components/home/FoundersSection";
-import { TrustedBySection } from "@/components/home/TrustedBySection";
-import { InsightsSection } from "@/components/home/InsightsSection";
+import { CapabilityStrip } from "@/components/home/CapabilityStrip";
 import { CTASection } from "@/components/home/CTASection";
+import { HeroSection } from "@/components/home/HeroSection";
+import { ProcessSection } from "@/components/home/ProcessSection";
+import { ProductHighlightsSection } from "@/components/home/ProductHighlightsSection";
+import { ServicesSection } from "@/components/home/ServicesSection";
+import { TechStackSection } from "@/components/home/TechStackSection";
+import { createOrganizationStructuredData, seo } from "@/lib/siteContent";
 
 const Index = () => {
   return (
     <Layout>
-      <SEO
-        title="Kynetix Labs - Mobile, Web, IoT, POS & AI/ML Development Services"
-        description="Expert mobile app development (Flutter, iOS, Android), web platforms, IoT systems, smart POS solutions, custom software, and AI/ML integration for businesses of all sizes."
-        keywords="mobile app development, flutter development, web development, IoT solutions, POS system development, custom software development, AI ML integration, iOS Android development, cloud architecture AWS GCP, react next.js development, smart point of sale, IoT software, machine learning services"
-      />
+      <SEO {...seo.home} structuredData={createOrganizationStructuredData()} />
       <HeroSection />
-      <TrustedBySection />
+      <CapabilityStrip />
       <ServicesSection />
-      <FoundersSection />
-      <InsightsSection />
+      <ProductHighlightsSection />
+      <ProcessSection />
+      <TechStackSection />
       <CTASection />
     </Layout>
   );
