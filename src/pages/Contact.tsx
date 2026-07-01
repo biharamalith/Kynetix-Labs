@@ -75,6 +75,7 @@ const Contact = () => {
           'name': formData.name,
           'email': formData.email,
           'company': formData.company || '',
+          'subject': `New Project Inquiry from ${formData.name}${formData.company ? ` at ${formData.company}` : ''}`,
           'message': formData.message
         })
       });
