@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { navLinks } from "@/lib/premiumContent";
-import { PremiumButton } from "@/components/premium/PremiumButton";
+import { company, navLinks } from "@/lib/siteContent";
+import { SiteButton } from "@/components/site/SiteButton";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
@@ -31,19 +31,19 @@ export const Navbar = () => {
       )}
     >
       <div className="mx-auto flex h-16 max-w-[1500px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="group flex items-center gap-3" aria-label="Kynetix Labs home">
+        <Link to="/" className="group flex items-center gap-3" aria-label={`${company.name} home`}>
           <span className="brand-mark">
-            <img src="/logo.png" alt="" className="h-9 w-9 object-contain" />
+            <img src={company.logoPath} alt="" className="h-9 w-9 object-contain" />
           </span>
           <span className="leading-none">
-            <span className="block font-display text-base font-semibold tracking-tight text-white">Kynetix Labs</span>
+            <span className="block font-display text-base font-semibold tracking-tight text-white">{company.name}</span>
             <span className="hidden text-[0.62rem] font-semibold uppercase tracking-[0.28em] text-cyan-200/50 sm:block">
-              Industrial software studio
+              {company.tagline}
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.035] p-1 md:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.035] p-1 md:flex" aria-label="Primary navigation">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
@@ -60,9 +60,9 @@ export const Navbar = () => {
         </nav>
 
         <div className="hidden md:block">
-          <PremiumButton to="/contact" className="px-4 py-2 text-[0.7rem]" showArrow={false}>
-            Start build
-          </PremiumButton>
+          <SiteButton to="/contact" className="px-4 py-2 text-[0.7rem]" showArrow={false}>
+            Start a project
+          </SiteButton>
         </div>
 
         <button
@@ -71,13 +71,14 @@ export const Navbar = () => {
           onClick={() => setIsOpen((value) => !value)}
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
-      <div className={cn("mobile-nav-panel md:hidden", isOpen && "mobile-nav-panel-open")}>
-        <div className="space-y-2 px-4 pb-5 pt-2 sm:px-6">
+      <div id="mobile-navigation" className={cn("mobile-nav-panel md:hidden", isOpen && "mobile-nav-panel-open")}>
+        <nav className="space-y-2 px-4 pb-5 pt-2 sm:px-6" aria-label="Mobile navigation">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
@@ -86,10 +87,10 @@ export const Navbar = () => {
               </Link>
             );
           })}
-          <PremiumButton to="/contact" className="mt-4 w-full" showArrow={false}>
+          <SiteButton to="/contact" className="mt-4 w-full" showArrow={false}>
             Start a project
-          </PremiumButton>
-        </div>
+          </SiteButton>
+        </nav>
       </div>
     </header>
   );

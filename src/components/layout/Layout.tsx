@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { CursorGlow } from "@/components/premium/CursorGlow";
-import { ScrollProgress } from "@/components/premium/ScrollProgress";
+import { CursorGlow } from "@/components/site/CursorGlow";
+import { ScrollProgressBar } from "@/components/site/ScrollProgressBar";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 
@@ -11,10 +11,12 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* Shared accessibility and motion helpers live here so every route gets the same behavior. */}
+      <a href="#main-content" className="skip-link">Skip to content</a>
       <CursorGlow />
-      <ScrollProgress />
+      <ScrollProgressBar />
       <Navbar />
-      <main className="relative z-10 flex-1 pt-16">{children}</main>
+      <main id="main-content" className="relative z-10 flex-1 pt-16">{children}</main>
       <Footer />
     </div>
   );
