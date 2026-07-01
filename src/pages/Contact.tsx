@@ -51,6 +51,15 @@ const Contact = () => {
     }
 
     try {
+      // Mock successful submission in local development (Netlify forms don't exist on localhost)
+      if (import.meta.env.DEV) {
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+        setIsSubmitted(true);
+        setFormData({ name: '', email: '', company: '', message: '' });
+        setIsSubmitting(false);
+        return;
+      }
+
       // Submit to Netlify Forms - encode data properly
       const encode = (data: Record<string, string>) => {
         return Object.keys(data)
