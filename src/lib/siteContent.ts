@@ -174,7 +174,7 @@ export const seo = {
  */
 export const homeCopy = {
   hero: {
-    loaderLabel: company.name,
+    loadingSequence: ["Plan", "Design", "Build", "Launch"],
     eyebrow: "Software engineering for modern businesses",
     title: "Engineering reliable digital systems with",
     highlight: "kinetic precision.",
