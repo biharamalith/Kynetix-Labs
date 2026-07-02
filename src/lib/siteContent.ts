@@ -58,6 +58,7 @@ export interface ProductContentItem extends IconContentItem {
   id: string;
   category: string;
   features: string[];
+  detailPath?: string;
 }
 
 export interface ArticleContentItem {
@@ -137,6 +138,13 @@ export const seo = {
       "Explore Kynetix Labs software product directions for retail POS, workflow command centers, connected operations portals, and client-facing digital systems.",
     keywords:
       "smart POS software, workflow dashboard, operations portal, IoT dashboard, business software products, Kynetix Labs products",
+  },
+  smartPos: {
+    title: "Smart POS Suite - Retail Checkout, Inventory & Sales Intelligence | Kynetix Labs",
+    description:
+      "Explore the Kynetix Labs Smart POS Suite product direction for retail checkout, inventory control, staff roles, and owner sales visibility.",
+    keywords:
+      "smart POS suite, retail POS software, inventory control software, cashier system, sales dashboard, retail operations software",
   },
   blog: {
     title: "Insights - Product Design, Software Engineering & Digital Operations | Kynetix Labs",
@@ -474,6 +482,7 @@ export const products: ProductContentItem[] = productStories.map((product) => ({
   category: product.category,
   description: product.description,
   features: product.capabilities.slice(0, 4),
+  detailPath: product.detailPath,
 }));
 
 export const articles: ArticleContentItem[] = blogArticles.map((article) => ({

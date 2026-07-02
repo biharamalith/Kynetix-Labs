@@ -1,4 +1,5 @@
 import { Gauge, Layers3, ScanLine, Workflow, type LucideIcon } from "lucide-react";
+import { routes } from "@/config/routes";
 
 export interface ProductStory {
   id: string;
@@ -12,6 +13,7 @@ export interface ProductStory {
   outcomes: string[];
   capabilities: string[];
   launchNote: string;
+  detailPath?: string;
 }
 
 export interface ProductPrinciple {
@@ -48,6 +50,7 @@ export const productStories: ProductStory[] = [
     outcomes: ["Faster checkout flow", "Better inventory awareness", "Clearer sales reporting"],
     capabilities: ["Billing and sales screens", "Inventory movement views", "Staff activity states", "Owner dashboard direction"],
     launchNote: "Best handled as a scoped product build or pilot plan around the client's real store workflow.",
+    detailPath: routes.smartPos,
   },
   {
     id: "workflow-command-center",
