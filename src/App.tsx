@@ -8,7 +8,10 @@ const About = lazy(() => import("./pages/About"));
 const Services = lazy(() => import("./pages/Services"));
 const Products = lazy(() => import("./pages/Products"));
 const Blog = lazy(() => import("./pages/Blog"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const PageFallback = () => (
@@ -34,8 +37,10 @@ const App = () => (
           <Route path={routes.services} element={<Services />} />
           <Route path={routes.products} element={<Products />} />
           <Route path={routes.blog} element={<Blog />} />
+          <Route path={routes.blogDetail} element={<BlogDetail />} />
           <Route path={routes.contact} element={<Contact />} />
-          {/* Add new public routes above the catch-all route so unknown URLs still render NotFound. */}
+          <Route path={routes.privacy} element={<Privacy />} />
+          <Route path={routes.terms} element={<Terms />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
