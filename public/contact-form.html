@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Contact Form - Hidden</title>
+  <title>Project Brief Form</title>
 </head>
 <body>
-  <!-- This is a hidden form for Netlify to detect during build -->
-  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-    <input type="text" name="name" />
-    <input type="email" name="email" />
-    <input type="text" name="company" />
-    <textarea name="message"></textarea>
-  </form>
+<form name="project-brief" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="project-brief" />
+  <input type="text" name="bot-field" />
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="company" />
+  <select name="projectType">
+    <option value="mobile-app">Mobile app</option>
+    <option value="web-cloud-platform">Web or cloud platform</option>
+    <option value="business-automation">Business automation</option>
+    <option value="iot-pos-system">IoT or POS system</option>
+    <option value="ai-data-workflow">AI or data workflow</option>
+    <option value="website-brand-system">Website or brand system</option>
+  </select>
+  <select name="budgetRange">
+    <option value="not-sure">Not sure yet</option>
+    <option value="under-1000">Under $1,000</option>
+    <option value="1000-3000">$1,000 - $3,000</option>
+    <option value="3000-7500">$3,000 - $7,500</option>
+    <option value="7500-plus">$7,500+</option>
+  </select>
+  <select name="timeline">
+    <option value="flexible">Flexible</option>
+    <option value="this-month">This month</option>
+    <option value="one-three-months">1 - 3 months</option>
+    <option value="three-six-months">3 - 6 months</option>
+    <option value="planning-ahead">Planning ahead</option>
+  </select>
+  <textarea name="businessGoal"></textarea>
+  <textarea name="message"></textarea>
+  <input type="text" name="startedAt" />
+</form>
 </body>
 </html>

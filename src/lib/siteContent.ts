@@ -299,15 +299,15 @@ export const pageCopy = {
   },
   contact: {
     hero: {
-      eyebrow: "Contact",
-      title: "Tell us what you want to build.",
+      eyebrow: "Project brief",
+      title: "Start with a clear software project brief.",
       description:
-        "Share the project idea, business problem, workflow, or website goal. We will help you shape the next practical step.",
+        "Tell us what you want to build, the business goal behind it, the timeline, and the type of system you need. A structured first message helps us reply with a practical next step.",
     },
     discussion: {
-      title: "Project discussion",
+      title: "Turn an idea into a scoped conversation.",
       description:
-        "A good first message includes what you want to build, who will use it, the current problem, and any launch timeline you already have in mind.",
+        "The best first inquiry explains the users, the current workflow problem, the expected outcome, and any budget or timeline constraints you already know.",
     },
   },
 };
@@ -502,7 +502,7 @@ export const contactMethods = [
   {
     icon: Timer,
     title: "Response time",
-    value: "Usually within 24 hours",
+    value: "Reviewed before reply",
   },
 ];
 
