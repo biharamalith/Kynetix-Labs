@@ -7,6 +7,7 @@ export const motionConfig = {
   hero: {
     introDelayMs: 180,
     visualDelayMs: 320,
+    mediaDelayMs: 240,
     wordStepMs: 46,
     chipBaseDelayMs: 700,
     chipStepMs: 70,
