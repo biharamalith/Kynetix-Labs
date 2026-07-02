@@ -106,6 +106,7 @@ export const navLinks: NavItem[] = [
   { name: "About", path: routes.about },
   { name: "Services", path: routes.services },
   { name: "Work", path: routes.work },
+  { name: "Industries", path: routes.industries },
   { name: "Products", path: routes.products },
   { name: "Insights", path: routes.blog },
   { name: "Contact", path: routes.contact },
@@ -154,6 +155,13 @@ export const seo = {
       "Explore proof-safe Kynetix Labs work examples covering product directions, project brief systems, frontend architecture, dashboards, and reusable delivery patterns.",
     keywords:
       "Kynetix Labs work, software case studies, product direction examples, frontend architecture examples, project brief system, smart POS case study",
+  },
+  industries: {
+    title: "Industries - Retail, Logistics, Education, Hospitality & SME Software | Kynetix Labs",
+    description:
+      "Explore how Kynetix Labs maps mobile, web, cloud, IoT, POS, and automation services to retail, logistics, education, hospitality, professional service, and SME workflows.",
+    keywords:
+      "industry software solutions, retail POS software, logistics dashboard, education portal, hospitality software, SME software, custom business systems",
   },
   products: {
     title: "Software Product Concepts - Smart POS, Workflow Tools & Connected Portals | Kynetix Labs",
@@ -330,6 +338,16 @@ export const pageCopy = {
         "Explore proof-safe examples of internal product directions, reusable website systems, and delivery patterns that can become public client-approved case studies over time.",
       primaryAction: { label: "Start a project brief", path: routes.contact },
       secondaryAction: { label: "View delivery process", path: routes.process, variant: "outline" as const },
+    },
+  },
+  industries: {
+    hero: {
+      eyebrow: "Industries",
+      title: "Software direction for buyers with real operating pressure.",
+      description:
+        "See how Kynetix Labs applies mobile, web, cloud, IoT, POS, and automation thinking to practical industry workflows without inventing proof or overclaiming experience.",
+      primaryAction: { label: "Start an industry project brief", path: routes.contact },
+      secondaryAction: { label: "Explore services", path: routes.services, variant: "outline" as const },
     },
   },
   blog: {
@@ -553,6 +571,7 @@ export const footerLinks = {
     { name: "Services", path: routes.services },
     { name: "Process", path: routes.process },
     { name: "Work", path: routes.work },
+    { name: "Industries", path: routes.industries },
     { name: "Products", path: routes.products },
     { name: "Insights", path: routes.blog },
   ],
@@ -567,6 +586,7 @@ export const footerLinks = {
     { name: "Delivery Process", path: routes.process },
     { name: "Security & Quality", path: routes.securityQuality },
     { name: "Selected Work", path: routes.work },
+    { name: "Industry Fit", path: routes.industries },
     { name: "View Products", path: routes.products },
   ],
   legal: [

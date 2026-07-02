@@ -11,6 +11,7 @@ const Process = lazy(() => import("./pages/Process"));
 const SecurityQuality = lazy(() => import("./pages/SecurityQuality"));
 const Work = lazy(() => import("./pages/Work"));
 const CaseStudyDetail = lazy(() => import("./pages/CaseStudyDetail"));
+const Industries = lazy(() => import("./pages/Industries"));
 const Products = lazy(() => import("./pages/Products"));
 const SmartPos = lazy(() => import("./pages/SmartPos"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -46,6 +47,7 @@ const App = () => (
           <Route path={routes.securityQuality} element={<SecurityQuality />} />
           <Route path={routes.work} element={<Work />} />
           <Route path={routes.caseStudyDetail} element={<CaseStudyDetail />} />
+          <Route path={routes.industries} element={<Industries />} />
           <Route path={routes.products} element={<Products />} />
           <Route path={routes.smartPos} element={<SmartPos />} />
           <Route path={routes.blog} element={<Blog />} />
