@@ -78,3 +78,27 @@ export const createSoftwareProductPageStructuredData = ({
     },
   },
 });
+
+export const createWebPageStructuredData = ({
+  siteUrl,
+  path,
+  name,
+  description,
+  publisherName,
+}: {
+  siteUrl: string;
+  path: string;
+  name: string;
+  description: string;
+  publisherName: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name,
+  description,
+  url: createCanonicalUrl(siteUrl, path),
+  publisher: {
+    "@type": "Organization",
+    name: publisherName,
+  },
+});
