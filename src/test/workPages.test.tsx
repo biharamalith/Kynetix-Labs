@@ -7,6 +7,9 @@ import Work from "@/pages/Work";
 import { createCaseStudyPath, routes } from "@/config/routes";
 import { caseStudies, caseStudyCopy } from "@/content/caseStudies";
 
+const hasLinkWithNameAndHref = (name: string, href: string) =>
+  screen.getAllByRole("link", { name }).some((link) => link.getAttribute("href") === href);
+
 const renderRoute = (path: string, element: JSX.Element) =>
   render(
     <MemoryRouter initialEntries={[path]} future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
@@ -22,10 +25,7 @@ describe("work and case study pages", () => {
     renderRoute(routes.work, <Work />);
 
     expect(screen.getByRole("heading", { name: caseStudyCopy.hero.title })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: caseStudyCopy.hero.primaryAction.label })).toHaveAttribute(
-      "href",
-      caseStudyCopy.hero.primaryAction.path,
-    );
+    expect(hasLinkWithNameAndHref(caseStudyCopy.hero.primaryAction.label, caseStudyCopy.hero.primaryAction.path)).toBe(true);
 
     for (const study of caseStudies) {
       expect(screen.getByRole("heading", { name: study.title })).toBeInTheDocument();

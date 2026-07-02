@@ -8,6 +8,9 @@ import { routes } from "@/config/routes";
 import { processPageContent, processPhases } from "@/content/process";
 import { qualityPrinciples, securityQualityControls, securityQualityPageContent } from "@/content/securityQuality";
 
+const hasLinkWithNameAndHref = (name: string, href: string) =>
+  screen.getAllByRole("link", { name }).some((link) => link.getAttribute("href") === href);
+
 const renderRoute = (path: string, element: JSX.Element) =>
   render(
     <MemoryRouter initialEntries={[path]} future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
@@ -22,10 +25,7 @@ describe("process and trust pages", () => {
     renderRoute(routes.process, <Process />);
 
     expect(screen.getByRole("heading", { name: processPageContent.hero.title })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: processPageContent.hero.primaryAction.label })).toHaveAttribute(
-      "href",
-      processPageContent.hero.primaryAction.path,
-    );
+    expect(hasLinkWithNameAndHref(processPageContent.hero.primaryAction.label, processPageContent.hero.primaryAction.path)).toBe(true);
 
     for (const phase of processPhases) {
       expect(screen.getByRole("heading", { name: phase.title })).toBeInTheDocument();
@@ -38,10 +38,7 @@ describe("process and trust pages", () => {
     renderRoute(routes.securityQuality, <SecurityQuality />);
 
     expect(screen.getByRole("heading", { name: securityQualityPageContent.hero.title })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: securityQualityPageContent.hero.secondaryAction.label })).toHaveAttribute(
-      "href",
-      securityQualityPageContent.hero.secondaryAction.path,
-    );
+    expect(hasLinkWithNameAndHref(securityQualityPageContent.hero.secondaryAction.label, securityQualityPageContent.hero.secondaryAction.path)).toBe(true);
 
     for (const principle of qualityPrinciples) {
       expect(screen.getByRole("heading", { name: principle.title })).toBeInTheDocument();

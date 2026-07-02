@@ -7,6 +7,9 @@ import Products from "@/pages/Products";
 import { routes } from "@/config/routes";
 import { smartPosBuildPlan, smartPosContent, smartPosModules, smartPosWorkflow } from "@/content/smartPos";
 
+const hasLinkWithNameAndHref = (name: string, href: string) =>
+  screen.getAllByRole("link", { name }).some((link) => link.getAttribute("href") === href);
+
 const renderSmartPosRoute = () =>
   render(
     <MemoryRouter initialEntries={[routes.smartPos]} future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
@@ -22,10 +25,7 @@ describe("Smart POS product page", () => {
 
     expect(screen.getByRole("heading", { name: smartPosContent.hero.title })).toBeInTheDocument();
     expect(screen.getByText(smartPosContent.status)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: smartPosContent.hero.primaryAction.label })).toHaveAttribute(
-      "href",
-      smartPosContent.hero.primaryAction.path,
-    );
+    expect(hasLinkWithNameAndHref(smartPosContent.hero.primaryAction.label, smartPosContent.hero.primaryAction.path)).toBe(true);
 
     for (const module of smartPosModules) {
       expect(screen.getByRole("heading", { name: module.title })).toBeInTheDocument();

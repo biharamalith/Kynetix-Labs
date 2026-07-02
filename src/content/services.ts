@@ -80,22 +80,22 @@ export interface ServiceDetailContent {
 
 export const serviceStoryCopy = {
   overview: {
-    eyebrow: "Service systems",
-    title: "Services explained around outcomes, deliverables, and real operating needs.",
+    eyebrow: "Engineered service lines",
+    title: "Service systems built around operating pressure, not generic feature lists.",
     description:
-      "Each service direction connects business goals with practical engineering outputs so buyers can understand what they get before a project starts.",
+      "Each service direction connects the buyer problem, interface shape, reviewable deliverables, and launch boundary before the build expands.",
   },
   deliverables: {
-    eyebrow: "Delivery scope",
-    title: "A clearer path from idea to maintainable release.",
+    eyebrow: "Delivery artifacts",
+    title: "Every engagement should leave visible proof of direction.",
     description:
-      "Projects should not begin with vague feature lists. Kynetix shapes each engagement around discovery, interface planning, production build quality, and launch support.",
+      "Projects should not begin with vague feature lists. Kynetix shapes discovery, interface planning, build quality, and launch support into reviewable outputs.",
   },
   process: {
-    eyebrow: "Project flow",
-    title: "A simple delivery model that keeps product decisions visible.",
+    eyebrow: "Service rhythm",
+    title: "A controlled flow for teams that need speed without losing scope.",
     description:
-      "This flow keeps services practical for startups, SMEs, retail teams, and companies that need custom systems without losing control of scope.",
+      "The service model keeps startups, SMEs, retail teams, and custom-system buyers moving through scope, screens, implementation, and proof checks.",
   },
 };
 
@@ -161,7 +161,7 @@ export const serviceStories: ServiceStory[] = [
     icon: BrainCircuit,
     eyebrow: "Decision support and automation",
     title: "AI workflow and data automation",
-    summary: "Practical AI and data-assisted workflows for summaries, routing, recommendations, and operator support.",
+    summary: "AI-assisted workflows shaped for review, routing, summaries, and controlled operator support.",
     description:
       "For teams that want useful AI support inside real workflows, not vague AI features. The focus is structured inputs, safe outputs, review states, and measurable time savings.",
     buyerFit: ["Teams reviewing repeated requests", "Businesses with manual summaries", "Operators needing decision support"],
@@ -249,9 +249,9 @@ export const serviceProofSignals: StoryPoint[] = [
 export const serviceDetailCopy = {
   related: {
     eyebrow: "Service fit",
-    title: "Built for teams that need a clear software path before committing to a build.",
+    title: "Dedicated pages for buyers who need a precise system path before development.",
     description:
-      "Each dedicated service page explains the business pressure, delivery approach, and reviewable outputs so buyers can compare the right direction before starting a project brief.",
+      "Each service page explains the pressure, operating model, interface approach, deliverables, and proof boundary so buyers can choose the right starting point.",
   },
   notFound: {
     title: "Service page not found",
@@ -265,7 +265,7 @@ export const serviceDetails: ServiceDetailContent[] = [
     serviceStoryId: "mobile-web-platforms",
     icon: MonitorSmartphone,
     eyebrow: "Mobile app development",
-    title: "Mobile app experiences planned around users, screens, and release quality.",
+    title: "Mobile systems engineered around user flow, interface rhythm, and release confidence.",
     summary:
       "For founders and businesses that need a practical mobile app plan, a polished interface, and a build path that can support real users after launch.",
     description:
@@ -358,7 +358,7 @@ export const serviceDetails: ServiceDetailContent[] = [
     serviceStoryId: "cloud-business-systems",
     icon: CloudCog,
     eyebrow: "Web and cloud platforms",
-    title: "Web platforms and dashboards that make business operations visible.",
+    title: "Web and cloud platforms that turn operations into a visible command layer.",
     summary:
       "For teams that need portals, dashboards, workflow screens, and cloud-backed interfaces that help people understand status and take action.",
     description:

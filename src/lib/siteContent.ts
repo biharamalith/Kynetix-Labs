@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { routes } from "@/config/routes";
 import { blogArticles } from "@/content/blog";
+import { brandActionMap, brandVoice, ctaCopy, homeHeroSignals } from "@/content/brandLanguage";
 import { productStories } from "@/content/products";
 import { serviceStories } from "@/content/services";
 
@@ -90,8 +91,8 @@ export interface SectionCopy {
 export const company = {
   name: "Kynetix Labs",
   shortName: "Kynetix",
-  tagline: "Software engineering studio",
-  footerTagline: "Kinetic digital engineering",
+  tagline: "Kinetic software systems",
+  footerTagline: "Precision-built digital systems",
   email: "biharaanjana2019@gmail.com",
   location: "Colombo, Sri Lanka",
   siteUrl: "https://kynetixlabs.com",
@@ -115,23 +116,23 @@ export const navLinks: NavItem[] = [
 /** Per-page metadata. SEO.ts reads this and writes document title/meta/canonical/OG tags. */
 export const seo = {
   home: {
-    title: "Kynetix Labs - Mobile, Web, Cloud, IoT & Business Software Engineering",
+    title: "Kynetix Labs - Kinetic Software Systems for Modern Businesses",
     description:
-      "Kynetix Labs designs and builds mobile apps, web platforms, cloud software, IoT systems, smart POS solutions, and business automation tools for modern companies.",
+      "Kynetix Labs designs precise web, mobile, cloud, IoT, retail POS, and AI-assisted software systems for companies that need speed, control, and trust.",
     keywords:
       "software engineering Sri Lanka, mobile app development, web platform development, IoT software, smart POS system, business automation, cloud product engineering, React development",
   },
   about: {
-    title: "About Kynetix Labs - Software Engineering Partner",
+    title: "About Kynetix Labs - Precision Software Engineering Studio",
     description:
-      "Learn about Kynetix Labs, a software engineering studio building mobile apps, web platforms, IoT systems, POS tools, and custom business software.",
+      "Learn how Kynetix Labs shapes premium software systems with clear scope, reusable architecture, strong interfaces, and proof-aware delivery discipline.",
     keywords:
       "about Kynetix Labs, software engineering company, mobile app development, web development, IoT software, POS system development, custom software",
   },
   services: {
-    title: "Software Development Services - Mobile, Web, IoT, POS & Automation | Kynetix Labs",
+    title: "Software Systems Engineering - Mobile, Web, Cloud, IoT & Automation | Kynetix Labs",
     description:
-      "Professional software development services for mobile apps, web platforms, cloud systems, IoT dashboards, smart POS tools, and business automation workflows.",
+      "Explore Kynetix Labs service systems for mobile products, web and cloud platforms, IoT dashboards, retail tools, AI workflows, and business automation.",
     keywords:
       "software development services, mobile app development, web development, cloud systems, IoT software, POS system development, business automation",
   },
@@ -164,9 +165,9 @@ export const seo = {
       "industry software solutions, retail POS software, logistics dashboard, education portal, hospitality software, SME software, custom business systems",
   },
   products: {
-    title: "Software Product Concepts - Smart POS, Workflow Tools & Connected Portals | Kynetix Labs",
+    title: "Product Systems - Smart POS, Workflow Control & Connected Portals | Kynetix Labs",
     description:
-      "Explore Kynetix Labs software product directions for retail POS, workflow command centers, connected operations portals, and client-facing digital systems.",
+      "Explore Kynetix Labs product directions for retail POS, workflow command centers, connected operations portals, and client-facing digital systems.",
     keywords:
       "smart POS software, workflow dashboard, operations portal, IoT dashboard, business software products, Kynetix Labs products",
   },
@@ -211,57 +212,52 @@ export const seo = {
  */
 export const homeCopy = {
   hero: {
-    loadingSequence: ["Plan", "Design", "Build", "Launch"],
-    eyebrow: "Software engineering for modern businesses",
-    title: "Engineering reliable digital systems with",
-    highlight: "kinetic precision.",
-    description:
-      "Kynetix Labs designs and builds mobile apps, web platforms, cloud software, IoT systems, smart POS solutions, and business automation tools for companies that need reliable digital execution.",
-    primaryAction: { label: "Start a Project", path: routes.contact },
-    secondaryAction: { label: "Explore capabilities", path: routes.services },
+    loadingSequence: ["Scope", "Design", "Build", "Launch"],
+    eyebrow: "Kinetic software engineering",
+    title: "Digital systems built with",
+    highlight: "industrial precision.",
+    description: brandVoice.positioning,
+    primaryAction: brandActionMap.project,
+    secondaryAction: { label: ctaCopy.exploreSystems, path: routes.services },
     visualAriaLabel: "Animated Kynetix system visual",
-    statusLabel: "System architecture",
-    statusValue: "LIVE",
+    statusLabel: "Kinetic system",
+    statusValue: "READY",
     centerLabel: "KX",
     nodes: ["Apps", "Cloud", "IoT", "POS", "Data", "Automation"],
-    metrics: [
-      { label: "Interfaces", value: "Responsive" },
-      { label: "Architecture", value: "Scalable" },
-      { label: "Experience", value: "Animated" },
-    ],
+    metrics: homeHeroSignals,
   },
   services: {
-    eyebrow: "What we build",
-    title: "Software systems for companies that need clarity and control.",
+    eyebrow: "Engineered systems",
+    title: "Interfaces, workflows, and platforms shaped for operational control.",
     description:
-      "Kynetix focuses on practical business software: strong interfaces, connected workflows, and maintainable systems that can keep improving after launch.",
+      "Kynetix turns business pressure into precise software systems: clear screens, connected workflows, reusable architecture, and launch checks that keep the build maintainable.",
   },
   products: {
-    eyebrow: "Product direction",
-    title: "Clear software packages clients can understand.",
+    eyebrow: "Product systems",
+    title: "Product directions that feel specific before they become software.",
     description:
-      "Clear product directions help buyers understand the systems Kynetix can deliver for real business operations.",
-    action: { label: "View all product directions", path: routes.products, variant: "outline" as const },
+      "Each product direction names the buyer problem, operating workflow, readiness boundary, and build path before asking for a project conversation.",
+    action: { label: "Explore product systems", path: routes.products, variant: "outline" as const },
   },
   process: {
-    eyebrow: "How we deliver",
-    title: "Strong design backed by clean engineering.",
+    eyebrow: "Delivery rhythm",
+    title: "Cinematic presentation backed by controlled engineering.",
     description:
-      "A high-end website must stay fast, responsive, maintainable, and easy to improve. This process keeps the visual experience impressive without making the codebase messy.",
+      "Premium software experiences should feel sharp without becoming fragile. Kynetix keeps motion, content, routes, and reusable components disciplined before adding heavier media.",
   },
   engineering: {
-    eyebrow: "Engineering discipline",
-    title: "Built to look sharp and stay maintainable.",
+    eyebrow: "Build discipline",
+    title: "Premium polish only works when the codebase can carry it.",
     description:
-      "Content, layout, animation helpers, and reusable UI building blocks are separated so each new section can be improved without rewriting the full page.",
+      "Content modules, shared sections, route metadata, motion helpers, and tests stay separated so every new visual layer can be improved without rewriting the site.",
   },
   cta: {
-    eyebrow: "Start your software project",
-    title: "Build a stronger digital presence with a system clients can trust.",
+    eyebrow: "Start the build",
+    title: "Turn the next digital system into something precise, visible, and trusted.",
     description:
-      "Share your idea, business problem, or product direction. Kynetix Labs can help shape it into a clear plan, a strong interface, and a maintainable software build.",
-    primaryAction: { label: "Plan a project", path: routes.contact },
-    secondaryAction: { label: "Learn about Kynetix", path: routes.about, variant: "outline" as const },
+      "Bring the business problem, workflow, or product direction. Kynetix can shape it into a scoped build plan with the interface, architecture, and release path to match.",
+    primaryAction: brandActionMap.buildPlan,
+    secondaryAction: { label: "See how we work", path: routes.process, variant: "outline" as const },
   },
 };
 
@@ -269,107 +265,107 @@ export const homeCopy = {
 export const pageCopy = {
   about: {
     hero: {
-      eyebrow: "About Kynetix Labs",
-      title: "We build digital systems that are clear, useful, and ready to grow.",
+      eyebrow: "The studio",
+      title: "A software studio for systems that need clarity, motion, and control.",
       description:
-        "Kynetix Labs is a software engineering studio focused on mobile apps, web platforms, connected operations, smart POS tools, and custom business software.",
-      primaryAction: { label: "Start a project", path: routes.contact },
-      secondaryAction: { label: "Explore services", path: routes.services, variant: "outline" as const },
+        "Kynetix Labs builds digital systems with sharp interfaces, reusable architecture, and a proof-aware delivery style for teams that cannot afford messy software.",
+      primaryAction: brandActionMap.project,
+      secondaryAction: brandActionMap.systems,
     },
     work: {
-      eyebrow: "How we work",
-      title: "A practical process before heavy development.",
+      eyebrow: "Operating model",
+      title: "Precision before production.",
       description:
-        "Strong software starts with clear business context, simple architecture choices, and a delivery path that can be maintained after launch.",
+        "Every build starts by narrowing the goal, the user flow, the proof boundary, and the release path so the finished system feels intentional instead of assembled.",
     },
     values: {
-      eyebrow: "Values",
-      title: "The standards we want clients to feel.",
+      eyebrow: "Engineering values",
+      title: "The standard is visible before the code is explained.",
       description:
-        "The website and the codebase should communicate the same thing: careful thinking, reliable execution, and clean improvement paths.",
+        "Strong digital products should communicate control, speed, and trust through the copy, interface, motion, and architecture behind every screen.",
     },
     cta: {
       eyebrow: `Work with ${company.shortName}`,
-      title: "Have a product, website, or business system to build?",
+      title: "Have a system that needs to feel sharper and work harder?",
       description:
-        "Share the idea, the business problem, or the workflow that needs improvement. We can help turn it into a clear development plan.",
-      action: { label: "Talk to us", path: routes.contact },
+        "Share the business pressure, buyer journey, or workflow that needs control. We can turn it into a scoped plan before development expands.",
+      action: brandActionMap.buildPlan,
     },
   },
   services: {
     hero: {
-      eyebrow: "Services",
-      title: "Software services built around real business workflows.",
+      eyebrow: "Service systems",
+      title: "Software services shaped around the pressure inside the business.",
       description:
-        "Kynetix Labs helps companies design and build mobile apps, web platforms, cloud-backed dashboards, connected operations tools, and custom automation workflows.",
-      primaryAction: { label: "Discuss a project", path: routes.contact },
-      secondaryAction: { label: "View product directions", path: routes.products, variant: "outline" as const },
+        "Kynetix designs mobile products, web platforms, cloud dashboards, IoT workflows, AI-assisted tools, and automation systems with outcome, interface, and delivery clarity.",
+      primaryAction: brandActionMap.project,
+      secondaryAction: { label: "View product systems", path: routes.products, variant: "outline" as const },
     },
     fit: {
-      eyebrow: "Delivery fit",
-      title: "Need something specific to your company?",
+      eyebrow: "Project fit",
+      title: "Need a system that matches the way your team actually operates?",
       description:
-        "Every project has different users, data, workflows, and constraints. We start by understanding the business goal, then shape a practical build plan.",
-      action: { label: "Start a conversation", path: routes.contact },
+        "Every serious build has different users, data, constraints, and risk. The first step is not a random quote; it is a controlled project brief.",
+      action: brandActionMap.buildPlan,
     },
   },
   products: {
     hero: {
-      eyebrow: "Product directions",
-      title: "Clear software packages for common business operations.",
+      eyebrow: "Product systems",
+      title: "Product directions for operations that need a command surface.",
       description:
-        "These product directions show the kinds of complete systems Kynetix Labs can shape for clients: retail tools, workflow dashboards, connected operations portals, and client-facing platforms.",
+        "Explore retail tools, workflow command centers, connected operations portals, and client platforms described through buyer pressure, modules, and readiness boundaries.",
       primaryAction: { label: "Request a product plan", path: routes.contact },
-      secondaryAction: { label: "Explore services", path: routes.services, variant: "outline" as const },
+      secondaryAction: brandActionMap.systems,
     },
     planning: {
-      eyebrow: "Custom product planning",
-      title: "Your company may need a different system.",
+      eyebrow: "Custom system planning",
+      title: "The strongest product direction starts with the operating model.",
       description:
-        "The best product package depends on your customers, staff workflows, data, payments, devices, and reporting needs. We can define a practical build plan before development starts.",
-      action: { label: "Plan a product", path: routes.contact },
+        "Customers, staff workflows, data, payments, devices, and reporting needs decide the product shape. We define that shape before the first build expands.",
+      action: brandActionMap.buildPlan,
     },
   },
   work: {
     hero: {
-      eyebrow: "Work",
-      title: "Project stories that show how Kynetix thinks, builds, and proves work.",
+      eyebrow: "Work proof",
+      title: "System stories with the proof boundary visible.",
       description:
-        "Explore proof-safe examples of internal product directions, reusable website systems, and delivery patterns that can become public client-approved case studies over time.",
-      primaryAction: { label: "Start a project brief", path: routes.contact },
-      secondaryAction: { label: "View delivery process", path: routes.process, variant: "outline" as const },
+        "Explore internal product directions, reusable website systems, and delivery examples that show how Kynetix plans, builds, tests, and presents work without inventing client proof.",
+      primaryAction: brandActionMap.project,
+      secondaryAction: brandActionMap.process,
     },
   },
   industries: {
     hero: {
-      eyebrow: "Industries",
-      title: "Software direction for buyers with real operating pressure.",
+      eyebrow: "Buyer sectors",
+      title: "Industry pages for teams with operational pressure, not generic markets.",
       description:
-        "See how Kynetix Labs applies mobile, web, cloud, IoT, POS, and automation thinking to practical industry workflows without inventing proof or overclaiming experience.",
-      primaryAction: { label: "Start an industry project brief", path: routes.contact },
-      secondaryAction: { label: "Explore services", path: routes.services, variant: "outline" as const },
+        "See how Kynetix maps mobile, web, cloud, IoT, POS, and automation thinking to real workflows while keeping experience claims proof-safe.",
+      primaryAction: brandActionMap.buildPlan,
+      secondaryAction: brandActionMap.systems,
     },
   },
   blog: {
     hero: {
-      eyebrow: "Insights",
-      title: "Ideas for better software planning and delivery.",
+      eyebrow: "Engineering notes",
+      title: "Sharp notes on planning, interfaces, and operational software.",
       description:
-        "Practical notes on product planning, reusable interfaces, operations dashboards, and the thinking behind maintainable digital systems.",
-      action: { label: "Discuss your project", path: routes.contact },
+        "Practical writing on product planning, reusable interfaces, dashboards, and the decisions behind maintainable digital systems.",
+      action: brandActionMap.project,
     },
   },
   contact: {
     hero: {
       eyebrow: "Project brief",
-      title: "Start with a clear software project brief.",
+      title: "Start the build with a controlled brief.",
       description:
-        "Tell us what you want to build, the business goal behind it, the timeline, and the type of system you need. A structured first message helps us reply with a practical next step.",
+        "Tell us the system, business goal, timeline, and operating pressure. A structured first message lets Kynetix reply with a practical next move instead of vague sales talk.",
     },
     discussion: {
-      title: "Turn an idea into a scoped conversation.",
+      title: "Turn the signal into a scoped conversation.",
       description:
-        "The best first inquiry explains the users, the current workflow problem, the expected outcome, and any budget or timeline constraints you already know.",
+        "The best first inquiry explains users, current workflow pressure, expected outcome, and the budget or timeline boundaries already known.",
     },
   },
   privacy: {
@@ -390,35 +386,35 @@ export const pageCopy = {
   },
 };
 
-export const heroCapabilities = ["Mobile", "Web", "Cloud", "IoT", "Automation", "Smart POS"];
+export const heroCapabilities = ["Mobile systems", "Cloud platforms", "Retail POS", "IoT control", "AI workflows", "Automation"];
 
 export const capabilityPillars: Array<IconContentItem & { label: string; value: string }> = [
   {
     label: "Digital product engineering",
     value: "Mobile + Web",
-    title: "Digital product engineering",
-    description: "Apps, portals, dashboards, and workflows designed around real users and measurable business goals.",
+    title: "Digital product systems",
+    description: "Apps, portals, dashboards, and workflows shaped around real users, decisive screens, and measurable operating goals.",
     icon: MonitorSmartphone,
   },
   {
     label: "Connected business operations",
     value: "IoT + POS",
-    title: "Connected business operations",
-    description: "Retail, device, and operational software that connects physical work with digital control.",
+    title: "Connected operating control",
+    description: "Retail, device, and operational software that turns physical work into readable digital control surfaces.",
     icon: Network,
   },
   {
     label: "Workflow automation",
     value: "Data + Logic",
-    title: "Workflow automation",
-    description: "Dashboards, alerts, approvals, and business tools that reduce manual work and improve decisions.",
+    title: "Workflow command layers",
+    description: "Dashboards, alerts, approvals, and business tools that reduce repeated work and make decisions easier to review.",
     icon: Workflow,
   },
   {
     label: "Reliable delivery model",
     value: "Cloud + Quality",
-    title: "Reliable delivery model",
-    description: "Clean architecture, responsive interfaces, performance discipline, and maintainable handover.",
+    title: "Controlled delivery model",
+    description: "Clean architecture, responsive interfaces, performance discipline, and maintainable handover before launch.",
     icon: CloudCog,
   },
 ];
@@ -441,23 +437,23 @@ export const homeProducts = productStories.slice(0, 3).map((product) => ({
 export const processSteps = [
   {
     step: "01",
-    title: "Understand the business goal",
-    description: "Map the buyer, user journeys, operational bottlenecks, product goals, and success metrics before designing screens.",
+    title: "Decode the operating pressure",
+    description: "Map the buyer, user journeys, bottlenecks, product goals, and success signals before the interface is designed.",
   },
   {
     step: "02",
-    title: "Design the product experience",
-    description: "Create the visual direction, page structure, motion rules, reusable components, and conversion path before building deep features.",
+    title: "Shape the product surface",
+    description: "Define visual direction, page structure, motion rules, reusable components, and conversion path before deeper features expand.",
   },
   {
     step: "03",
-    title: "Build maintainable code",
-    description: "Ship reusable React sections, typed content data, shared components, clean CSS layers, and performance-safe animation.",
+    title: "Build the system layer",
+    description: "Ship reusable React sections, typed content, shared components, clean CSS layers, and performance-safe motion.",
   },
   {
     step: "04",
-    title: "Test, optimize, and launch",
-    description: "Validate build, lint, responsiveness, accessibility, SEO metadata, image budgets, analytics readiness, and deployment safety.",
+    title: "Prove launch readiness",
+    description: "Validate build, lint, responsiveness, accessibility, SEO metadata, image budgets, forms, and deployment safety.",
   },
 ];
 
@@ -474,33 +470,33 @@ export const engineeringSignals = [
 export const aboutValues: IconContentItem[] = [
   {
     icon: ShieldCheck,
-    title: "Reliable delivery",
-    description: "We keep scope, communication, and technical decisions clear so clients understand what is being built and why.",
+    title: "Controlled delivery",
+    description: "Scope, communication, and technical decisions stay visible so clients understand what is being built and why.",
   },
   {
     icon: Code2,
-    title: "Maintainable engineering",
-    description: "Reusable components, centralized content, and simple file names make the website easier to improve over time.",
+    title: "Maintainable systems",
+    description: "Reusable components, centralized content, simple file names, and typed contracts make each future improvement safer.",
   },
   {
     icon: Rocket,
-    title: "Practical innovation",
-    description: "We use modern ideas only when they improve speed, clarity, conversion, or business usefulness.",
+    title: "Useful innovation",
+    description: "Modern effects, AI ideas, and visual systems are used only when they improve speed, clarity, conversion, or business usefulness.",
   },
 ];
 
 export const approachSteps = [
   {
-    title: "Discover",
-    description: "Clarify the business problem, target users, scope, priorities, risks, and launch goals.",
+    title: "Signal",
+    description: "Clarify the business pressure, buyer, users, scope, risks, and launch goal before shaping the surface.",
   },
   {
-    title: "Plan",
-    description: "Convert ideas into page flows, data needs, reusable UI patterns, and delivery milestones.",
+    title: "System",
+    description: "Convert the idea into flows, content contracts, interface patterns, route structure, and delivery checkpoints.",
   },
   {
-    title: "Build",
-    description: "Implement clear interfaces, responsive layouts, maintainable code, and testable release steps.",
+    title: "Launch",
+    description: "Implement clear interfaces, responsive layouts, maintainable code, and release checks that can be proven.",
   },
 ];
 

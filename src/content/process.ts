@@ -21,12 +21,12 @@ export const processPageContent = {
     title: "A software delivery process clients can understand before build starts.",
     description:
       "Kynetix Labs turns early ideas into practical software plans, clear interface flows, maintainable implementation, and launch checks without hiding risk behind vague development language.",
-    primaryAction: { label: "Start a project brief", path: routes.contact },
-    secondaryAction: { label: "Explore services", path: routes.services, variant: "outline" as const },
+    primaryAction: { label: "Start a Project", path: routes.contact },
+    secondaryAction: { label: "Explore Systems", path: routes.services, variant: "outline" as const },
   },
   timeline: {
     eyebrow: "Project flow",
-    title: "From first conversation to launch-ready handover.",
+    title: "From first signal to launch-ready handover.",
     description:
       "Each phase has a purpose, visible outputs, and a decision point so the project moves with control instead of guesswork.",
   },
@@ -41,7 +41,7 @@ export const processPageContent = {
     title: "Share the project context and we can shape the next step.",
     description:
       "A short project brief helps us understand the users, business goal, timeline, constraints, and first version that should be delivered.",
-    action: { label: "Create a project brief", path: routes.contact },
+    action: { label: "Plan Your Build", path: routes.contact },
   },
 };
 

@@ -251,7 +251,8 @@
   }
 
   .site-button {
-    @apply relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-6 py-3 text-xs font-bold uppercase tracking-[0.22em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+    @apply relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-full px-6 py-3 text-xs font-bold uppercase tracking-[0.24em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-black;
+    letter-spacing: 0.24em;
   }
 
   .site-button::before {
@@ -268,11 +269,12 @@
   }
 
   .site-button-primary {
-    @apply bg-cyan-300 text-black shadow-[0_0_42px_rgba(34,211,238,0.34)] hover:bg-white;
+    @apply bg-cyan-200 text-black shadow-[0_0_46px_rgba(34,211,238,0.38)] hover:bg-white;
   }
 
   .site-button-outline {
-    @apply border border-white/20 bg-white/[0.03] text-white hover:border-cyan-200/50 hover:bg-cyan-200/10 hover:text-cyan-100;
+    @apply border border-white/20 bg-white/[0.025] text-white hover:border-cyan-200/55 hover:bg-cyan-200/10 hover:text-cyan-100;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
   .site-button-ghost {
@@ -280,8 +282,8 @@
   }
 
   .content-card {
-    @apply relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/[0.035] transition-all duration-500;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 24px 80px rgba(0, 0, 0, 0.22);
+    @apply relative overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/[0.032] transition-all duration-500;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 24px 80px rgba(0, 0, 0, 0.24);
   }
 
   .content-card::after {
@@ -335,7 +337,7 @@
   }
 
   .section-eyebrow {
-    @apply inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.28em] text-cyan-100/70;
+    @apply inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.32em] text-cyan-100/70;
   }
 
   .section-eyebrow-dot {
@@ -355,11 +357,79 @@
   }
 
   .page-section-title {
-    @apply mt-5 font-display text-4xl font-semibold leading-[1.04] tracking-[-0.04em] text-white md:text-5xl lg:text-6xl;
+    @apply mt-5 font-display text-4xl font-semibold leading-[1.02] tracking-[-0.05em] text-white md:text-5xl lg:text-6xl;
+    text-wrap: balance;
   }
 
   .page-section-description {
     @apply mt-6 text-base leading-7 text-white/60 md:text-lg;
+  }
+
+
+  .page-hero-shell {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .page-hero-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 64%;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 18% 20%, rgba(34, 211, 238, 0.13), transparent 30%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.032), transparent 72%);
+    mask-image: linear-gradient(to bottom, black 38%, transparent 100%);
+  }
+
+  .page-hero-content {
+    @apply relative max-w-5xl border-l border-cyan-200/20 pl-6 md:pl-9;
+  }
+
+  .page-hero-content::before {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 0;
+    height: 5.5rem;
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(103, 232, 249, 0.9), transparent);
+    box-shadow: 0 0 28px rgba(34, 211, 238, 0.52);
+  }
+
+  .page-hero-kicker {
+    @apply inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.32em] text-cyan-100/75;
+  }
+
+  .page-hero-title {
+    @apply mt-6 max-w-5xl text-white;
+    text-wrap: balance;
+  }
+
+  .page-hero-description {
+    @apply mt-6 max-w-3xl text-white/60;
+  }
+
+  .page-hero-actions {
+    @apply mt-9 flex flex-col gap-4 sm:flex-row sm:items-center;
+  }
+
+  .page-hero-signal-row {
+    @apply mt-10 grid gap-3 sm:grid-cols-3;
+  }
+
+  .page-hero-signal-row div {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+
+  .page-hero-signal-row span {
+    @apply block text-[0.62rem] font-bold uppercase tracking-[0.24em] text-white/40;
+  }
+
+  .page-hero-signal-row strong {
+    @apply mt-1 block text-sm font-semibold text-cyan-100/85;
   }
 
   /* Decorative animated background used by HeroSection. Keep it CSS-only for low runtime cost. */
@@ -538,7 +608,8 @@
   }
 
   .hero-title {
-    @apply max-w-5xl font-display text-5xl font-semibold leading-[0.94] tracking-[-0.065em] text-white sm:text-6xl md:text-7xl lg:text-[5.8rem];
+    @apply max-w-5xl font-display text-5xl font-semibold leading-[0.91] tracking-[-0.072em] text-white sm:text-6xl md:text-7xl lg:text-[6.25rem];
+    text-wrap: balance;
   }
 
   .hero-title .animated-text,

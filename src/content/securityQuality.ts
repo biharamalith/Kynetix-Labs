@@ -23,15 +23,15 @@ export interface DeliveryBoundary {
 export const securityQualityPageContent = {
   hero: {
     eyebrow: "Security and quality",
-    title: "Practical engineering discipline without fake compliance claims.",
+    title: "Quality discipline that protects the product story and the codebase.",
     description:
       "Kynetix Labs keeps public websites and software builds understandable, testable, accessible, and easier to maintain while staying honest about what has and has not been certified.",
-    primaryAction: { label: "Discuss project quality", path: routes.contact },
-    secondaryAction: { label: "See delivery process", path: routes.process, variant: "outline" as const },
+    primaryAction: { label: "Start a Project", path: routes.contact },
+    secondaryAction: { label: "View the Process", path: routes.process, variant: "outline" as const },
   },
   principles: {
     eyebrow: "Quality principles",
-    title: "Trust comes from repeatable engineering habits.",
+    title: "Trust comes from repeatable checks, not louder claims.",
     description:
       "The goal is not to add heavy process for its own sake. The goal is to reduce avoidable risk through clear code structure, truthful content, validation, testing, and launch discipline.",
   },

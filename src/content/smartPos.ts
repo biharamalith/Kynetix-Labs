@@ -48,27 +48,27 @@ export const smartPosContent = {
   category: "Retail operations system",
   hero: {
     eyebrow: "Smart POS Suite",
-    title: "A retail operating system for checkout, stock control, staff roles, and owner visibility.",
+    title: "A retail command system for checkout, inventory, staff roles, and owner visibility.",
     description:
       "Smart POS Suite is a product direction Kynetix Labs can shape into a scoped pilot or custom retail build. It focuses on practical store workflows instead of pretending every feature is already packaged for every business.",
-    primaryAction: { label: "Plan a Smart POS pilot", path: routes.contact },
-    secondaryAction: { label: "View all product directions", path: routes.products, variant: "outline" as const },
+    primaryAction: { label: "Brief Smart POS", path: routes.contact },
+    secondaryAction: { label: "Explore product systems", path: routes.products, variant: "outline" as const },
   },
   positioning: {
     eyebrow: "Retail clarity",
-    title: "Designed around the daily decisions store owners actually make.",
+    title: "Designed around the daily decisions retail owners need to see clearly.",
     description:
       "The system direction connects checkout activity, stock movement, staff accountability, and sales summaries so a retailer can understand what happened without checking separate spreadsheets or message threads.",
   },
   modules: {
     eyebrow: "Product modules",
-    title: "Four core modules form the first serious Smart POS scope.",
+    title: "Four core modules form the first serious Smart POS command surface.",
     description:
       "Each module is intentionally practical. The first release should prove checkout speed, inventory awareness, safe staff access, and readable management reporting before expanding into deeper retail intelligence.",
   },
   workflow: {
     eyebrow: "Store workflow",
-    title: "From sale to decision without losing operational context.",
+    title: "From sale to decision without losing the operating trail.",
     description:
       "A strong POS product should not stop at billing. It should preserve the operational trail from the sale, through inventory movement and staff action, into management insight.",
   },
@@ -83,7 +83,7 @@ export const smartPosContent = {
     title: "Have a retail workflow that needs a cleaner POS system?",
     description:
       "Share the store type, current billing process, stock problems, staff roles, reporting needs, and launch timeline. Kynetix can turn that into a realistic Smart POS build plan.",
-    action: { label: "Start Smart POS brief", path: routes.contact },
+    action: { label: "Brief Smart POS", path: routes.contact },
   },
 };
 

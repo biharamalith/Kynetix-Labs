@@ -37,37 +37,37 @@ export interface IndustryProfile {
 
 export const industriesCopy = {
   hero: {
-    eyebrow: "Industries",
-    title: "Software direction for buyers with real operating pressure.",
+    eyebrow: "Buyer sectors",
+    title: "Industry directions for teams that need operational control, not generic software talk.",
     description:
-      "Kynetix Labs maps mobile, web, cloud, IoT, POS, and automation services to practical industry workflows without pretending to have client proof that has not been approved yet.",
-    primaryAction: { label: "Start an industry project brief", path: routes.contact },
-    secondaryAction: { label: "Explore services", path: routes.services, variant: "outline" as const },
+      "Kynetix maps mobile, web, cloud, IoT, POS, and automation systems to practical workflows while keeping proof, compliance, and readiness claims honest.",
+    primaryAction: { label: "Plan Your Build", path: routes.contact },
+    secondaryAction: { label: "Explore Systems", path: routes.services, variant: "outline" as const },
   },
   grid: {
-    eyebrow: "Buyer segments",
-    title: "Common business types we can plan systems around.",
+    eyebrow: "Operating pressure",
+    title: "Business sectors where software must clarify the work.",
     description:
-      "Each industry card connects real operating pain with the Kynetix service directions that can support a scoped project conversation.",
+      "Each industry card connects a real operating pain with the Kynetix system directions that can support a scoped project conversation.",
   },
   fit: {
-    eyebrow: "Fit matrix",
-    title: "Match the industry pressure to the right build direction.",
+    eyebrow: "System fit",
+    title: "Match the buyer pressure to the right build direction.",
     description:
       "The purpose of this page is not to claim every industry outcome. It helps buyers choose the correct starting point before the project brief stage.",
   },
   useCases: {
-    eyebrow: "Reusable patterns",
-    title: "Software patterns that repeat across many industries.",
+    eyebrow: "Reusable operating patterns",
+    title: "The same command patterns appear inside many serious businesses.",
     description:
       "Most serious business systems share a few patterns: intake, dashboards, roles, approvals, reporting, and operational visibility. Kynetix designs those patterns so they can be reused cleanly.",
   },
   cta: {
     eyebrow: "Project fit",
-    title: "Need a system for your industry workflow?",
+    title: "Need a digital command layer for your workflow?",
     description:
       "Share the business type, the current workflow problem, and the result you want. We can help translate it into a clear software plan before development starts.",
-    action: { label: "Start a project brief", path: routes.contact },
+    action: { label: "Plan Your Build", path: routes.contact },
   },
 };
 

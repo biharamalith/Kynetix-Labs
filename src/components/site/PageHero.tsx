@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { pageHeroSignals } from "@/content/brandLanguage";
 import { RevealOnScroll } from "./RevealOnScroll";
 import { cn } from "@/lib/utils";
 
@@ -8,21 +9,31 @@ interface PageHeroProps {
   description: string;
   actions?: ReactNode;
   className?: string;
+  showSignals?: boolean;
 }
 
-export const PageHero = ({ eyebrow, title, description, actions, className }: PageHeroProps) => {
+export const PageHero = ({ eyebrow, title, description, actions, className, showSignals = true }: PageHeroProps) => {
   return (
-    // Reusable inner-page hero. Change page text in `pageCopy` from siteContent.ts, not inside each page file.
-    <section className={cn("section-padding", className)}>
+    <section className={cn("section-padding page-hero-shell", className)}>
       <div className="container-main">
-        <RevealOnScroll className="max-w-4xl">
-          <div className="section-eyebrow">
+        <RevealOnScroll className="page-hero-content">
+          <div className="page-hero-kicker">
             <span className="section-eyebrow-dot" />
             {eyebrow}
           </div>
-          <h1 className="heading-display mt-6 text-white">{title}</h1>
-          <p className="body-large mt-6 max-w-2xl">{description}</p>
-          {actions && <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">{actions}</div>}
+          <h1 className="heading-display page-hero-title">{title}</h1>
+          <p className="body-large page-hero-description">{description}</p>
+          {actions && <div className="page-hero-actions">{actions}</div>}
+          {showSignals && (
+            <div className="page-hero-signal-row" aria-label="Kynetix delivery signals">
+              {pageHeroSignals.map((signal) => (
+                <div key={signal.label}>
+                  <span>{signal.label}</span>
+                  <strong>{signal.value}</strong>
+                </div>
+              ))}
+            </div>
+          )}
         </RevealOnScroll>
       </div>
     </section>

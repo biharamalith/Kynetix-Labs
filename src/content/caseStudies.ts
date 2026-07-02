@@ -34,16 +34,16 @@ export interface CaseStudy {
 
 export const caseStudyCopy = {
   hero: {
-    eyebrow: "Work system",
-    title: "Proof-safe project stories without fake client claims.",
+    eyebrow: "Work proof",
+    title: "Project stories with the proof boundary visible.",
     description:
       "A reusable work section for selected builds, internal product directions, and delivery examples. Each story explains the problem, system shape, decisions, and proof that can be shown truthfully.",
-    primaryAction: { label: "Start a project brief", path: routes.contact },
-    secondaryAction: { label: "View delivery process", path: routes.process, variant: "outline" as const },
+    primaryAction: { label: "Start a Project", path: routes.contact },
+    secondaryAction: { label: "View the Process", path: routes.process, variant: "outline" as const },
   },
   grid: {
-    eyebrow: "Selected examples",
-    title: "Work examples described by challenge, system design, and delivery evidence.",
+    eyebrow: "Selected systems",
+    title: "Work examples described by challenge, system shape, and reviewable evidence.",
     description:
       "Until client-approved public case studies are available, Kynetix uses transparent internal builds and product directions to show capability without inventing customers, numbers, or testimonials.",
   },
@@ -54,7 +54,7 @@ export const caseStudyCopy = {
       "The content model separates internal demos, product directions, and client-approved work so future stories can be published safely when real proof is available.",
   },
   backToWork: "Back to work",
-  detailCta: "Discuss a similar build",
+  detailCta: "Plan a similar build",
 };
 
 export const caseStudyProofPrinciples: CaseStudyResult[] = [
