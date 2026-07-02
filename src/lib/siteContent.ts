@@ -104,6 +104,7 @@ export const navLinks: NavItem[] = [
   { name: "Home", path: routes.home },
   { name: "About", path: routes.about },
   { name: "Services", path: routes.services },
+  { name: "Work", path: routes.work },
   { name: "Products", path: routes.products },
   { name: "Insights", path: routes.blog },
   { name: "Contact", path: routes.contact },
@@ -145,6 +146,13 @@ export const seo = {
       "Review the Kynetix Labs approach to truthful software claims, reusable architecture, form data care, accessibility basics, testing gates, and launch quality.",
     keywords:
       "software quality approach, security-aware development, accessibility checks, frontend quality gates, maintainable software architecture, Kynetix Labs quality",
+  },
+  work: {
+    title: "Work & Case Studies - Proof-Safe Software Project Stories | Kynetix Labs",
+    description:
+      "Explore proof-safe Kynetix Labs work examples covering product directions, project brief systems, frontend architecture, dashboards, and reusable delivery patterns.",
+    keywords:
+      "Kynetix Labs work, software case studies, product direction examples, frontend architecture examples, project brief system, smart POS case study",
   },
   products: {
     title: "Software Product Concepts - Smart POS, Workflow Tools & Connected Portals | Kynetix Labs",
@@ -311,6 +319,16 @@ export const pageCopy = {
       description:
         "The best product package depends on your customers, staff workflows, data, payments, devices, and reporting needs. We can define a practical build plan before development starts.",
       action: { label: "Plan a product", path: routes.contact },
+    },
+  },
+  work: {
+    hero: {
+      eyebrow: "Work",
+      title: "Project stories that show how Kynetix thinks, builds, and proves work.",
+      description:
+        "Explore proof-safe examples of internal product directions, reusable website systems, and delivery patterns that can become public client-approved case studies over time.",
+      primaryAction: { label: "Start a project brief", path: routes.contact },
+      secondaryAction: { label: "View delivery process", path: routes.process, variant: "outline" as const },
     },
   },
   blog: {
@@ -532,6 +550,7 @@ export const footerLinks = {
     { name: "About", path: routes.about },
     { name: "Services", path: routes.services },
     { name: "Process", path: routes.process },
+    { name: "Work", path: routes.work },
     { name: "Products", path: routes.products },
     { name: "Insights", path: routes.blog },
   ],
@@ -545,6 +564,7 @@ export const footerLinks = {
     { name: "Start a Project", path: routes.contact },
     { name: "Delivery Process", path: routes.process },
     { name: "Security & Quality", path: routes.securityQuality },
+    { name: "Selected Work", path: routes.work },
     { name: "View Products", path: routes.products },
   ],
   legal: [

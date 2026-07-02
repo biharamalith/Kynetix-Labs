@@ -4,6 +4,8 @@ export const routes = {
   services: "/services",
   process: "/process",
   securityQuality: "/security-quality",
+  work: "/work",
+  caseStudyDetail: "/work/:slug",
   products: "/products",
   smartPos: "/products/smart-pos",
   blog: "/blog",
@@ -22,6 +24,7 @@ export interface SitemapEntry {
 }
 
 export const createBlogArticlePath = (slug: string) => `${routes.blog}/${slug}`;
+export const createCaseStudyPath = (slug: string) => `${routes.work}/${slug}`;
 export const createProductPath = (slug: string) => `${routes.products}/${slug}`;
 
 export const staticPublicRoutes = [
@@ -30,6 +33,7 @@ export const staticPublicRoutes = [
   routes.services,
   routes.process,
   routes.securityQuality,
+  routes.work,
   routes.products,
   routes.smartPos,
   routes.blog,
@@ -44,6 +48,7 @@ export const sitemapEntries: SitemapEntry[] = [
   { path: routes.services, changefreq: "monthly", priority: "0.9" },
   { path: routes.process, changefreq: "monthly", priority: "0.7" },
   { path: routes.securityQuality, changefreq: "monthly", priority: "0.7" },
+  { path: routes.work, changefreq: "monthly", priority: "0.8" },
   { path: routes.products, changefreq: "monthly", priority: "0.8" },
   { path: routes.smartPos, changefreq: "monthly", priority: "0.7" },
   { path: routes.blog, changefreq: "weekly", priority: "0.7" },
