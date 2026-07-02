@@ -102,3 +102,38 @@ export const createWebPageStructuredData = ({
     name: publisherName,
   },
 });
+
+export const createCaseStudyStructuredData = ({
+  siteUrl,
+  path,
+  name,
+  description,
+  publisherName,
+  category,
+  status,
+}: {
+  siteUrl: string;
+  path: string;
+  name: string;
+  description: string;
+  publisherName: string;
+  category: string;
+  status: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name,
+  description,
+  url: createCanonicalUrl(siteUrl, path),
+  publisher: {
+    "@type": "Organization",
+    name: publisherName,
+  },
+  about: {
+    "@type": "CreativeWork",
+    name,
+    description,
+    genre: category,
+    creativeWorkStatus: status,
+  },
+});
