@@ -5,14 +5,22 @@ interface ContentCardProps {
   children: ReactNode;
   className?: string;
   intensity?: "soft" | "strong";
+  surface?: "default" | "elevated" | "quiet";
 }
 
-export const ContentCard = ({ children, className, intensity = "soft" }: ContentCardProps) => {
+const surfaceClasses = {
+  default: "",
+  elevated: "content-card-elevated",
+  quiet: "content-card-quiet",
+} as const;
+
+export const ContentCard = ({ children, className, intensity = "soft", surface = "default" }: ContentCardProps) => {
   return (
     <div
       className={cn(
         "content-card group",
         intensity === "strong" && "content-card-strong",
+        surfaceClasses[surface],
         className,
       )}
     >

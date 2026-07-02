@@ -19,7 +19,7 @@ export const Footer = () => {
               </span>
             </Link>
             <p className="max-w-sm text-sm leading-7 text-white/60">
-              Mobile, web, cloud, IoT, POS, and business automation software for companies that need reliable digital systems with strong user experience.
+              Kinetic software systems for companies that need precise interfaces, controlled workflows, and launch-ready digital operations.
             </p>
             <div className="mt-7 grid gap-3 text-sm text-white/60">
               <a href={`mailto:${company.email}`} className="footer-contact-link">
@@ -44,10 +44,10 @@ export const Footer = () => {
           <div className="flex flex-wrap gap-5">
             <span className="inline-flex items-center gap-2">
               <Radar className="h-4 w-4 text-cyan-200/60" />
-              Built for scalable digital projects
+Built for precise digital systems
             </span>
             <Link to="/contact" className="hover:text-cyan-200">
-              Request project discussion
+Request a project brief
             </Link>
           </div>
         </div>
