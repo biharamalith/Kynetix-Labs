@@ -4,6 +4,7 @@ import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { MetricStrip } from "@/components/site/MetricStrip";
 import { PageSection } from "@/components/site/PageSection";
 import { RevealOnScroll } from "@/components/site/RevealOnScroll";
+import { SiteButton } from "@/components/site/SiteButton";
 import { ValueList } from "@/components/site/ValueList";
 
 export const ProductShowcase = () => {
@@ -30,6 +31,11 @@ export const ProductShowcase = () => {
                 <p className="rounded-2xl border border-cyan-200/15 bg-cyan-200/[0.055] p-4 text-sm leading-7 text-cyan-50/72">
                   {product.launchNote}
                 </p>
+                {product.detailPath && (
+                  <SiteButton to={product.detailPath} variant="outline" className="w-full sm:w-auto">
+                    View product page
+                  </SiteButton>
+                )}
               </DetailCard>
             </RevealOnScroll>
           ))}

@@ -3,6 +3,7 @@ export const routes = {
   about: "/about",
   services: "/services",
   products: "/products",
+  smartPos: "/products/smart-pos",
   blog: "/blog",
   blogDetail: "/blog/:slug",
   contact: "/contact",
@@ -19,12 +20,14 @@ export interface SitemapEntry {
 }
 
 export const createBlogArticlePath = (slug: string) => `${routes.blog}/${slug}`;
+export const createProductPath = (slug: string) => `${routes.products}/${slug}`;
 
 export const staticPublicRoutes = [
   routes.home,
   routes.about,
   routes.services,
   routes.products,
+  routes.smartPos,
   routes.blog,
   routes.contact,
   routes.privacy,
@@ -36,6 +39,7 @@ export const sitemapEntries: SitemapEntry[] = [
   { path: routes.about, changefreq: "monthly", priority: "0.8" },
   { path: routes.services, changefreq: "monthly", priority: "0.9" },
   { path: routes.products, changefreq: "monthly", priority: "0.8" },
+  { path: routes.smartPos, changefreq: "monthly", priority: "0.7" },
   { path: routes.blog, changefreq: "weekly", priority: "0.7" },
   { path: routes.contact, changefreq: "monthly", priority: "0.7" },
   { path: routes.privacy, changefreq: "monthly", priority: "0.4" },

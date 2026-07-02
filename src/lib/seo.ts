@@ -45,3 +45,36 @@ export const createArticleStructuredData = ({
   dateModified: updatedDate,
   mainEntityOfPage: createCanonicalUrl(siteUrl, path),
 });
+
+
+export const createSoftwareProductPageStructuredData = ({
+  siteUrl,
+  path,
+  name,
+  description,
+  category,
+  brandName,
+}: {
+  siteUrl: string;
+  path: string;
+  name: string;
+  description: string;
+  category: string;
+  brandName: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name,
+  description,
+  url: createCanonicalUrl(siteUrl, path),
+  about: {
+    "@type": "SoftwareApplication",
+    name,
+    description,
+    applicationCategory: category,
+    creator: {
+      "@type": "Organization",
+      name: brandName,
+    },
+  },
+});
