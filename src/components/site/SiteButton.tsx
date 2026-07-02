@@ -7,14 +7,22 @@ interface SiteButtonProps {
   children: ReactNode;
   to: string;
   variant?: "primary" | "outline" | "ghost";
+  size?: "sm" | "md" | "lg";
   className?: string;
   showArrow?: boolean;
 }
+
+const buttonSizeClasses = {
+  sm: "site-button-sm",
+  md: "site-button-md",
+  lg: "site-button-lg",
+} as const;
 
 export const SiteButton = ({
   children,
   to,
   variant = "primary",
+  size = "md",
   className,
   showArrow = true,
 }: SiteButtonProps) => {
@@ -23,6 +31,7 @@ export const SiteButton = ({
       to={to}
       className={cn(
         "site-button group",
+        buttonSizeClasses[size],
         variant === "primary" && "site-button-primary",
         variant === "outline" && "site-button-outline",
         variant === "ghost" && "site-button-ghost",

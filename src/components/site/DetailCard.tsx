@@ -25,7 +25,7 @@ export const DetailCard = ({
   className,
 }: DetailCardProps) => {
   return (
-    <ContentCard className={cn("h-full p-7", className)} intensity="strong">
+    <ContentCard className={cn("h-full p-7", className)} intensity="strong" surface="elevated">
       <article id={id} className="relative z-10 scroll-mt-28">
         <div className="mb-7 flex items-start justify-between gap-5">
           {Icon && (

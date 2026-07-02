@@ -9,7 +9,14 @@ interface PageSectionProps {
   children: ReactNode;
   className?: string;
   contentClassName?: string;
+  spacing?: "compact" | "standard" | "wide";
 }
+
+const spacingClasses = {
+  compact: "page-section-compact",
+  standard: "",
+  wide: "page-section-wide",
+} as const;
 
 export const PageSection = ({
   eyebrow,
@@ -18,10 +25,10 @@ export const PageSection = ({
   children,
   className,
   contentClassName,
+  spacing = "standard",
 }: PageSectionProps) => {
   return (
-    // Shared section shell: use this for new long-form sections to keep spacing, reveal behavior, and headings consistent.
-    <section className={cn("page-section", className)}>
+    <section className={cn("page-section", spacingClasses[spacing], className)}>
       <div className="container-main">
         <RevealOnScroll className={cn("page-section-header", contentClassName)}>
           <div className="section-eyebrow">

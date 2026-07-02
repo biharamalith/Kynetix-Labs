@@ -5,6 +5,10 @@ import { company, navLinks } from "@/lib/siteContent";
 import { SiteButton } from "@/components/site/SiteButton";
 import { cn } from "@/lib/utils";
 
+const isNavLinkActive = (currentPath: string, linkPath: string) => {
+  return linkPath === "/" ? currentPath === linkPath : currentPath === linkPath || currentPath.startsWith(`${linkPath}/`);
+};
+
 export const Navbar = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +49,7 @@ export const Navbar = () => {
 
         <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/[0.035] p-1 md:flex" aria-label="Primary navigation">
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.path;
+            const isActive = isNavLinkActive(location.pathname, link.path);
             return (
               <Link
                 key={link.path}
@@ -60,7 +64,7 @@ export const Navbar = () => {
         </nav>
 
         <div className="hidden md:block">
-          <SiteButton to="/contact" className="px-4 py-2 text-[0.7rem]" showArrow={false}>
+          <SiteButton to="/contact" size="sm" showArrow={false}>
             Start a project
           </SiteButton>
         </div>
@@ -80,9 +84,14 @@ export const Navbar = () => {
       <div id="mobile-navigation" className={cn("mobile-nav-panel md:hidden", isOpen && "mobile-nav-panel-open")}>
         <nav className="space-y-2 px-4 pb-5 pt-2 sm:px-6" aria-label="Mobile navigation">
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.path;
+            const isActive = isNavLinkActive(location.pathname, link.path);
             return (
-              <Link key={link.path} to={link.path} className={cn("mobile-nav-link", isActive && "mobile-nav-link-active")}>
+              <Link
+                key={link.path}
+                to={link.path}
+                className={cn("mobile-nav-link", isActive && "mobile-nav-link-active")}
+                aria-current={isActive ? "page" : undefined}
+              >
                 {link.name}
               </Link>
             );
