@@ -4,8 +4,8 @@ import { describe, expect, it } from "vitest";
 
 import Products from "@/pages/Products";
 import Services from "@/pages/Services";
-import { productStories } from "@/content/products";
-import { serviceStories } from "@/content/services";
+import { productStories, productStoryCopy } from "@/content/products";
+import { serviceStories, serviceStoryCopy } from "@/content/services";
 
 describe("storytelling pages", () => {
   it("renders service story cards from centralized content", () => {
@@ -15,7 +15,7 @@ describe("storytelling pages", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("heading", { name: "Software services built around real business workflows." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: serviceStoryCopy.overview.title })).toBeInTheDocument();
 
     for (const service of serviceStories) {
       expect(screen.getByRole("heading", { name: service.title })).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("storytelling pages", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByRole("heading", { name: "Clear software packages for common business operations." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: productStoryCopy.overview.title })).toBeInTheDocument();
 
     for (const product of productStories) {
       expect(screen.getByRole("heading", { name: product.title })).toBeInTheDocument();

@@ -23,16 +23,16 @@ export interface ProductPrinciple {
 
 export const productStoryCopy = {
   overview: {
-    eyebrow: "Product storytelling",
-    title: "Product directions described as buyer problems, outcomes, and launch paths.",
+    eyebrow: "Product command systems",
+    title: "Product directions with the buyer problem, module shape, and readiness boundary visible.",
     description:
-      "These are clear product directions Kynetix can shape with clients. They avoid fake launch claims and explain what each system is meant to solve.",
+      "Each product system explains the workflow it controls, the operational value it creates, and the first build path without fake launch claims.",
   },
   principles: {
-    eyebrow: "Product discipline",
-    title: "No overclaiming, no vague product cards.",
+    eyebrow: "Product truth",
+    title: "High-end product pages should feel specific without pretending to be finished.",
     description:
-      "Each product direction stays truthful about readiness while still showing the business value, capability shape, and next step for a serious buyer conversation.",
+      "Each direction stays truthful about readiness while still presenting business value, capability shape, and the next step for a serious buyer conversation.",
   },
 };
 
@@ -43,7 +43,7 @@ export const productStories: ProductStory[] = [
     status: "Product direction",
     category: "Retail operations",
     title: "Smart POS Suite",
-    summary: "A retail system direction for checkout, inventory, sales summaries, staff workflows, and owner visibility.",
+    summary: "A retail operating-system direction for checkout, inventory movement, staff roles, and owner visibility.",
     description:
       "Built for retail teams that need a practical software path from billing screens to inventory control and decision dashboards without pretending the product is already fully packaged for every store.",
     idealFor: ["Small and growing retailers", "Store owners needing sales clarity", "Teams replacing manual inventory sheets"],
@@ -58,7 +58,7 @@ export const productStories: ProductStory[] = [
     status: "System package direction",
     category: "Business automation",
     title: "Workflow Command Center",
-    summary: "A control dashboard direction for tasks, approvals, alerts, summaries, and exception handling.",
+    summary: "A command-center direction for tasks, approvals, alerts, summaries, and exception control.",
     description:
       "Designed for teams that need one place to see operational work, prioritize issues, move approvals forward, and reduce repeated status-checking across disconnected tools.",
     idealFor: ["Operations teams", "Service businesses", "Managers handling approvals and exceptions"],
@@ -72,7 +72,7 @@ export const productStories: ProductStory[] = [
     status: "Portal direction",
     category: "IoT and cloud",
     title: "Connected Ops Portal",
-    summary: "A dashboard direction for device states, telemetry summaries, maintenance actions, and operational alerts.",
+    summary: "A connected-operations direction for device states, telemetry summaries, maintenance actions, and alerts.",
     description:
       "Created for companies that need to convert connected activity into readable screens, safe operator actions, and useful summaries instead of raw technical noise.",
     idealFor: ["Device-enabled teams", "Maintenance operators", "Businesses monitoring field activity"],
@@ -86,7 +86,7 @@ export const productStories: ProductStory[] = [
     status: "Client platform direction",
     category: "Service delivery",
     title: "Client Service Portal",
-    summary: "A client-facing platform direction for requests, updates, documents, approvals, and communication history.",
+    summary: "A client-service platform direction for requests, updates, documents, approvals, and communication history.",
     description:
       "Useful for service companies that want customers to submit structured requests, track progress, review updates, and reduce scattered communication across email or messaging apps.",
     idealFor: ["Service providers", "Consulting teams", "Companies with repeated client requests"],

@@ -15,7 +15,7 @@ export const LegalPageLayout = ({ content, seo }: LegalPageLayoutProps) => (
   <Layout>
     <SEO {...seo} />
 
-    <PageHero eyebrow={content.eyebrow} title={content.title} description={content.description} />
+    <PageHero eyebrow={content.eyebrow} title={content.title} description={content.description} showSignals={false} />
 
     <section className="page-section pt-4">
       <div className="container-main">

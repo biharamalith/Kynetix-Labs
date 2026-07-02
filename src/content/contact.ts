@@ -14,16 +14,16 @@ export interface ContactTrustSignal {
 }
 
 export const projectBriefCopy = {
-  eyebrow: "Project brief",
-  title: "Shape the first conversation before development starts.",
+  eyebrow: "Project signal",
+  title: "Shape the first conversation before the build expands.",
   description:
-    "Share the business goal, users, timeline, and expected outcome. The form keeps the inquiry structured so we can reply with a clearer next step.",
+    "Share the business goal, users, timeline, and expected outcome. The brief keeps the inquiry controlled so we can reply with a clear next step.",
   privacyNote:
     "We only use this information to understand and reply to your project inquiry. Do not include passwords, private keys, payment details, or sensitive customer data.",
-  fallbackLabel: "Email the project brief instead",
-  successTitle: "Project brief received",
+  fallbackLabel: "Send the brief by email",
+  successTitle: "Project brief locked in",
   successDescription:
-    "Thanks for sharing the details. We will review the brief and reply with the most practical next step.",
+    "Thanks for sharing the details. We will review the signal, check project fit, and reply with the most practical next move.",
 } as const;
 
 export const projectBriefProjectTypes = [

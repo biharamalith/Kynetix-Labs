@@ -4,7 +4,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import Contact from "@/pages/Contact";
 import { projectBriefBudgetRanges, projectBriefProjectTypes, projectBriefTimelineOptions } from "@/content/contact";
-import { company } from "@/lib/siteContent";
+import { company, pageCopy } from "@/lib/siteContent";
+import { projectBriefCopy } from "@/content/contact";
 
 const renderContactPage = () =>
   render(
@@ -28,7 +29,7 @@ describe("contact conversion form", () => {
   it("renders structured project brief fields from centralized content", () => {
     renderContactPage();
 
-    expect(screen.getByRole("heading", { name: "Start with a clear software project brief." })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: pageCopy.contact.hero.title })).toBeInTheDocument();
     expect(screen.getByLabelText("Name *")).toBeInTheDocument();
     expect(screen.getByLabelText("Email *")).toBeInTheDocument();
     expect(screen.getByLabelText("Project type *")).toBeInTheDocument();
@@ -74,7 +75,7 @@ describe("contact conversion form", () => {
     fireEvent.click(screen.getByRole("button", { name: "Submit project brief" }));
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
-    expect(await screen.findByRole("heading", { name: "Project brief received" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: projectBriefCopy.successTitle })).toBeInTheDocument();
   });
 
   it("shows a monitored fallback email path if submission fails", async () => {
