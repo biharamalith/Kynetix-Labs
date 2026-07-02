@@ -52,6 +52,7 @@ export interface ServiceContentItem extends IconContentItem {
   id: string;
   summary: string;
   features: string[];
+  detailPath?: string;
 }
 
 export interface ProductContentItem extends IconContentItem {
@@ -505,6 +506,7 @@ export const services: ServiceContentItem[] = serviceStories.map((service) => ({
   summary: service.summary,
   description: service.description,
   features: service.deliverables.slice(0, 4),
+  detailPath: service.detailPath,
 }));
 
 export const products: ProductContentItem[] = productStories.map((product) => ({
@@ -555,10 +557,10 @@ export const footerLinks = {
     { name: "Insights", path: routes.blog },
   ],
   services: [
-    { name: "Mobile & Web Applications", path: `${routes.services}#mobile-web` },
-    { name: "Cloud-backed Business Systems", path: `${routes.services}#cloud-business-systems` },
-    { name: "IoT & Smart POS Tools", path: `${routes.services}#iot-pos` },
-    { name: "Custom Software & Automation", path: `${routes.services}#custom-automation` },
+    { name: "Mobile App Development", path: `${routes.services}/mobile-app-development` },
+    { name: "Web & Cloud Platforms", path: `${routes.services}/web-cloud-platforms` },
+    { name: "AI & ML Systems", path: `${routes.services}/ai-ml-systems` },
+    { name: "IoT Systems", path: `${routes.services}/iot-systems` },
   ],
   build: [
     { name: "Start a Project", path: routes.contact },
@@ -596,7 +598,7 @@ export const createServiceStructuredData = () => ({
     item: {
       "@type": "Service",
       name: service.title,
-      url: `${company.siteUrl}/services#${service.id}`,
+      url: `${company.siteUrl}${service.detailPath ?? `${routes.services}#${service.id}`}`,
       description: service.summary,
       provider: {
         "@type": "Organization",

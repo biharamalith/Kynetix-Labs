@@ -4,6 +4,7 @@ import { FeatureGrid } from "@/components/site/FeatureGrid";
 import { PageSection } from "@/components/site/PageSection";
 import { RevealOnScroll } from "@/components/site/RevealOnScroll";
 import { ValueList } from "@/components/site/ValueList";
+import { SiteButton } from "@/components/site/SiteButton";
 
 export const ServiceShowcase = () => {
   const copy = serviceStoryCopy.overview;
@@ -37,6 +38,11 @@ export const ServiceShowcase = () => {
                   ))}
                 </div>
               </div>
+              {service.detailPath && (
+                <SiteButton to={service.detailPath} variant="outline">
+                  Explore service detail
+                </SiteButton>
+              )}
             </DetailCard>
           </RevealOnScroll>
         ))}
