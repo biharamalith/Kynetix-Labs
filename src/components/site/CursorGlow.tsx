@@ -1,10 +1,11 @@
 import { useEffect } from "react";
+import { getMediaQueryList } from "@/lib/browserEnvironment";
 
 export const CursorGlow = () => {
   useEffect(() => {
     // Desktop-only pointer effect. Touch devices skip this work completely for performance and usability.
-    const mediaQuery = window.matchMedia("(pointer: fine)");
-    if (!mediaQuery.matches) {
+    const mediaQuery = getMediaQueryList("(pointer: fine)");
+    if (!mediaQuery?.matches) {
       return undefined;
     }
 

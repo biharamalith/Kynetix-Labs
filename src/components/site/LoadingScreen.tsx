@@ -1,5 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react";
 import { company, homeCopy } from "@/lib/siteContent";
+import { isSessionFlagSet, setSessionFlag } from "@/lib/browserEnvironment";
 import { motionConfig } from "@/lib/motionConfig";
 import { useReducedMotion } from "./useReducedMotion";
 
@@ -13,7 +14,7 @@ export const LoadingScreen = () => {
   const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
-    if (prefersReducedMotion || sessionStorage.getItem(motionConfig.loadingScreen.storageKey) === "true") {
+    if (prefersReducedMotion || isSessionFlagSet(motionConfig.loadingScreen.storageKey)) {
       return undefined;
     }
 
@@ -21,7 +22,7 @@ export const LoadingScreen = () => {
 
     const leaveTimer = window.setTimeout(() => {
       setIsLeaving(true);
-      sessionStorage.setItem(motionConfig.loadingScreen.storageKey, "true");
+      setSessionFlag(motionConfig.loadingScreen.storageKey);
     }, motionConfig.loadingScreen.minVisibleMs);
 
     const removeTimer = window.setTimeout(() => {

@@ -1,4 +1,6 @@
 import { CSSProperties, ReactNode, createElement, useEffect, useRef, useState } from "react";
+import { getMediaQueryList } from "@/lib/browserEnvironment";
+import { motionConfig } from "@/lib/motionConfig";
 import { cn } from "@/lib/utils";
 
 type RevealTag = "div" | "section" | "article" | "li";
@@ -21,8 +23,8 @@ export const RevealOnScroll = ({ children, className, delay = 0, as = "div" }: R
     }
 
     // Respect OS reduced-motion preference: content appears immediately without scroll animation.
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mediaQuery.matches) {
+    const mediaQuery = getMediaQueryList("(prefers-reduced-motion: reduce)");
+    if (mediaQuery?.matches) {
       setIsVisible(true);
       return undefined;
     }
@@ -40,7 +42,7 @@ export const RevealOnScroll = ({ children, className, delay = 0, as = "div" }: R
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.18, rootMargin: "0px 0px -10% 0px" },
+      { threshold: motionConfig.reveal.threshold, rootMargin: motionConfig.reveal.rootMargin },
     );
 
     observer.observe(element);
