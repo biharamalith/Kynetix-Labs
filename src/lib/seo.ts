@@ -137,3 +137,34 @@ export const createCaseStudyStructuredData = ({
     creativeWorkStatus: status,
   },
 });
+
+export const createServicePageStructuredData = ({
+  siteUrl,
+  path,
+  name,
+  description,
+  providerName,
+  serviceType,
+}: {
+  siteUrl: string;
+  path: string;
+  name: string;
+  description: string;
+  providerName: string;
+  serviceType: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name,
+  description,
+  url: createCanonicalUrl(siteUrl, path),
+  mainEntity: {
+    "@type": "Service",
+    name: serviceType,
+    description,
+    provider: {
+      "@type": "Organization",
+      name: providerName,
+    },
+  },
+});
