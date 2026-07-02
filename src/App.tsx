@@ -6,6 +6,8 @@ import { company, routes } from "@/lib/siteContent";
 const Home = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
 const Services = lazy(() => import("./pages/Services"));
+const Process = lazy(() => import("./pages/Process"));
+const SecurityQuality = lazy(() => import("./pages/SecurityQuality"));
 const Products = lazy(() => import("./pages/Products"));
 const SmartPos = lazy(() => import("./pages/SmartPos"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -36,6 +38,8 @@ const App = () => (
           <Route path={routes.home} element={<Home />} />
           <Route path={routes.about} element={<About />} />
           <Route path={routes.services} element={<Services />} />
+          <Route path={routes.process} element={<Process />} />
+          <Route path={routes.securityQuality} element={<SecurityQuality />} />
           <Route path={routes.products} element={<Products />} />
           <Route path={routes.smartPos} element={<SmartPos />} />
           <Route path={routes.blog} element={<Blog />} />

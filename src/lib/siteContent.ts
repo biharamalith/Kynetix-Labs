@@ -132,6 +132,20 @@ export const seo = {
     keywords:
       "software development services, mobile app development, web development, cloud systems, IoT software, POS system development, business automation",
   },
+  process: {
+    title: "Software Delivery Process - Discovery, Build, QA & Launch | Kynetix Labs",
+    description:
+      "See how Kynetix Labs turns software ideas into scoped plans, interface flows, maintainable implementation, quality checks, and launch-ready handover.",
+    keywords:
+      "software delivery process, product discovery, software project planning, UI workflow planning, launch checklist, maintainable software development",
+  },
+  securityQuality: {
+    title: "Security & Quality Approach - Maintainable Software Delivery | Kynetix Labs",
+    description:
+      "Review the Kynetix Labs approach to truthful software claims, reusable architecture, form data care, accessibility basics, testing gates, and launch quality.",
+    keywords:
+      "software quality approach, security-aware development, accessibility checks, frontend quality gates, maintainable software architecture, Kynetix Labs quality",
+  },
   products: {
     title: "Software Product Concepts - Smart POS, Workflow Tools & Connected Portals | Kynetix Labs",
     description:
@@ -517,6 +531,7 @@ export const footerLinks = {
   company: [
     { name: "About", path: routes.about },
     { name: "Services", path: routes.services },
+    { name: "Process", path: routes.process },
     { name: "Products", path: routes.products },
     { name: "Insights", path: routes.blog },
   ],
@@ -528,7 +543,8 @@ export const footerLinks = {
   ],
   build: [
     { name: "Start a Project", path: routes.contact },
-    { name: "Explore Services", path: routes.services },
+    { name: "Delivery Process", path: routes.process },
+    { name: "Security & Quality", path: routes.securityQuality },
     { name: "View Products", path: routes.products },
   ],
   legal: [
