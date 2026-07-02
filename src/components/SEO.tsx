@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { company, seo } from "@/lib/siteContent";
+import { createCanonicalUrl } from "@/lib/seo";
 
 interface SEOProps {
   title?: string;
@@ -33,7 +34,7 @@ export const SEO = ({
   structuredData,
 }: SEOProps) => {
   const location = useLocation();
-  const canonicalUrl = `${company.siteUrl}${location.pathname}`;
+  const canonicalUrl = createCanonicalUrl(company.siteUrl, location.pathname);
 
   useEffect(() => {
     document.title = title;

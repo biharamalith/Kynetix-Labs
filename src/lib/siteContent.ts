@@ -15,6 +15,8 @@ import {
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import { routes } from "@/config/routes";
+import { blogArticles } from "@/content/blog";
 import { productStories } from "@/content/products";
 import { serviceStories } from "@/content/services";
 
@@ -94,18 +96,7 @@ export const company = {
   logoPath: "/logo.png",
 };
 
-/**
- * Public route paths used by router, navigation, buttons, and footer links.
- * Change a route here first, then update the matching page route in App.tsx if needed.
- */
-export const routes = {
-  home: "/",
-  about: "/about",
-  services: "/services",
-  products: "/products",
-  blog: "/blog",
-  contact: "/contact",
-} as const;
+export { routes } from "@/config/routes";
 
 /** Navigation order used by both desktop and mobile navigation. */
 export const navLinks: NavItem[] = [
@@ -160,6 +151,18 @@ export const seo = {
       "Contact Kynetix Labs to discuss mobile apps, web platforms, IoT software, smart POS tools, custom software, or business automation projects.",
     keywords:
       "contact Kynetix Labs, software project inquiry, mobile app development inquiry, web development contact, IoT software contact, POS system inquiry",
+  },
+  privacy: {
+    title: "Privacy Policy - Kynetix Labs",
+    description:
+      "Read how Kynetix Labs handles project inquiry details, website operation data, contact information, and privacy requests from visitors.",
+    keywords: "Kynetix Labs privacy policy, project inquiry privacy, website contact data, software company privacy",
+  },
+  terms: {
+    title: "Terms of Use - Kynetix Labs",
+    description:
+      "Read the Kynetix Labs website terms for public content, project inquiries, service information, product directions, and responsible website use.",
+    keywords: "Kynetix Labs terms, website terms, software project inquiry terms, responsible website use",
   },
 } satisfies Record<string, SeoContent>;
 
@@ -310,6 +313,22 @@ export const pageCopy = {
         "The best first inquiry explains the users, the current workflow problem, the expected outcome, and any budget or timeline constraints you already know.",
     },
   },
+  privacy: {
+    hero: {
+      eyebrow: "Privacy",
+      title: "Privacy policy for website visitors and project inquiries.",
+      description:
+        "This page explains what information the public website receives, why project brief details are collected, and how to contact Kynetix Labs about privacy questions.",
+    },
+  },
+  terms: {
+    hero: {
+      eyebrow: "Terms",
+      title: "Terms for using the Kynetix Labs website.",
+      description:
+        "These terms explain how visitors should use the public website, project inquiry form, articles, service information, and product direction pages.",
+    },
+  },
 };
 
 export const heroCapabilities = ["Mobile", "Web", "Cloud", "IoT", "Automation", "Smart POS"];
@@ -457,35 +476,14 @@ export const products: ProductContentItem[] = productStories.map((product) => ({
   features: product.capabilities.slice(0, 4),
 }));
 
-export const articles: ArticleContentItem[] = [
-  {
-    title: "How to plan a software project before writing code",
-    excerpt:
-      "A clear project starts with the business problem, users, workflows, risks, and launch scope before screens and code are created.",
-    author: "Kynetix Labs",
-    readTime: "6 min read",
-    category: "Planning",
-    slug: "software-project-planning",
-  },
-  {
-    title: "Why reusable UI components matter for business websites",
-    excerpt:
-      "Reusable sections reduce design drift, speed up future pages, and make animated websites easier to maintain without rewriting every screen.",
-    author: "Kynetix Labs",
-    readTime: "5 min read",
-    category: "Frontend",
-    slug: "reusable-ui-components",
-  },
-  {
-    title: "Turning operations into dashboards clients can understand",
-    excerpt:
-      "Good dashboards organize statuses, actions, metrics, and exceptions so teams can make faster decisions with less confusion.",
-    author: "Kynetix Labs",
-    readTime: "7 min read",
-    category: "Operations",
-    slug: "operations-dashboard-design",
-  },
-];
+export const articles: ArticleContentItem[] = blogArticles.map((article) => ({
+  title: article.title,
+  excerpt: article.excerpt,
+  author: article.author,
+  readTime: article.readTime,
+  category: article.category,
+  slug: article.slug,
+}));
 
 export const contactMethods = [
   {
@@ -523,6 +521,10 @@ export const footerLinks = {
     { name: "Start a Project", path: routes.contact },
     { name: "Explore Services", path: routes.services },
     { name: "View Products", path: routes.products },
+  ],
+  legal: [
+    { name: "Privacy", path: routes.privacy },
+    { name: "Terms", path: routes.terms },
   ],
 };
 

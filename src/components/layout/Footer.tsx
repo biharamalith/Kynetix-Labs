@@ -7,7 +7,7 @@ export const Footer = () => {
     <footer className="relative z-10 overflow-hidden border-t border-white/10 bg-[#030507]">
       <div className="footer-glow" aria-hidden="true" />
       <div className="container-main relative z-10 py-14 md:py-20">
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr_0.9fr_0.9fr_0.7fr]">
           <div>
             <Link to="/" className="mb-5 flex items-center gap-3" aria-label={`${company.name} home`}>
               <span className="brand-mark">
@@ -36,6 +36,7 @@ export const Footer = () => {
           <FooterColumn title="Company" links={footerLinks.company} />
           <FooterColumn title="Capabilities" links={footerLinks.services} />
           <FooterColumn title="Build" links={footerLinks.build} />
+          <FooterColumn title="Legal" links={footerLinks.legal} />
         </div>
 
         <div className="mt-14 flex flex-col gap-5 border-t border-white/10 pt-6 text-sm text-white/40 md:flex-row md:items-center md:justify-between">
