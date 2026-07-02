@@ -1,6 +1,4 @@
 import {
-  BarChart3,
-  CheckCircle2,
   CloudCog,
   Code2,
   Cpu,

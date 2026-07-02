@@ -6,11 +6,11 @@ const hasDuplicates = (values: string[]) => new Set(values).size !== values.leng
 
 describe("site content registry", () => {
   it("keeps public navigation paths unique and mapped to central routes", () => {
-    const routeValues = Object.values(routes);
+    const routeValues = new Set<string>(Object.values(routes));
     const navPaths = navLinks.map((item) => item.path);
 
     expect(hasDuplicates(navPaths)).toBe(false);
-    expect(navPaths.every((path) => routeValues.includes(path))).toBe(true);
+    expect(navPaths.every((path) => routeValues.has(path))).toBe(true);
   });
 
   it("keeps service and product IDs stable for anchors and links", () => {

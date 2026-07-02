@@ -1,20 +1,38 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import App from "@/App";
-import { company, homeCopy } from "@/lib/siteContent";
 
-beforeEach(() => {
-  window.sessionStorage.clear();
-});
+import App from "@/App";
+import { company, homeCopy, navLinks } from "@/lib/siteContent";
+import { motionConfig } from "@/lib/motionConfig";
+
+const hasLinkWithNameAndHref = (name: string, href: string) =>
+  screen.getAllByRole("link", { name }).some((link) => link.getAttribute("href") === href);
 
 describe("App", () => {
-  it("renders the home page with shared layout and centralized hero copy", async () => {
+  beforeEach(() => {
+    sessionStorage.setItem(motionConfig.loadingScreen.storageKey, "true");
+  });
+
+  it("renders shared layout and centralized home content", async () => {
     render(<App />);
 
-    expect((await screen.findAllByRole("link", { name: `${company.name} home` })).length).toBeGreaterThan(0);
+    const primaryNavigation = await screen.findByRole("navigation", { name: "Primary navigation" });
+
+    expect(screen.getAllByRole("link", { name: `${company.name} home` }).length).toBeGreaterThan(0);
+
+    for (const item of navLinks) {
+      expect(within(primaryNavigation).getByRole("link", { name: item.name })).toHaveAttribute("href", item.path);
+    }
+
     expect(
-      await screen.findByRole("heading", { level: 1, name: `${homeCopy.hero.title} ${homeCopy.hero.highlight}` }),
+      screen.getByRole("heading", {
+        name: `${homeCopy.hero.title} ${homeCopy.hero.highlight}`,
+        level: 1,
+      }),
     ).toBeInTheDocument();
-    expect(screen.getByRole("status", { name: `Loading ${company.name}` })).toBeInTheDocument();
+    expect(screen.getByText(homeCopy.hero.description)).toBeInTheDocument();
+
+    expect(hasLinkWithNameAndHref(homeCopy.hero.primaryAction.label, homeCopy.hero.primaryAction.path)).toBe(true);
+    expect(hasLinkWithNameAndHref(homeCopy.hero.secondaryAction.label, homeCopy.hero.secondaryAction.path)).toBe(true);
   });
 });
