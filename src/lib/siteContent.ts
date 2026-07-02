@@ -1,8 +1,6 @@
 import {
   CloudCog,
   Code2,
-  Cpu,
-  Gauge,
   Layers3,
   LineChart,
   LockKeyhole,
@@ -11,15 +9,14 @@ import {
   MonitorSmartphone,
   Network,
   Rocket,
-  ScanLine,
   ShieldCheck,
-  ShoppingCart,
-  Smartphone,
   Timer,
   Workflow,
   Zap,
   type LucideIcon,
 } from "lucide-react";
+import { productStories } from "@/content/products";
+import { serviceStories } from "@/content/services";
 
 /**
  * Public website content registry.
@@ -348,53 +345,20 @@ export const capabilityPillars: Array<IconContentItem & { label: string; value: 
   },
 ];
 
-export const homeServices = [
-  {
-    eyebrow: "01 / Product systems",
-    title: "Mobile and web platforms",
-    description:
-      "Customer apps, business portals, dashboards, booking systems, marketplaces, and SaaS interfaces with clean UX and scalable frontend structure.",
-    icon: Smartphone,
-    highlights: ["React / Vite interfaces", "Mobile-ready product thinking", "Admin and customer portals"],
-  },
-  {
-    eyebrow: "02 / Business automation",
-    title: "Workflow and data tools",
-    description:
-      "Internal tools, reporting flows, approval screens, smart summaries, and decision dashboards that help teams move faster with fewer manual steps.",
-    icon: Workflow,
-    highlights: ["Workflow dashboards", "Operational reports", "Data-driven product logic"],
-  },
-  {
-    eyebrow: "03 / Connected systems",
-    title: "IoT, POS, and cloud operations",
-    description:
-      "Smart retail, POS, device-connected apps, inventory/control flows, and cloud-backed operational systems for modern businesses.",
-    icon: ShoppingCart,
-    highlights: ["Smart POS interfaces", "Cloud integration", "Device-to-dashboard workflows"],
-  },
-];
+export const homeServices = serviceStories.slice(0, 3).map((service, index) => ({
+  eyebrow: `${String(index + 1).padStart(2, "0")} / ${service.eyebrow}`,
+  title: service.title,
+  description: service.summary,
+  icon: service.icon,
+  highlights: service.outcomes,
+}));
 
-export const homeProducts = [
-  {
-    name: "Smart POS Suite",
-    category: "Retail operations",
-    summary: "Billing, inventory, sales analytics, staff workflows, and owner dashboards for growing retail businesses.",
-    icon: ScanLine,
-  },
-  {
-    name: "Workflow Command Center",
-    category: "Business automation",
-    summary: "Task queues, approvals, summaries, alerts, and exception handling for teams that need operational control.",
-    icon: Cpu,
-  },
-  {
-    name: "Connected Ops Portal",
-    category: "IoT and cloud",
-    summary: "Device states, telemetry, alerts, maintenance views, and operator actions in one clear control portal.",
-    icon: Gauge,
-  },
-];
+export const homeProducts = productStories.slice(0, 3).map((product) => ({
+  name: product.title,
+  category: product.category,
+  summary: product.summary,
+  icon: product.icon,
+}));
 
 export const processSteps = [
   {
@@ -475,74 +439,23 @@ export const founders = [
   },
 ];
 
-export const services: ServiceContentItem[] = [
-  {
-    id: "mobile-web",
-    icon: MonitorSmartphone,
-    title: "Mobile and web applications",
-    summary: "Customer-facing apps and web platforms designed for speed, clarity, and real business use.",
-    description:
-      "We build responsive product interfaces, admin portals, booking flows, dashboards, and client-facing systems with reusable React architecture and mobile-first thinking.",
-    features: ["Responsive web applications", "Mobile app product flows", "Admin and customer portals", "Reusable component systems"],
-  },
-  {
-    id: "cloud-business-systems",
-    icon: CloudCog,
-    title: "Cloud-backed business systems",
-    summary: "Operational software that connects teams, data, workflows, and customer actions.",
-    description:
-      "We design dashboards, workflow tools, API-ready screens, reporting views, and business systems that can grow from launch to long-term operation.",
-    features: ["Business dashboards", "Workflow and approval flows", "API-ready frontend structure", "Performance-aware architecture"],
-  },
-  {
-    id: "iot-pos",
-    icon: ShoppingCart,
-    title: "IoT and smart POS tools",
-    summary: "Retail, device, and operations interfaces that turn daily activity into clear control screens.",
-    description:
-      "We help businesses design connected dashboards for sales, inventory, device states, alerts, staff activity, and owner-level decision views.",
-    features: ["Smart POS interfaces", "Inventory and sales views", "Device status dashboards", "Operational alerts and summaries"],
-  },
-  {
-    id: "custom-automation",
-    icon: Workflow,
-    title: "Custom software and automation",
-    summary: "Purpose-built tools for companies that need fewer manual steps and clearer decisions.",
-    description:
-      "We turn repeated manual tasks into structured workflows with clear forms, status states, operator actions, evidence views, and maintainable screen logic.",
-    features: ["Internal tools", "Task and approval queues", "Status and evidence views", "Business process automation"],
-  },
-];
+export const services: ServiceContentItem[] = serviceStories.map((service) => ({
+  id: service.id,
+  icon: service.icon,
+  title: service.title,
+  summary: service.summary,
+  description: service.description,
+  features: service.deliverables.slice(0, 4),
+}));
 
-export const products: ProductContentItem[] = [
-  {
-    id: "smart-pos-suite",
-    icon: ScanLine,
-    title: "Smart POS Suite",
-    category: "Retail operations",
-    description:
-      "A software direction for billing, inventory, sales analytics, staff workflows, and owner dashboards built around small and growing retailers.",
-    features: ["Billing and sales screens", "Inventory visibility", "Staff workflow support", "Owner reporting dashboard"],
-  },
-  {
-    id: "workflow-command-center",
-    icon: Workflow,
-    title: "Workflow Command Center",
-    category: "Business operations",
-    description:
-      "A dashboard direction for teams that need task queues, approvals, exception handling, summaries, and clear operator actions.",
-    features: ["Task queues", "Approval flows", "Exception handling", "Team activity summaries"],
-  },
-  {
-    id: "connected-ops-portal",
-    icon: Gauge,
-    title: "Connected Ops Portal",
-    category: "IoT and cloud",
-    description:
-      "A control portal direction for device states, telemetry views, alerts, maintenance workflows, and operational visibility.",
-    features: ["Device state views", "Telemetry summaries", "Alert workflows", "Maintenance actions"],
-  },
-];
+export const products: ProductContentItem[] = productStories.map((product) => ({
+  id: product.id,
+  icon: product.icon,
+  title: product.title,
+  category: product.category,
+  description: product.description,
+  features: product.capabilities.slice(0, 4),
+}));
 
 export const articles: ArticleContentItem[] = [
   {
