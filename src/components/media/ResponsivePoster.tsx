@@ -24,15 +24,6 @@ export const ResponsivePoster = ({ className, decorative = false }: ResponsivePo
         decoding="async"
         aria-hidden="true"
       />
-      <div className="responsive-poster-grid" />
-      <div className="responsive-poster-horizon" />
-      <div className="responsive-poster-core">
-        <span>{cinematicHeroMedia.eyebrow}</span>
-        <strong>{cinematicHeroMedia.title}</strong>
-      </div>
-      <div className="responsive-poster-rail responsive-poster-rail-one" />
-      <div className="responsive-poster-rail responsive-poster-rail-two" />
-      <div className="responsive-poster-rail responsive-poster-rail-three" />
     </div>
   );
 };

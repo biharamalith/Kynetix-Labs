@@ -18,7 +18,7 @@ export const IndustryCard = ({ industry }: IndustryCardProps) => {
       <p className="text-sm leading-7 text-white/60">{industry.description}</p>
 
       <div>
-        <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">Common pressure</h4>
+        <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-white/60">Common pressure</h4>
         <div className="grid gap-4">
           {industry.buyerPains.map((point) => (
             <div key={point.label} className="rounded-2xl border border-white/10 bg-white/[0.025] p-4">
@@ -30,12 +30,12 @@ export const IndustryCard = ({ industry }: IndustryCardProps) => {
       </div>
 
       <div className="rounded-2xl border border-white/10 bg-white/[0.025] p-4">
-        <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">Proof boundary</h4>
+        <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">Proof boundary</h4>
         <p className="mt-3 text-sm leading-7 text-white/58">{industry.proofBoundary}</p>
       </div>
 
       <div className="grid gap-3">
-        <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">Relevant Kynetix paths</h4>
+        <h4 className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">Relevant Kynetix paths</h4>
         {industry.systemFit.map((fit) => (
           <SiteButton key={fit.title} to={fit.path} variant="ghost" className="justify-between text-left" showArrow>
             {fit.title}

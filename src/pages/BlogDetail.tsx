@@ -65,12 +65,12 @@ const BlogDetail = () => {
                 <span>Updated {article.updatedDate}</span>
               </div>
 
-              <div className="mt-8 rounded-[1.75rem] border border-cyan-200/10 bg-cyan-200/[0.04] p-6">
+              <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-white/[0.04] p-6">
                 <h2 className="font-display text-xl font-semibold text-white">Key takeaways</h2>
                 <ul className="mt-5 space-y-3">
                   {article.takeaways.map((takeaway) => (
                     <li key={takeaway} className="flex gap-3 text-sm leading-7 text-white/65">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-200" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
                       <span>{takeaway}</span>
                     </li>
                   ))}

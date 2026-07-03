@@ -18,19 +18,19 @@ afterEach(() => {
 });
 
 describe("HeroMedia", () => {
-  it("renders the home hero media layer with the cinematic video sequence on desktop", () => {
+  it("renders the home hero media layer with the cinematic video sequence on desktop without visible media labels", () => {
     setViewportWidth(1280);
     const { container } = render(<HeroMedia />);
 
     const video = container.querySelector("video");
 
     expect(container.querySelector(".hero-media-layer")).toBeInTheDocument();
+    expect(container.querySelector(".media-frame-label")).not.toBeInTheDocument();
     expect(container.querySelector(".hero-media-signal-strip")).not.toBeInTheDocument();
     expect(video).toBeInTheDocument();
     expect((video as HTMLVideoElement).muted).toBe(true);
     expect((video as HTMLVideoElement).playsInline).toBe(true);
     expect(video).toHaveAttribute("poster", cinematicHeroMedia.poster.src);
-    expect(screen.getByText("Video sequence")).toBeInTheDocument();
 
     for (const source of cinematicHeroMedia.videoSources) {
       expect(container.querySelector(`source[src="${source.src}"]`)).toBeInTheDocument();
@@ -42,7 +42,6 @@ describe("HeroMedia", () => {
     const { container } = render(<VideoHero />);
 
     expect(container.querySelector("video")).not.toBeInTheDocument();
-    expect(screen.getByText("Poster fallback")).toBeInTheDocument();
     expect(screen.getByRole("img", { name: cinematicHeroMedia.posterAlt })).toBeInTheDocument();
   });
 
@@ -55,6 +54,6 @@ describe("HeroMedia", () => {
     fireEvent.error(video as HTMLVideoElement);
 
     expect(container.querySelector("video")).not.toBeInTheDocument();
-    expect(screen.getByText("Poster fallback")).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: cinematicHeroMedia.posterAlt })).toBeInTheDocument();
   });
 });

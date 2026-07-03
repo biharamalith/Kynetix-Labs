@@ -10,7 +10,7 @@ interface MediaFrameProps {
   mediaState?: string;
 }
 
-export const MediaFrame = ({ children, className, label, ariaLabel, decorative = false, mediaState }: MediaFrameProps) => {
+export const MediaFrame = ({ children, className, ariaLabel, decorative = false, mediaState }: MediaFrameProps) => {
   return (
     <div
       className={cn("media-frame", className)}
@@ -19,7 +19,6 @@ export const MediaFrame = ({ children, className, label, ariaLabel, decorative =
       aria-hidden={decorative ? "true" : undefined}
       data-media-state={mediaState}
     >
-      {label ? <span className="media-frame-label">{label}</span> : null}
       {children}
     </div>
   );

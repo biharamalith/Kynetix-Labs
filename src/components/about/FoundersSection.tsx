@@ -21,7 +21,7 @@ export const FoundersSection = () => {
         {founders.map((founder, index) => (
           <RevealOnScroll key={founder.name} delay={index * 120}>
             <ContentCard className="p-7 text-center">
-              <div className="relative mx-auto mb-6 h-40 w-40 overflow-hidden rounded-full border border-cyan-200/20 md:h-48 md:w-48">
+              <div className="relative mx-auto mb-6 h-40 w-40 overflow-hidden rounded-full border border-white/20 md:h-48 md:w-48">
                 <img
                   src={founderImages[founder.imageKey]}
                   alt={founder.name}

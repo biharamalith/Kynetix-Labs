@@ -85,7 +85,7 @@ export const ProjectContactForm = () => {
         <ul className="mt-6 space-y-3">
           {projectBriefResponseSteps.map((step) => (
             <li key={step} className="flex gap-3 text-sm leading-6 text-white/65">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-200" />
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white" />
               <span>{step}</span>
             </li>
           ))}
@@ -197,7 +197,7 @@ const FormField = ({ children, label, htmlFor, error, required = false }: FormFi
   return (
     <div>
       <label htmlFor={htmlFor} className="mb-2 block text-sm font-medium text-white/80">
-        {label} {required && <span className="text-cyan-200">*</span>}
+        {label} {required && <span className="text-white">*</span>}
       </label>
       {children}
       {error && <p className="mt-2 text-sm text-red-200">{error}</p>}

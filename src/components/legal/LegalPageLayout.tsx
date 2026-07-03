@@ -21,7 +21,7 @@ export const LegalPageLayout = ({ content, seo }: LegalPageLayoutProps) => (
       <div className="container-main">
         <RevealOnScroll>
           <ContentCard className="mx-auto max-w-4xl p-7 md:p-10" intensity="strong">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-100/60">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-white/60">
               Effective {content.effectiveDate}
             </p>
             <div className="mt-8 space-y-9">

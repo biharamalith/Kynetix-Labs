@@ -16,11 +16,11 @@ export const ProjectBriefSummary = () => {
         ))}
       </div>
       <div className="mt-7 border-t border-white/10 pt-6">
-        <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-cyan-100/80">After submit</p>
+        <p className="font-display text-sm font-semibold uppercase tracking-[0.2em] text-white/80">After submit</p>
         <ul className="mt-4 space-y-3">
           {projectBriefResponseSteps.map((step) => (
             <li key={step} className="flex gap-3 text-sm leading-6 text-white/60">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-cyan-200" />
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-white" />
               <span>{step}</span>
             </li>
           ))}

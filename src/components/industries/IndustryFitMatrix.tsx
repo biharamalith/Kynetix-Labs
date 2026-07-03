@@ -17,7 +17,7 @@ export const IndustryFitMatrix = () => {
           <RevealOnScroll key={industry.slug} delay={index * 45}>
             <ContentCard className="grid gap-6 p-6 lg:grid-cols-[0.8fr_1.2fr_1fr] lg:items-start">
               <div>
-                <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-cyan-100/55">{industry.eyebrow}</p>
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-white/55">{industry.eyebrow}</p>
                 <h3 className="mt-3 font-display text-xl font-semibold text-white">{industry.title}</h3>
               </div>
               <div>
@@ -34,7 +34,7 @@ export const IndustryFitMatrix = () => {
                 <p className="text-xs font-bold uppercase tracking-[0.22em] text-white/45">Useful paths</p>
                 <div className="mt-3 grid gap-2">
                   {industry.systemFit.map((fit) => (
-                    <Link key={fit.title} to={fit.path} className="text-sm text-cyan-100/75 transition-colors hover:text-cyan-100">
+                    <Link key={fit.title} to={fit.path} className="text-sm text-white/75 transition-colors hover:text-white">
                       {fit.title}
                     </Link>
                   ))}

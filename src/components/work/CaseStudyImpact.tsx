@@ -11,7 +11,7 @@ export const CaseStudyImpact = ({ results }: CaseStudyImpactProps) => {
       {results.map((result) => (
         <ContentCard key={result.label} className="p-5">
           <div className="relative z-10">
-            <p className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">{result.label}</p>
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">{result.label}</p>
             <p className="mt-3 text-sm leading-7 text-white/62">{result.description}</p>
           </div>
         </ContentCard>

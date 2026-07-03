@@ -21,7 +21,7 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
             <Icon className="h-6 w-6" />
           </div>
           <div className="grid justify-items-end gap-2 text-right">
-            <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-cyan-100/55">{study.eyebrow}</span>
+            <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-white/55">{study.eyebrow}</span>
             <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-white/45">
               {study.status}
             </span>
@@ -37,7 +37,7 @@ export const CaseStudyCard = ({ study }: CaseStudyCardProps) => {
         <Link
           to={path}
           aria-label={`View case study: ${study.title}`}
-          className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold uppercase tracking-[0.18em] text-cyan-100 transition-colors duration-300 hover:text-white"
+          className="mt-auto inline-flex items-center gap-2 pt-8 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-colors duration-300 hover:text-white"
         >
           View story
           <ArrowRight className="h-4 w-4" />

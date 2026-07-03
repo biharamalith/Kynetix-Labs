@@ -30,7 +30,7 @@ export const TechStackSection = () => {
                       <Icon className="h-5 w-5" />
                     </div>
                     <span>{signal.label}</span>
-                    <CheckCircle2 className="ml-auto h-4 w-4 text-cyan-200/70" />
+                    <CheckCircle2 className="ml-auto h-4 w-4 text-white/70" />
                   </div>
                 </RevealOnScroll>
               );

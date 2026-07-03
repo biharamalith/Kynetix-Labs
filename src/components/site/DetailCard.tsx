@@ -35,7 +35,7 @@ export const DetailCard = ({
           )}
           {(eyebrow || meta) && (
             <div className="grid justify-items-end gap-2 text-right">
-              {eyebrow && <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-cyan-100/55">{eyebrow}</span>}
+              {eyebrow && <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-white/55">{eyebrow}</span>}
               {meta && (
                 <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[0.65rem] uppercase tracking-[0.2em] text-white/45">
                   {meta}

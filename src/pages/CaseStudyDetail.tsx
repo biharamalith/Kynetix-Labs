@@ -61,13 +61,13 @@ const CaseStudyDetail = () => {
           <div className="grid gap-5 lg:grid-cols-2">
             <ContentCard className="p-7" intensity="strong">
               <div className="relative z-10">
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">Challenge</p>
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">Challenge</p>
                 <p className="mt-4 text-sm leading-7 text-white/65 md:text-base">{study.challenge}</p>
               </div>
             </ContentCard>
             <ContentCard className="p-7" intensity="strong">
               <div className="relative z-10">
-                <p className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">Solution</p>
+                <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">Solution</p>
                 <p className="mt-4 text-sm leading-7 text-white/65 md:text-base">{study.solution}</p>
               </div>
             </ContentCard>

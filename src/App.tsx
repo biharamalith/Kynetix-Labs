@@ -28,7 +28,7 @@ const PageFallback = () => (
     aria-label={`Loading page content for ${company.name}`}
   >
     <div className="text-center">
-      <div className="mx-auto mb-5 h-12 w-12 animate-pulse rounded-2xl border border-cyan-200/30 bg-cyan-200/10" />
+      <div className="mx-auto mb-5 h-12 w-12 animate-pulse rounded-2xl border border-white/30 bg-white/10" />
       <p className="text-sm uppercase tracking-[0.24em] text-white/50">Loading {company.name}</p>
     </div>
   </div>
