@@ -7,6 +7,7 @@ import { KineticCoreSection } from "@/components/visual/KineticCoreSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { ProductHighlightsSection } from "@/components/home/ProductHighlightsSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
+import { ScrollStorySection } from "@/components/storytelling/ScrollStorySection";
 import { TechStackSection } from "@/components/home/TechStackSection";
 import { createOrganizationStructuredData, seo } from "@/lib/siteContent";
 
@@ -17,6 +18,7 @@ const Index = () => {
       <HeroSection />
       <CapabilityStrip />
       <KineticCoreSection />
+      <ScrollStorySection />
       <ServicesSection />
       <ProductHighlightsSection />
       <ProcessSection />
