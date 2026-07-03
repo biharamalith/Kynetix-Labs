@@ -3,6 +3,7 @@ import { SEO } from "@/components/SEO";
 import { CapabilityStrip } from "@/components/home/CapabilityStrip";
 import { CTASection } from "@/components/home/CTASection";
 import { HeroSection } from "@/components/home/HeroSection";
+import { KineticCoreSection } from "@/components/visual/KineticCoreSection";
 import { ProcessSection } from "@/components/home/ProcessSection";
 import { ProductHighlightsSection } from "@/components/home/ProductHighlightsSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
@@ -15,6 +16,7 @@ const Index = () => {
       <SEO {...seo.home} structuredData={createOrganizationStructuredData()} />
       <HeroSection />
       <CapabilityStrip />
+      <KineticCoreSection />
       <ServicesSection />
       <ProductHighlightsSection />
       <ProcessSection />

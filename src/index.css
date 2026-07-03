@@ -1083,6 +1083,232 @@
     @apply inline-flex items-center gap-3 text-sm text-white/60 transition-colors duration-300 hover:text-cyan-100;
   }
 
+  .kinetic-core-section {
+    @apply relative overflow-hidden py-20 md:py-28;
+    background:
+      radial-gradient(circle at 78% 26%, rgba(34, 211, 238, 0.11), transparent 34%),
+      radial-gradient(circle at 18% 78%, rgba(37, 99, 235, 0.10), transparent 28%),
+      linear-gradient(180deg, rgba(2, 6, 9, 0.88), rgba(4, 12, 18, 0.98));
+  }
+
+  .kinetic-core-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(103, 232, 249, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(103, 232, 249, 0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at 62% 44%, black, transparent 72%);
+  }
+
+  .kinetic-core-layout {
+    @apply relative z-10 grid items-center gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16;
+  }
+
+  .kinetic-core-copy {
+    @apply max-w-3xl;
+  }
+
+  .kinetic-core-proof-note {
+    @apply mt-6 max-w-2xl rounded-2xl border border-cyan-200/10 bg-white/[0.035] px-5 py-4 text-sm leading-7 text-cyan-50/60;
+    box-shadow: var(--kx-glow-soft);
+  }
+
+  .kinetic-core-actions {
+    @apply mt-8 flex flex-wrap gap-3;
+  }
+
+  .kinetic-core-visual-column {
+    @apply relative min-h-[24rem] lg:min-h-[34rem];
+  }
+
+  .kinetic-core-shell,
+  .kinetic-core-fallback {
+    @apply relative min-h-[24rem] overflow-hidden rounded-[2rem] border border-cyan-100/10 bg-white/[0.035] backdrop-blur-xl lg:min-h-[34rem];
+    box-shadow: var(--kx-glow-strong), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  .kinetic-core-depth-grid {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(103, 232, 249, 0.08) 1px, transparent 1px),
+      linear-gradient(rgba(103, 232, 249, 0.07) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: radial-gradient(circle at center, black, transparent 72%);
+    opacity: 0.52;
+  }
+
+  .kinetic-core-scene {
+    position: absolute;
+    inset: 2rem;
+    transform-style: preserve-3d;
+    perspective: 1100px;
+  }
+
+  .kinetic-core-scene::before {
+    content: "";
+    position: absolute;
+    inset: 16%;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(34, 211, 238, 0.2), transparent 58%);
+    filter: blur(28px);
+  }
+
+  .kinetic-core-layer {
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    top: calc(16% + (var(--kinetic-layer-depth) * 13%));
+    height: 4.2rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(103, 232, 249, 0.12);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.018));
+    transform: rotateX(64deg) rotateZ(-9deg) translateZ(calc(var(--kinetic-layer-depth) * 22px));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 26px 70px rgba(0, 0, 0, 0.32);
+  }
+
+  .kinetic-core-layer span {
+    @apply absolute left-5 top-1/2 -translate-y-1/2 text-[0.62rem] font-bold uppercase tracking-[0.22em] text-cyan-50/60;
+  }
+
+  .kinetic-core-orbit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 9999px;
+    border: 1px solid rgba(103, 232, 249, 0.22);
+    transform: translate(-50%, -50%) rotateX(66deg) rotateZ(-12deg);
+  }
+
+  .kinetic-core-orbit-one {
+    width: 13rem;
+    height: 13rem;
+    animation: kinetic-orbit-spin 18s linear infinite;
+  }
+
+  .kinetic-core-orbit-two {
+    width: 20rem;
+    height: 20rem;
+    animation: kinetic-orbit-spin 26s linear infinite reverse;
+  }
+
+  .kinetic-core-orbit-three {
+    width: 27rem;
+    height: 27rem;
+    opacity: 0.72;
+    animation: kinetic-orbit-spin 34s linear infinite;
+  }
+
+  .kinetic-core-center {
+    @apply absolute left-1/2 top-1/2 z-20 grid h-28 w-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-cyan-100/25 bg-black/55 text-center backdrop-blur-xl;
+    box-shadow: 0 0 70px rgba(34, 211, 238, 0.22), inset 0 0 34px rgba(103, 232, 249, 0.12);
+  }
+
+  .kinetic-core-center span {
+    @apply font-display text-2xl font-semibold tracking-[-0.04em] text-white;
+  }
+
+  .kinetic-core-center strong {
+    @apply text-[0.58rem] font-bold uppercase tracking-[0.22em] text-cyan-100/60;
+  }
+
+  .kinetic-core-node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 18;
+    border-radius: 9999px;
+    border: 1px solid rgba(103, 232, 249, 0.28);
+    background: rgba(2, 6, 9, 0.72);
+    padding: 0.55rem 0.75rem;
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(224, 251, 255, 0.78);
+    transform: rotate(var(--kinetic-node-angle)) translateX(var(--kinetic-node-radius)) rotate(calc(var(--kinetic-node-angle) * -1));
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.12);
+  }
+
+  .kinetic-core-node-orbit-1 { --kinetic-node-radius: 6.5rem; }
+  .kinetic-core-node-orbit-2 { --kinetic-node-radius: 10rem; }
+  .kinetic-core-node-orbit-3 { --kinetic-node-radius: 13.5rem; }
+
+  .kinetic-core-beam {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 1px;
+    width: 72%;
+    background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.38), transparent);
+    transform-origin: left center;
+    box-shadow: 0 0 28px rgba(34, 211, 238, 0.2);
+  }
+
+  .kinetic-core-beam-one { transform: rotate(-14deg) translateX(-50%); }
+  .kinetic-core-beam-two { transform: rotate(48deg) translateX(-50%); opacity: 0.64; }
+
+  .kinetic-core-layers {
+    @apply relative z-10 mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4;
+  }
+
+  .kinetic-core-layer-card {
+    @apply rounded-[1.5rem] border border-white/10 bg-white/[0.035] p-5 backdrop-blur-xl;
+    box-shadow: var(--kx-glow-soft);
+  }
+
+  .kinetic-core-layer-card span {
+    @apply text-[0.62rem] font-bold uppercase tracking-[0.22em] text-cyan-100/55;
+  }
+
+  .kinetic-core-layer-card h3 {
+    @apply mt-4 font-display text-xl font-semibold text-white;
+  }
+
+  .kinetic-core-layer-card p {
+    @apply mt-3 text-sm leading-7 text-white/60;
+  }
+
+  .kinetic-core-safety {
+    @apply relative z-10 mt-6 grid gap-3 lg:grid-cols-4;
+  }
+
+  .kinetic-core-safety span {
+    @apply rounded-2xl border border-cyan-100/10 bg-cyan-100/[0.025] px-4 py-3 text-xs leading-6 text-cyan-50/50;
+  }
+
+  .kinetic-core-fallback {
+    @apply grid place-items-center p-6;
+  }
+
+  .kinetic-core-fallback-mark {
+    @apply absolute inset-8 rounded-full border border-cyan-100/15;
+    box-shadow: inset 0 0 70px rgba(34, 211, 238, 0.08), 0 0 80px rgba(34, 211, 238, 0.08);
+  }
+
+  .kinetic-core-fallback-mark span {
+    @apply absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full border border-cyan-100/20 bg-cyan-100/10;
+  }
+
+  .kinetic-core-fallback-stack {
+    @apply relative z-10 grid w-full max-w-lg gap-3;
+  }
+
+  .kinetic-core-fallback-layer {
+    @apply flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 px-5 py-4 text-sm backdrop-blur-md;
+  }
+
+  .kinetic-core-fallback-layer span {
+    @apply font-bold uppercase tracking-[0.2em] text-white/60;
+  }
+
+  .kinetic-core-fallback-layer strong {
+    @apply font-display text-cyan-100/70;
+  }
+
   /* RevealOnScroll toggles .is-visible. This centralizes scroll animation timing in one place. */
   .reveal-motion {
     opacity: 0;
@@ -1195,6 +1421,11 @@
   to { transform: translate3d(3%, 1%, 0) scale(1.03); }
 }
 
+@keyframes kinetic-orbit-spin {
+  from { transform: translate(-50%, -50%) rotateX(66deg) rotateZ(-12deg); }
+  to { transform: translate(-50%, -50%) rotateX(66deg) rotateZ(348deg); }
+}
+
 @keyframes hero-copy-in {
   from { opacity: 0; transform: translateY(32px); filter: blur(10px); }
   to { opacity: 1; transform: translateY(0); filter: blur(0); }
@@ -1267,7 +1498,8 @@
 
   .responsive-poster::before,
   .responsive-poster-grid,
-  .hero-media-layer {
+  .hero-media-layer,
+  .kinetic-core-orbit {
     animation: none !important;
   }
 }
