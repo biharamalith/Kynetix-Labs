@@ -1,4 +1,4 @@
-import { cinematicHeroMedia } from "@/config/media";
+import { cinematicHeroMedia, type HeroVideoSource } from "@/config/media";
 
 export interface NetworkInformationLike {
   saveData?: boolean;
@@ -75,6 +75,14 @@ export const shouldUsePosterFallback = ({
   }
 
   return false;
+};
+
+export const getHeroVideoBudgetTotal = (sources: readonly Pick<HeroVideoSource, "maxBytes">[]) => {
+  return sources.reduce((total, source) => total + source.maxBytes, 0);
+};
+
+export const isHeroVideoWithinBudget = (sources: readonly Pick<HeroVideoSource, "maxBytes">[]) => {
+  return getHeroVideoBudgetTotal(sources) <= cinematicHeroMedia.budget.maxHeroVideoBytes;
 };
 
 export const canPlayHeroVideo = (input: MediaRuntimeInput, sourceCount: number) => {

@@ -676,15 +676,33 @@
   }
 
   .media-frame-label {
-    @apply absolute right-5 top-5 z-20 rounded-full border border-cyan-200/20 bg-black/40 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-cyan-100/70 backdrop-blur-md;
+    @apply absolute right-5 top-5 z-30 rounded-full border border-cyan-200/20 bg-black/45 px-3 py-1 text-[0.6rem] font-bold uppercase tracking-[0.22em] text-cyan-100/70 backdrop-blur-md;
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.09);
   }
 
   .video-hero {
     @apply h-full w-full;
+    background: #020609;
   }
 
   .video-hero-element {
-    @apply h-full w-full object-cover;
+    @apply absolute inset-0 h-full w-full object-cover;
+    z-index: 4;
+    opacity: 0;
+    filter: saturate(1.04) contrast(1.06) brightness(0.9);
+    transform: scale(1.012);
+    transition: opacity 900ms var(--kx-ease-out), transform 1800ms var(--kx-ease-out);
+  }
+
+  .video-hero-element-ready {
+    opacity: 0.82;
+    transform: scale(1);
+  }
+
+  .video-hero-poster-underlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 
   .responsive-poster {
@@ -694,14 +712,23 @@
       radial-gradient(circle at 72% 48%, rgba(34, 211, 238, 0.28), transparent 34%);
   }
 
+  .responsive-poster-image {
+    @apply absolute inset-0 h-full w-full object-cover;
+    z-index: 0;
+    opacity: 0.78;
+    filter: saturate(1.08) contrast(1.08) brightness(0.78);
+    transform: scale(1.01);
+  }
+
   .responsive-poster::before {
     content: "";
     position: absolute;
     inset: -20% -8%;
+    z-index: 1;
     background:
-      linear-gradient(105deg, transparent 0 28%, rgba(103, 232, 249, 0.18) 29%, transparent 31% 100%),
-      linear-gradient(112deg, transparent 0 46%, rgba(59, 130, 246, 0.14) 47%, transparent 49% 100%),
-      linear-gradient(118deg, transparent 0 63%, rgba(255, 255, 255, 0.08) 64%, transparent 65% 100%);
+      linear-gradient(105deg, transparent 0 28%, rgba(103, 232, 249, 0.14) 29%, transparent 31% 100%),
+      linear-gradient(112deg, transparent 0 46%, rgba(59, 130, 246, 0.11) 47%, transparent 49% 100%),
+      linear-gradient(118deg, transparent 0 63%, rgba(255, 255, 255, 0.06) 64%, transparent 65% 100%);
     filter: blur(0.5px);
     transform: translate3d(-2%, 0, 0);
     animation: poster-drift 12s ease-in-out infinite alternate;
@@ -711,12 +738,16 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(2, 6, 9, 0.12), transparent 44%, rgba(2, 6, 9, 0.88));
+    z-index: 6;
+    background:
+      linear-gradient(180deg, rgba(2, 6, 9, 0.10), transparent 44%, rgba(2, 6, 9, 0.88)),
+      linear-gradient(90deg, rgba(2, 6, 9, 0.58), transparent 42%, rgba(2, 6, 9, 0.34));
   }
 
   .responsive-poster-grid {
     position: absolute;
     inset: 0;
+    z-index: 2;
     opacity: 0.2;
     background-image:
       linear-gradient(rgba(103, 232, 249, 0.08) 1px, transparent 1px),
@@ -730,6 +761,7 @@
     position: absolute;
     left: 48%;
     top: 50%;
+    z-index: 3;
     height: 26rem;
     width: 54rem;
     transform: translate(-12%, -50%) perspective(900px) rotateX(62deg) rotateZ(-8deg);
@@ -754,6 +786,7 @@
   .responsive-poster-rail {
     position: absolute;
     right: -8%;
+    z-index: 4;
     height: 1px;
     width: 58%;
     background: linear-gradient(90deg, transparent, rgba(103, 232, 249, 0.58), transparent);

@@ -5,11 +5,20 @@ interface MediaFrameProps {
   children: ReactNode;
   className?: string;
   label?: string;
+  ariaLabel?: string;
+  decorative?: boolean;
+  mediaState?: string;
 }
 
-export const MediaFrame = ({ children, className, label }: MediaFrameProps) => {
+export const MediaFrame = ({ children, className, label, ariaLabel, decorative = false, mediaState }: MediaFrameProps) => {
   return (
-    <div className={cn("media-frame", className)}>
+    <div
+      className={cn("media-frame", className)}
+      role={!decorative && ariaLabel ? "img" : undefined}
+      aria-label={!decorative ? ariaLabel : undefined}
+      aria-hidden={decorative ? "true" : undefined}
+      data-media-state={mediaState}
+    >
       {label ? <span className="media-frame-label">{label}</span> : null}
       {children}
     </div>
