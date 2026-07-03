@@ -26,7 +26,7 @@ export const ServiceShowcase = () => {
               <ValueList title="Business outcomes" items={service.outcomes} columns="two" />
               <ValueList title="Core deliverables" items={service.deliverables} columns="two" />
               <div>
-                <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">Common use cases</h4>
+                <h4 className="mb-4 text-xs font-bold uppercase tracking-[0.24em] text-white/60">Common use cases</h4>
                 <div className="flex flex-wrap gap-2">
                   {service.useCases.map((item) => (
                     <span

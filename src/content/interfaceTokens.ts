@@ -53,7 +53,7 @@ export const interactionTokens: InteractionToken[] = [
   },
   {
     name: "Focus ring",
-    value: "focus-visible:ring-cyan-200",
+    value: "focus-visible:ring-white",
     rule: "Every interactive primitive must keep a clear keyboard focus state.",
   },
 ];

@@ -15,8 +15,8 @@ export const DeliveryAssurance = () => {
       <RevealOnScroll>
         <MetricStrip items={processAssuranceItems} />
       </RevealOnScroll>
-      <RevealOnScroll className="mt-12 rounded-[2rem] border border-cyan-200/15 bg-cyan-200/[0.045] p-7 text-center md:p-10">
-        <p className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/60">{processPageContent.cta.eyebrow}</p>
+      <RevealOnScroll className="mt-12 rounded-[2rem] border border-white/15 bg-white/[0.045] p-7 text-center md:p-10">
+        <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">{processPageContent.cta.eyebrow}</p>
         <h3 className="mx-auto mt-4 max-w-3xl font-display text-3xl font-semibold text-white md:text-4xl">
           {processPageContent.cta.title}
         </h3>

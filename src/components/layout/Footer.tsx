@@ -15,7 +15,7 @@ export const Footer = () => {
               </span>
               <span>
                 <span className="block font-display text-xl font-semibold text-white">{company.name}</span>
-                <span className="block text-xs uppercase tracking-[0.25em] text-cyan-200/50">{company.footerTagline}</span>
+                <span className="block text-xs uppercase tracking-[0.25em] text-white/50">{company.footerTagline}</span>
               </span>
             </Link>
             <p className="max-w-sm text-sm leading-7 text-white/60">
@@ -43,10 +43,10 @@ export const Footer = () => {
           <p>© {new Date().getFullYear()} {company.name}. All rights reserved.</p>
           <div className="flex flex-wrap gap-5">
             <span className="inline-flex items-center gap-2">
-              <Radar className="h-4 w-4 text-cyan-200/60" />
+              <Radar className="h-4 w-4 text-white/60" />
 Built for precise digital systems
             </span>
-            <Link to="/contact" className="hover:text-cyan-200">
+            <Link to="/contact" className="hover:text-white">
 Request a project brief
             </Link>
           </div>
@@ -68,7 +68,7 @@ const FooterColumn = ({ title, links }: FooterColumnProps) => {
       <ul className="space-y-3">
         {links.map((link) => (
           <li key={link.name}>
-            <Link to={link.path} className="text-sm text-white/50 transition-colors duration-300 hover:text-cyan-200">
+            <Link to={link.path} className="text-sm text-white/50 transition-colors duration-300 hover:text-white">
               {link.name}
             </Link>
           </li>

@@ -214,8 +214,8 @@ export const homeCopy = {
   hero: {
     loadingSequence: ["Scope", "Design", "Build", "Launch"],
     eyebrow: "Kinetic software engineering",
-    title: "Digital systems built with",
-    highlight: "industrial precision.",
+    title: "Kynetix",
+    highlight: "FOR KINETIC PRECISION",
     description: brandVoice.positioning,
     primaryAction: brandActionMap.project,
     secondaryAction: { label: ctaCopy.exploreSystems, path: routes.services },

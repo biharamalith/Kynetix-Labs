@@ -28,7 +28,7 @@ export const ProductShowcase = () => {
                 <ValueList title="Ideal for" items={product.idealFor} />
                 <ValueList title="Business outcomes" items={product.outcomes} columns="two" />
                 <ValueList title="Capability direction" items={product.capabilities} columns="two" />
-                <p className="rounded-2xl border border-cyan-200/15 bg-cyan-200/[0.055] p-4 text-sm leading-7 text-cyan-50/72">
+                <p className="rounded-2xl border border-white/15 bg-white/[0.055] p-4 text-sm leading-7 text-white/72">
                   {product.launchNote}
                 </p>
                 {product.detailPath && (

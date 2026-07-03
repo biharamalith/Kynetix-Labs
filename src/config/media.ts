@@ -51,8 +51,8 @@ export const cinematicHeroMedia: CinematicHeroMediaConfig = {
   title: "Kinetic software infrastructure in motion",
   description:
     "A short abstract hero loop gives the landing page a premium industrial rhythm while preserving poster-first loading, silent playback, and safe fallback behavior.",
-  ariaLabel: "Abstract cinematic Kynetix Labs hero sequence with cyan industrial systems in motion",
-  posterAlt: "Abstract cyan industrial software system poster for the Kynetix Labs home hero",
+  ariaLabel: "Abstract cinematic Kynetix Labs hero sequence with monochrome industrial systems in motion",
+  posterAlt: "Abstract monochrome industrial software system poster for the Kynetix Labs home hero",
   posterTone: "industrial-cyan",
   poster: {
     src: "/media/hero/kynetix-cinematic-poster.webp",

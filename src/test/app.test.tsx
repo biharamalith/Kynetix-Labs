@@ -30,9 +30,7 @@ describe("App", () => {
         level: 1,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(homeCopy.hero.description)).toBeInTheDocument();
-
-    expect(hasLinkWithNameAndHref(homeCopy.hero.primaryAction.label, homeCopy.hero.primaryAction.path)).toBe(true);
-    expect(hasLinkWithNameAndHref(homeCopy.hero.secondaryAction.label, homeCopy.hero.secondaryAction.path)).toBe(true);
+    expect(hasLinkWithNameAndHref("Start a project", "/contact")).toBe(true);
+    expect(screen.queryByText(homeCopy.hero.description)).not.toBeInTheDocument();
   });
 });

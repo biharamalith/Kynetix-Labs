@@ -15,7 +15,7 @@ export const ServiceOutcomeGrid = ({ service }: ServiceOutcomeGridProps) => (
         <RevealOnScroll key={problem.label} delay={index * 90}>
           <ContentCard className="h-full p-6" intensity="strong">
             <div className="relative z-10">
-              <span className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/55">Problem</span>
+              <span className="text-xs font-bold uppercase tracking-[0.24em] text-white/55">Problem</span>
               <h3 className="mt-4 font-display text-xl font-semibold text-white">{problem.label}</h3>
               <p className="mt-4 text-sm leading-7 text-white/62">{problem.description}</p>
             </div>
@@ -28,7 +28,7 @@ export const ServiceOutcomeGrid = ({ service }: ServiceOutcomeGridProps) => (
         <RevealOnScroll key={outcome.label} delay={index * 90}>
           <ContentCard className="h-full p-6">
             <div className="relative z-10">
-              <span className="text-xs font-bold uppercase tracking-[0.24em] text-cyan-100/55">Outcome</span>
+              <span className="text-xs font-bold uppercase tracking-[0.24em] text-white/55">Outcome</span>
               <h3 className="mt-4 font-display text-xl font-semibold text-white">{outcome.label}</h3>
               <p className="mt-4 text-sm leading-7 text-white/62">{outcome.description}</p>
             </div>

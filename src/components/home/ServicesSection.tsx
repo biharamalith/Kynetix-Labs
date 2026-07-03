@@ -19,7 +19,7 @@ export const ServicesSection = () => {
                   <div className="feature-icon-box feature-icon-box-lg">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-cyan-100/55">
+                  <span className="text-[0.65rem] font-bold uppercase tracking-[0.24em] text-white/55">
                     {service.eyebrow}
                   </span>
                 </div>
@@ -28,7 +28,7 @@ export const ServicesSection = () => {
                 <ul className="mt-7 space-y-3">
                   {service.highlights.map((item) => (
                     <li key={item} className="flex items-center gap-3 text-sm text-white/60">
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-cyan-200" />
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-white" />
                       {item}
                     </li>
                   ))}

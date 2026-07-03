@@ -23,7 +23,7 @@ export const HeroVisual = () => {
           <div className="engine-ring engine-ring-two" />
           <div className="engine-ring engine-ring-three" />
           <div className="engine-core">
-            <Sparkles className="h-7 w-7 text-cyan-200" />
+            <Sparkles className="h-7 w-7 text-white" />
             <span>{hero.centerLabel}</span>
           </div>
           {hero.nodes.map((node, index) => (
