@@ -7,7 +7,7 @@ export const HeroSection = () => {
       <HeroMedia />
 
       <div className="container-main relative z-10">
-        <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center py-16 text-center lg:py-24">
+        <div className="hero-copy-frame">
           <HeroIntro />
         </div>
       </div>

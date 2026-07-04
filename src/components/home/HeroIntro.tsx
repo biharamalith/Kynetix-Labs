@@ -3,6 +3,7 @@ import { motionConfig } from "@/lib/motionConfig";
 import { homeCopy } from "@/lib/siteContent";
 
 const hero = homeCopy.hero;
+const heroSubtitle = "Software systems for modern operations.";
 
 export const HeroIntro = () => {
   const introStyle = {
@@ -11,10 +12,11 @@ export const HeroIntro = () => {
 
   return (
     <div className="hero-brand-reveal" style={introStyle}>
-      <h1 className="hero-signature" aria-label={`${hero.title} ${hero.highlight}`}>
-        <span>{hero.title}</span>
+      <p className="hero-product-name">{hero.title}</p>
+      <h1 className="hero-product-headline" aria-label={`${hero.title} ${hero.highlight}`}>
+        {hero.highlight}
       </h1>
-      <p className="hero-brand-subtitle">{hero.highlight}</p>
+      <p className="hero-product-subtitle">{heroSubtitle}</p>
     </div>
   );
 };
